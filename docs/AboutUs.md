@@ -27,4 +27,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/e1093051)]
 
 * Role: Developer
+### Teo Kim Han
 
+<img src="images/kimhan01.png" width="200px">
+
+[[github](https://github.com/KimHan01)]
+
+* Role:
+* Responsibilites:
