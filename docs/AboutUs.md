@@ -11,6 +11,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+
+### Jordon Chang
+
+<img src="images/jordon0802.png" width="200px">
+
+[[github](https://github.com/jordon0802)]
+
+* Role:
+
 ### Fan Yueh-Ching
 
 <img src="images/e1093051.png" width="200px">
@@ -25,5 +34,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/potatodudedude)]
 
-* Role: Developer
+* Role:
 
+### Teo Kim Han
+
+<img src="images/kimhan01.png" width="200px">
+
+[[github](https://github.com/KimHan01)]
+
+* Role:
+* Responsibilites:
