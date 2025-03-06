@@ -300,32 +300,74 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+#### Use case: UC1 - Show list of contacts
+**System: ConnectS**
 
-**Use case: Delete a person**
+**Actor: User**
 
-**MSS**
+**MSS:**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to list contacts.
+2.  ConnectS shows a list of contacts.
 
     Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
+  
+  Use case ends.
+
+#### Use case: UC2 - Add a contact
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1.  User requests add contacts with name, telegram handle, email, module and tutorial group.
+2.  ConnectS adds contact.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. ConnectS detects invalid parameter content.
+  
+    * 1a1. ConnectS prompts user that entered parameter(s) is invalid.
+
+      Use case resumes from step 1.
+
+* 1b. ConnectS detects invalid ordering of parameter.
+
+    * 1a1. ConnectS prompts user to enter parameters in a given order.
+
+      Use case resumes from step 1.
+
+#### Use case: UC3 - Delete a contact
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1.  User requests to <ins> list contacts (UC1)</ins>.
+2.  User requests to delete a specific contact in the list.
+3.  AddressBook deletes the contact.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 2a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 2a1. ConnectS prompts user to enter a valid index.
 
       Use case resumes at step 2.
-
-*{More to be added}*
 
 ### Non-Functional Requirements
 
