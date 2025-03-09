@@ -28,3 +28,19 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 
+### Sun Zhiyuan Felix
+
+<img src="images/potatodudedude.png" width="200px">
+
+[[github](https://github.com/potatodudedude)]
+
+* Role:
+
+### Teo Kim Han
+
+<img src="images/kimhan01.png" width="200px">
+
+[[github](https://github.com/KimHan01)]
+
+* Role:
+* Responsibilites:
