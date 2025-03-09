@@ -1,4 +1,4 @@
-# ConnectS [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
+# ConnectS [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/AY2425S2-CS2103T-F10-4/tp/actions)
 
 ![Ui](docs/images/Ui.png)
 
