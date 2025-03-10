@@ -343,8 +343,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
+* **Computing Student**: A student in a computer-related course (e.g. Computer Science, Information Technology, Information Security)
+* **TA**: Teaching Assistant
+* **Module**: A course subject that the TA is teaching (e.g. Intro to programming, Calculus, Discrete Maths)
+* **Tutee**: A person who receives tutoring from the TA
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Typical usage**: Common operations a user will perform. (e.g., viewing and adding contacts)
+* **Above Average Typing Speed**: A typing speed above the average typing speed of around 40 words per minute
+* **Human editable text file**: A file format that can be read and modified with a standard text editor (e.g., `.txt` and `.json`)
+* **Remote Server**: Any server hosted over the network to store and access data.
+* **Screen scales**: The scaling factor that determines how much the screen content on the GUI should be enlarged
 
 --------------------------------------------------------------------------------------------------------------------
 
