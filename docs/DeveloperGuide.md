@@ -274,27 +274,62 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+Computing Student TAs who...
+* teach multiple modules
+* have multiple tutorial groups
+  * have multiple groups within a tutorial group
+* have to manage reviewing their tutees’ projects/code
+* keep track of relevant professors
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Allows computing students to quickly sort contacts and grab information. Optimised for typing instead of mouse. Simplify managing social life. Allows TAs to group their tutees by course and tutorial group.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                                   | I want to …​                                                                                                  | So that…​                                                                                                   |
+|----------|-------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| `* * *`  | new user                                  | easily find instructions on commands that I need to use                                                       | I can quickly lookup the commands I want                                                                    |
+| `* * *`  | impatient user                            | see my contacts with all its details                                                                          | I can have a clear picture of all my contacts                                                               |
+| `* * *`  | forgetful user                            | add a contact to a list with a name                                                                           | I can store information related to the contact                                                              |
+| `* * *`  | forgetful user                            | add telegram handles to a contact                                                                             | I can look it up when I forget, since telegram is popular amongst university students                       |
+| `* * *`  | forgetful user                            | add email to a contact                                                                                        | I can look it up when I forget                                                                              |
+| `* * *`  | forgetful user                            | add tutorial groups to a contact                                                                              | I can see which group a student belongs to when I forget                                                    |
+| `* * *`  | forgetful user                            | add modules to a contact                                                                                      | I can see which module a student belongs to when I forget                                                   |
+| `* * *`  | clumsy user                               | delete a contact                                                                                              | I can remove contacts I accidentally added/don't need                                                       |
+| `* * *`  | user that prefers typing                  | perform all commands by typing instead of using a mouse to click                                              | I can execute commands faster because i type faster than i use a mouse to click                             |
+| `* *`    | busy user                                 | type a quick command to paste information to a contact                                                        | I can speed up transferring a contact's information                                                         |
+| `* *`    | busy user                                 | type a quick command to copy a contact's specific details                                                     | I can speed up transferring a contact's information                                                         |
+| `* *`    | busy user                                 | find contacts quickly with some of his incomplete information key in to the search bar                        | I do not waste time on the nitty-gritty                                                                     |
+| `* *`    | frequent user                             | pin important contacts on the top                                                                             | I can easily find them                                                                                      |
+| `* *`    | frequent user                             | schedule deletion of contacts at a specific date                                                              | My contacts are not cluttered with contacts I don't need in case i forget to delete                         |
+| `* *`    | impatient user                            | see my contacts by name                                                                                       | I can read more contacts simultaneously                                                                     |
+| `* *`    | long-time user                            | delete a specific tag                                                                                         | I can delete some tags that no longer matter to me                                                          |
+| `* *`    | new user                                  | have a guided tour of the basic commands                                                                      | I can start using the app without needing to look up the commands                                           |
+| `* *`    | TA of multiple courses                    | easily group contacts based on tutorial group                                                                 | I can find my students' contacts easily                                                                     |
+| `* *`    | TA of multiple courses                    | easily group contacts based on module                                                                         | I can find my students' contacts easily                                                                     |
+| `* *`    | user that values efficiency               | edit an existing contact's information                                                                        | I can save time not needing to delete and make a new contact                                                |
+| `* *`    | user that values efficiency               | easily find the commands i need by typing in a command to list all commands                                   | I don't have to navigate to an external guide                                                               |
+| `* *`    | user that values efficiency               | easily delete multiple contacts at once by giving a common trait                                              | I don't waste time deleting contacts one by one                                                             |
+| `* *`    | user that values efficiency               | press a button to reinput the last executed command into the CLI                                              | I can save time if I'm inputting multiple similar commands                                                  |
+| `* *`    | user that values efficiency               | select many users at a time then add a tag to all of them                                                     | I don't have to do the same thing again and again                                                           |
+| `* *`    | user who likes to keep things ordered     | sort my contacts by alphabetical order (or any specific order)                                                | everything is clear at a glance                                                                             |
+| `* *`    | user who's switching phone                | be able to load all my contacts easily                                                                        | I don't have to add them in again                                                                           |
+| `* *`    | user with many contacts                   | find contacts by email                                                                                        | I know who emailed me or forgot who the email belongs to                                                    |
+| `* *`    | user with many contacts                   | find contacts by telegram handle                                                                              | I can find out who the handle belongs to                                                                    |
+| `* *`    | user with many contacts                   | tag contacts based on their relationship to me                                                                | I can tell from a quick glance the type of contact I'm reading                                              |
+| `*`      | advanced user                             | create my own shortcuts in command line                                                                       | I can execute commands that I use often or commands that are very long faster                               |
+| `*`      | forgetful user                            | set a custom timer for a notification before a contact's birthday                                             | I am reminded to prepare for it                                                                             |
+| `*`      | new user                                  | have an autocomplete function predict my typing and show me the potential options                             | I can use the command even if I'm unsure of the exact structure                                             |
+| `*`      | new user                                  | see suggestions for commands when I input them wrong                                                          | I can quickly correct my mistake instead of needing to refer to another source                              |
+| `*`      | new user that prefers to learn visually   | watch a video showing the features and functionalities of the product                                         | I can learn better                                                                                          |
+| `*`      | new user who has a lot of contacts to add | have a command to efficiently add multiple contacts at once or be able to load contacts from phone contacts   | I don't waste a lot of time adding multiple contacts as a new user starting with 0 contacts                 |
+| `*`      | user that values efficiency               | type a quick command and automatically navigate to my contact's email client to write a message to the client | I can save time navigating to my email client and then copying the email in                                 |
+| `*`      | user that values efficiency               | type a quick command and automatically call a contact's phone on a phone or messenger app                     | I can save time navigating to the appropriate app and typing out their phone number                         |
+| `*`      | user that values efficiency               | see my commonly searched contacts at the top of the list                                                      | I don't waste time searching for contacts                                                                   |
+| `*`      | user who has many friends in the contacts | store their birthday and get a notification on that day                                                       | I can send them a message or make a phone call, and don't have to remember so many different birthday dates |
+| `*`      | user with a lot of contacts               | hide certain types of contact information when looking at the overall list                                    | the list view is smaller and not clogged with information I don't use often                                 |
 
 *{More to be added}*
 
