@@ -56,5 +56,5 @@ public class ModTutGroup {
     public int hashCode() {
         return value.hashCode();
     }
-    
+
 }
