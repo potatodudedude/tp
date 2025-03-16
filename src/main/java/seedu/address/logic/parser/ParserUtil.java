@@ -9,10 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -95,6 +92,19 @@ public class ParserUtil {
         return new Email(trimmedEmail);
     }
 
+
+    public static TelegramHandle parseTelegramHandle(String telegramHandle) throws ParseException {
+        requireNonNull(telegramHandle);
+        String trimmedTelegramHandle = telegramHandle.trim();
+        if (!TelegramHandle.isValidTelegramHandle(trimmedTelegramHandle)) {
+            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+        }
+        return new TelegramHandle(trimmedTelegramHandle);
+    }
+
+
+
+
     /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
@@ -110,15 +120,24 @@ public class ParserUtil {
         return new Tag(trimmedTag);
     }
 
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
-     */
-    public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
-        requireNonNull(tags);
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(parseTag(tagName));
+
+
+    public static ModTutGroup parseModTutGroup(String modTutGroup) throws ParseException {
+        requireNonNull(modTutGroup);
+        String trimmedModTutGroup = modTutGroup.trim();
+        if (!ModTutGroup.isValidModTutGroup(trimmedModTutGroup)) {
+            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
         }
-        return tagSet;
+        return new ModTutGroup(trimmedModTutGroup);
+    }
+
+
+    public static Set<ModTutGroup> parseModTutGroups(Collection<String> modTutGroups) throws ParseException {
+        requireNonNull(modTutGroups);
+        final Set<ModTutGroup> modTutGroupSet = new HashSet<>();
+        for (String modTutGroup : modTutGroups) {
+            modTutGroupSet.add(parseModTutGroup(modTutGroup));
+        }
+        return modTutGroupSet;
     }
 }
