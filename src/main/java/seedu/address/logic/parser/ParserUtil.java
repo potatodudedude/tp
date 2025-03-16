@@ -27,7 +27,10 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
-     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     *
+     * @param oneBasedIndex the index as a string
+     * @return the parsed {@code Index}
+     * @throws ParseException if the specified index is invalid (not a non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
@@ -41,6 +44,8 @@ public class ParserUtil {
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param name the name as a string
+     * @return the parsed {@code Name}
      * @throws ParseException if the given {@code name} is invalid.
      */
     public static Name parseName(String name) throws ParseException {
@@ -56,6 +61,8 @@ public class ParserUtil {
      * Parses a {@code String phone} into a {@code Phone}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param phone the phone number as a string
+     * @return the parsed {@code Phone}
      * @throws ParseException if the given {@code phone} is invalid.
      */
     public static Phone parsePhone(String phone) throws ParseException {
@@ -71,6 +78,8 @@ public class ParserUtil {
      * Parses a {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param address the address as a string
+     * @return the parsed {@code Address}
      * @throws ParseException if the given {@code address} is invalid.
      */
     public static Address parseAddress(String address) throws ParseException {
@@ -86,6 +95,8 @@ public class ParserUtil {
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param email the email address as a string
+     * @return the parsed {@code Email}
      * @throws ParseException if the given {@code email} is invalid.
      */
     public static Email parseEmail(String email) throws ParseException {
@@ -97,23 +108,29 @@ public class ParserUtil {
         return new Email(trimmedEmail);
     }
 
-
+    /**
+     * Parses a {@code String telegramHandle} into a {@code TelegramHandle}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param telegramHandle the Telegram handle as a string
+     * @return the parsed {@code TelegramHandle}
+     * @throws ParseException if the given {@code telegramHandle} is invalid.
+     */
     public static TelegramHandle parseTelegramHandle(String telegramHandle) throws ParseException {
         requireNonNull(telegramHandle);
         String trimmedTelegramHandle = telegramHandle.trim();
         if (!TelegramHandle.isValidTelegramHandle(trimmedTelegramHandle)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+            throw new ParseException(TelegramHandle.MESSAGE_CONSTRAINTS);
         }
         return new TelegramHandle(trimmedTelegramHandle);
     }
-
-
-
 
     /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param tag the tag as a string
+     * @return the parsed {@code Tag}
      * @throws ParseException if the given {@code tag} is invalid.
      */
     public static Tag parseTag(String tag) throws ParseException {
@@ -125,18 +142,31 @@ public class ParserUtil {
         return new Tag(trimmedTag);
     }
 
-
-
+    /**
+     * Parses a {@code String modTutGroup} into a {@code ModTutGroup}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param modTutGroup the ModTut group as a string
+     * @return the parsed {@code ModTutGroup}
+     * @throws ParseException if the given {@code modTutGroup} is invalid.
+     */
     public static ModTutGroup parseModTutGroup(String modTutGroup) throws ParseException {
         requireNonNull(modTutGroup);
         String trimmedModTutGroup = modTutGroup.trim();
         if (!ModTutGroup.isValidModTutGroup(trimmedModTutGroup)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ModTutGroup.MESSAGE_CONSTRAINTS);
         }
         return new ModTutGroup(trimmedModTutGroup);
     }
 
-
+    /**
+     * Parses a {@code Collection<String> modTutGroups} into a set of {@code ModTutGroup}.
+     * Leading and trailing whitespaces for each group will be trimmed.
+     *
+     * @param modTutGroups the collection of ModTut groups as strings
+     * @return the set of parsed {@code ModTutGroup}
+     * @throws ParseException if any of the given {@code modTutGroups} are invalid.
+     */
     public static Set<ModTutGroup> parseModTutGroups(Collection<String> modTutGroups) throws ParseException {
         requireNonNull(modTutGroups);
         final Set<ModTutGroup> modTutGroupSet = new HashSet<>();
