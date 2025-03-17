@@ -10,12 +10,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class TelegramHandle {
 
-    public final String value;
-
     public static final String MESSAGE_CONSTRAINTS = "First character in telegram handle should be @, "
             + "followed by at least five characters";
     private static final String VALIDATION_REGEX = "^@[a-z0-9_]+$$$$$";
 
+    public final String value;
+    
     /**
      * Constructs a temegram handle.
      *
