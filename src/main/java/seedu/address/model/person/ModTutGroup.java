@@ -12,8 +12,8 @@ public class ModTutGroup {
 
     public final String value;
 
-    public static final String MESSAGE_CONSTRAINTS = "Specify the module and tutorial group with a dash in between";
     private static final String VALIDATION_REGEX = "^[A-Za-z0-9]+-[A-Za-z0-9]+$";
+    public static final String MESSAGE_CONSTRAINTS = "Specify the module and tutorial group with a dash in between";
 
     /**
      * Constructs a module - tutorial group.

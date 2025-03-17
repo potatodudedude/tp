@@ -9,10 +9,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidTelegramHandle(String)}
  */
 public class TelegramHandle {
+
+    public final String value;
+
     private static final String VALIDATION_REGEX = "^@[a-z0-9_]+$$$$$";
     public static final String MESSAGE_CONSTRAINTS = "First character in telegram handle should be @, "
         + "followed by at least five characters";
-    public final String value;
 
     /**
      * Constructs a temegram handle.
