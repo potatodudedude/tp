@@ -12,9 +12,9 @@ public class TelegramHandle {
 
     public final String value;
 
-    private static final String VALIDATION_REGEX = "^@[a-z0-9_]+$$$$$";
     public static final String MESSAGE_CONSTRAINTS = "First character in telegram handle should be @, "
-        + "followed by at least five characters";
+            + "followed by at least five characters";
+    private static final String VALIDATION_REGEX = "^@[a-z0-9_]+$$$$$";
 
     /**
      * Constructs a temegram handle.
