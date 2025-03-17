@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
@@ -18,47 +17,42 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
     private final Email email;
 
     // Data fields
-    private final Address address;
-    private final Set<Tag> tags = new HashSet<>();
+    private final TelegramHandle telegramHandle;
+    private final Set<ModTutGroup> modTutGroups = new HashSet<>();
+
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Email email, TelegramHandle telegramHandle, Set<ModTutGroup> modTutGroups) {
+        requireAllNonNull(name, email, telegramHandle, modTutGroups);
         this.name = name;
-        this.phone = phone;
         this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
+        this.telegramHandle = telegramHandle;
+        this.modTutGroups.addAll(modTutGroups);
     }
 
     public Name getName() {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
-    }
-
     public Email getEmail() {
         return email;
     }
 
-    public Address getAddress() {
-        return address;
+    public TelegramHandle getTelegramHandle() {
+        return telegramHandle;
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable mod - tutorial group set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Set<ModTutGroup> getModTutGroups() {
+        return Collections.unmodifiableSet(modTutGroups);
     }
 
     /**
@@ -91,26 +85,24 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone)
+                && telegramHandle.equals(otherPerson.telegramHandle)
                 && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags);
+                && modTutGroups.equals(otherPerson.modTutGroups);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, email, telegramHandle, modTutGroups);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
                 .add("email", email)
-                .add("address", address)
-                .add("tags", tags)
+                .add("telegramHandle", telegramHandle)
+                .add("modTutGroups", modTutGroups)
                 .toString();
     }
 
