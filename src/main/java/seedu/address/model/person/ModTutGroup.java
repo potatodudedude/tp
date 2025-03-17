@@ -9,10 +9,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidModTutGroup(String)} (String)}
  */
 public class ModTutGroup {
-    private static final String VALIDATION_REGEX = "^[A-Za-z0-9]+-[A-Za-z0-9]+$";
+
+    public final String value;
 
     public static final String MESSAGE_CONSTRAINTS = "Specify the module and tutorial group with a dash in between";
-    public final String value;
+    private static final String VALIDATION_REGEX = "^[A-Za-z0-9]+-[A-Za-z0-9]+$";
 
     /**
      * Constructs a module - tutorial group.
