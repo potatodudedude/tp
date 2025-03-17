@@ -15,9 +15,9 @@ public class TelegramHandle {
     private static final String VALIDATION_REGEX = "^@[a-z0-9_]+$$$$$";
 
     public final String value;
-    
+
     /**
-     * Constructs a temegram handle.
+     * Constructs a telegram handle.
      *
      * @param telegramHandle A valid telegram handle.
      */
