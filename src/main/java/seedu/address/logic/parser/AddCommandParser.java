@@ -40,11 +40,11 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_EMAIL, PREFIX_TELEGRAM, PREFIX_MOD);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         TelegramHandle telegramHandle = ParserUtil.parseTelegramHandle(argMultimap.getValue(PREFIX_TELEGRAM).get());
+        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Set<ModTutGroup> modTutGroupList = ParserUtil.parseModTutGroups(argMultimap.getAllValues(PREFIX_MOD));
 
-        Person person = new Person(name, email, telegramHandle, modTutGroupList);
+        Person person = new Person(name, telegramHandle, email, modTutGroupList);
 
         return new AddCommand(person);
     }
