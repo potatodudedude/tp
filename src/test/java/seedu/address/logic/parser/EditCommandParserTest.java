@@ -165,7 +165,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
         // invalid followed by valid
-        userInput = targetIndex.getOneBased() + VALID_TELE_BOB + INVALID_TELE_DESC;
+        userInput = targetIndex.getOneBased() + TELE_DESC_BOB + INVALID_TELE_DESC;
 
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
