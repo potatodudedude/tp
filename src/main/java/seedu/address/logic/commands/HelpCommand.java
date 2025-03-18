@@ -2,7 +2,9 @@ package seedu.address.logic.commands;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.Model;
 
 /**
@@ -65,7 +67,9 @@ public class HelpCommand extends Command {
                 }
 
                 message.append(helpMessage).append("\n\n");
-            } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ignored) {
+            } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
+                Logger logger = LogsCenter.getLogger(HelpCommand.class);
+                logger.warning(e.getMessage());
             }
         }
 
