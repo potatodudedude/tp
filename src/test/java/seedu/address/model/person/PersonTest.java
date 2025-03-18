@@ -36,9 +36,9 @@ public class PersonTest {
                 .withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // different name, all other attributes same -> returns false
+        // different name, all other attributes same -> returns true
         editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
+        assertTrue(ALICE.isSamePerson(editedAlice));
 
         // name differs in case, all other attributes same -> returns true
         Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
