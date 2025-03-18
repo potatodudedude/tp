@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 
 /**
- * Represents a Person's module - tutorial group in the address book.
+ * Represents a Person's module - tutorial group in ConnectS.
  * Guarantees: immutable; is valid as declared in {@link #isValidModTutGroup(String)} (String)}
  */
 public class ModTutGroup {
