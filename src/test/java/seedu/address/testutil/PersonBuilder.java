@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Email;
@@ -18,14 +19,14 @@ public class PersonBuilder {
     //    public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     //    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_TELEHANDLE = "@Amy_13ee";
+    public static final String DEFAULT_TELEHANDLE = "@amy_13ee";
     public static final String DEFAULT_MODTUTGRP = "CS1234-A10";
 
     private Name name;
     //private Phone phone;
     private Email email;
     private TelegramHandle teleHandle;
-    private Set<ModTutGroup> modTutGrp;
+    private Set<ModTutGroup> modTutGrp = new HashSet<>();
     //private Address address;
     //private Set<Tag> tags;
 
