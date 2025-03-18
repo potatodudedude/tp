@@ -98,12 +98,14 @@ public class Person {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("name", name)
-                .add("email", email)
-                .add("telegramHandle", telegramHandle)
-                .add("modTutGroups", modTutGroups)
-                .toString();
+        //        return new ToStringBuilder(this)
+        //                .add("name", name)
+        //                .add("email", email)
+        //                .add("telegramHandle", telegramHandle)
+        //                .add("modTutGroups", modTutGroups)
+        //                .toString();
+        return Person.class.getCanonicalName() + "{name=" + getName() + ", email=" + getEmail()
+                + ", telegramHandle=" + getTelegramHandle() + ", modTutGroups=" + getModTutGroups() + "}";
     }
 
 }
