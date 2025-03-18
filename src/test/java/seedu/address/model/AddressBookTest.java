@@ -75,8 +75,8 @@ public class AddressBookTest {
     @Test
     public void hasPerson_personWithSameIdentityNameFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withTele(VALID_TELE_BOB).
-                withModTut(VALID_MODTUT_BOB).build();
+        Person editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withTele(VALID_TELE_BOB)
+                        .withModTut(VALID_MODTUT_BOB).build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
 
