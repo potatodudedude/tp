@@ -38,7 +38,7 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_EMAIL, PREFIX_TELEGRAM, PREFIX_MOD);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_EMAIL, PREFIX_TELEGRAM);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         TelegramHandle telegramHandle = ParserUtil.parseTelegramHandle(argMultimap.getValue(PREFIX_TELEGRAM).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
