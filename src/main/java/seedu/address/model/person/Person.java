@@ -27,8 +27,8 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Email email, TelegramHandle telegramHandle, Set<ModTutGroup> modTutGroups) {
-        requireAllNonNull(name, email, telegramHandle, modTutGroups);
+    public Person(Name name, TelegramHandle telegramHandle, Email email, Set<ModTutGroup> modTutGroups) {
+        requireAllNonNull(name, telegramHandle, email, modTutGroups);
         this.name = name;
         this.telegramHandle = telegramHandle;
         this.email = email;
@@ -39,12 +39,12 @@ public class Person {
         return name;
     }
 
-    public Email getEmail() {
-        return email;
-    }
-
     public TelegramHandle getTelegramHandle() {
         return telegramHandle;
+    }
+
+    public Email getEmail() {
+        return email;
     }
 
     /**

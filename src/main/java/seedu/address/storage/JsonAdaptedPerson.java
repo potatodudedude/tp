@@ -92,7 +92,7 @@ class JsonAdaptedPerson {
         }
         final Email modelEmail = new Email(email);
         final Set<ModTutGroup> modelTutGroups = new HashSet<>(personModTutGroups);
-        return new Person(modelName, modelEmail, modelTelegramHandle, modelTutGroups);
+        return new Person(modelName, modelTelegramHandle, modelEmail, modelTutGroups);
     }
 
 }

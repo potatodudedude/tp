@@ -18,7 +18,7 @@ public class PersonBuilder {
     //    public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     //    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_TELEHANDLE = "@Amy_13ee";
+    public static final String DEFAULT_TELEGRAMHANDLE = "@Amy_13ee";
     public static final String DEFAULT_MODTUTGRP = "CS1234-A10";
 
     private Name name;
@@ -36,7 +36,7 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         //phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
-        telegramHandle = new TelegramHandle(DEFAULT_TELEHANDLE);
+        telegramHandle = new TelegramHandle(DEFAULT_TELEGRAMHANDLE);
         modTutGroup.add(new ModTutGroup(DEFAULT_MODTUTGRP));
         //address = new Address(DEFAULT_ADDRESS);
         //tags = new HashSet<>();
@@ -117,7 +117,7 @@ public class PersonBuilder {
      */
     public Person build() {
         //        return new Person(name, phone, email, address, tags);
-        return new Person(name, email, telegramHandle, modTutGroup);
+        return new Person(name, telegramHandle, email, modTutGroup);
     }
 
 }

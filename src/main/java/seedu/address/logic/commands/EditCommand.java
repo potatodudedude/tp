@@ -23,6 +23,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -98,9 +99,13 @@ public class EditCommand extends Command {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
+        TelegramHandle updatedTelegramHandle = editPersonDescriptor.getTelegramHandle()
+                .orElse(personToEdit.getTelegramHandle());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Set<ModTutGroup> updatedModTutGroups = editPersonDescriptor.getModTutGroup()
+                .orElse(personToEdit.getModTutGroups());
 
-        return new Person(updatedName, updatedEmail, new TelegramHandle("@placeholder"), new HashSet<>());
+        return new Person(updatedName, updatedTelegramHandle, updatedEmail, updatedModTutGroups);
     }
 
     @Override
@@ -133,10 +138,9 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Name name;
-        private Phone phone;
+        private TelegramHandle telegramHandle;
         private Email email;
-        private Address address;
-        private Set<Tag> tags;
+        private Set<ModTutGroup> modTutGroup;
 
         public EditPersonDescriptor() {}
 
@@ -146,17 +150,16 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setPhone(toCopy.phone);
             setEmail(toCopy.email);
-            setAddress(toCopy.address);
-            setTags(toCopy.tags);
+            setTelegramHandle(toCopy.telegramHandle);
+            setModTutGroup(toCopy.modTutGroup);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, telegramHandle, email, modTutGroup);
         }
 
         public void setName(Name name) {
@@ -167,12 +170,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setTelegramHandle(TelegramHandle telegramHandle) {
+           this.telegramHandle = telegramHandle;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
+        public Optional<TelegramHandle> getTelegramHandle() {
+            return Optional.ofNullable(telegramHandle);
         }
 
         public void setEmail(Email email) {
@@ -183,20 +186,20 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public void setAddress(Address address) {
+        /* public void setAddress(Address address) {
             this.address = address;
         }
 
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
-        }
+        } */
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
          */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setModTutGroup(Set<ModTutGroup> modTutGroup) {
+            this.modTutGroup = (modTutGroup != null) ? new HashSet<>(modTutGroup) : null;
         }
 
         /**
@@ -204,8 +207,8 @@ public class EditCommand extends Command {
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code tags} is null.
          */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public Optional<Set<ModTutGroup>> getModTutGroup() {
+            return (modTutGroup != null) ? Optional.of(Collections.unmodifiableSet(modTutGroup)) : Optional.empty();
         }
 
         @Override
@@ -221,20 +224,18 @@ public class EditCommand extends Command {
 
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
             return Objects.equals(name, otherEditPersonDescriptor.name)
-                    && Objects.equals(phone, otherEditPersonDescriptor.phone)
+                    && Objects.equals(telegramHandle, otherEditPersonDescriptor.telegramHandle)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(address, otherEditPersonDescriptor.address)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(modTutGroup, otherEditPersonDescriptor.modTutGroup);
         }
 
         @Override
         public String toString() {
             return new ToStringBuilder(this)
                     .add("name", name)
-                    .add("phone", phone)
+                    .add("telegramHandle", telegramHandle)
                     .add("email", email)
-                    .add("address", address)
-                    .add("tags", tags)
+                    .add("modTutGroup", modTutGroup)
                     .toString();
         }
     }

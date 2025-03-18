@@ -37,9 +37,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private Label email;
-    @FXML
     private Label telegramHandle;
+    @FXML
+    private Label email;
     @FXML
     private FlowPane modTutGroup;
 
@@ -51,8 +51,8 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        email.setText(person.getEmail().value);
         telegramHandle.setText(person.getTelegramHandle().value);
+        email.setText(person.getEmail().value);
         person.getModTutGroups().stream()
                 .sorted(Comparator.comparing(group -> group.value))
                 .forEach(group -> modTutGroup.getChildren().add(new Label(group.value)));
