@@ -43,11 +43,11 @@ public class TypicalPersons {
             .withEmail("anna@example.com").withTele("@george")
             .withModTut("ES2666-Z01").build();
 
-    //        // Manually added
-    //        public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
-    //                .withEmail("stefan@example.com").withAddress("little india").build();
-    //        public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
-    //                .withEmail("hans@example.com").withAddress("chicago ave").build();
+    // Manually added
+    public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withTele("@hoon_Meier")
+            .withEmail("stefan@example.com").withModTut("CS1234-A10").build();
+    public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withTele("@ida_Mueller")
+            .withEmail("hans@example.com").withModTut("CS1234-A10").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withEmail(VALID_EMAIL_AMY)
