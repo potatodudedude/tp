@@ -32,6 +32,9 @@ public class TelegramHandleTest {
         assertFalse(TelegramHandle.isValidTelegramHandle("@pete")); // less than 5 characters
         assertFalse(TelegramHandle.isValidTelegramHandle("@peter*")); // contains non-alphanumeric characters
         assertFalse(TelegramHandle.isValidTelegramHandle("@peter ")); // trailing space
+        assertFalse(TelegramHandle.isValidTelegramHandle("@peter_")); // ends with underscore
+        assertFalse(TelegramHandle.isValidTelegramHandle("@_peter")); // starts with underscore
+        assertFalse(TelegramHandle.isValidTelegramHandle("_____")); // all underscores
 
         // valid telegram handle
         assertTrue(TelegramHandle.isValidTelegramHandle("@peter")); // alphabets only
