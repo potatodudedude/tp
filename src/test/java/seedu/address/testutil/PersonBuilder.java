@@ -24,8 +24,8 @@ public class PersonBuilder {
     private Name name;
     //private Phone phone;
     private Email email;
-    private TelegramHandle teleHandle;
-    private Set<ModTutGroup> modTutGrp;
+    private TelegramHandle telegramHandle;
+    private Set<ModTutGroup> modTutGroup;
     //private Address address;
     //private Set<Tag> tags;
 
@@ -36,8 +36,8 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         //phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
-        teleHandle = new TelegramHandle(DEFAULT_TELEHANDLE);
-        modTutGrp.add(new ModTutGroup(DEFAULT_MODTUTGRP));
+        telegramHandle = new TelegramHandle(DEFAULT_TELEHANDLE);
+        modTutGroup.add(new ModTutGroup(DEFAULT_MODTUTGRP));
         //address = new Address(DEFAULT_ADDRESS);
         //tags = new HashSet<>();
     }
@@ -49,8 +49,8 @@ public class PersonBuilder {
         name = personToCopy.getName();
         //phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
-        teleHandle = personToCopy.getTelegramHandle();
-        modTutGrp = personToCopy.getModTutGroups();
+        telegramHandle = personToCopy.getTelegramHandle();
+        modTutGroup = personToCopy.getModTutGroups();
         //address = personToCopy.getAddress();
         //tags = new HashSet<>(personToCopy.getTags());
     }
@@ -99,7 +99,7 @@ public class PersonBuilder {
      * Sets the {@code TelegramHandle} of the {@code Person} that we are building.
      */
     public PersonBuilder withTele(String teleHandle) {
-        this.teleHandle = new TelegramHandle(teleHandle);
+        this.telegramHandle = new TelegramHandle(teleHandle);
         return this;
     }
 
@@ -108,7 +108,7 @@ public class PersonBuilder {
      * and set it to the {@code Person} that we are building.
      */
     public PersonBuilder withModTut(String... modTut) {
-        this.modTutGrp = SampleDataUtil.getModTutSet(modTut);
+        this.modTutGroup = SampleDataUtil.getModTutSet(modTut);
         return this;
     }
 
@@ -117,7 +117,7 @@ public class PersonBuilder {
      */
     public Person build() {
         //        return new Person(name, phone, email, address, tags);
-        return new Person(name, teleHandle, email, modTutGrp);
+        return new Person(name, email, telegramHandle, modTutGrp);
     }
 
 }

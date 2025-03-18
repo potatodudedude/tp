@@ -27,7 +27,7 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, TelegramHandle telegramHandle, Email email, Set<ModTutGroup> modTutGroups) {
+    public Person(Name name, Email email, TelegramHandle telegramHandle, Set<ModTutGroup> modTutGroups) {
         requireAllNonNull(name, email, telegramHandle, modTutGroups);
         this.name = name;
         this.telegramHandle = telegramHandle;
