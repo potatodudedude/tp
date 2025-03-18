@@ -48,6 +48,16 @@ public class PersonTest {
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertTrue(BOB.isSamePerson(editedBob));
+
+        // same telegram handle, all other attributes different -> returns true
+        Person editedAlice2 = new PersonBuilder(ALICE).withName(VALID_NAME_BOB)
+                .withEmail(VALID_EMAIL_BOB).withModTut(VALID_MODTUT_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice2));
+
+        // same email, all other attributes different -> return true
+        Person editedAlice3 = new PersonBuilder(ALICE).withName(VALID_NAME_BOB)
+                .withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice3));
     }
 
     @Test
