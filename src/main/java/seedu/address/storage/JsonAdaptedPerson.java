@@ -90,6 +90,16 @@ class JsonAdaptedPerson {
         if (!Email.isValidEmail(email)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
+
+        if (personModTutGroups.isEmpty()) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ModTutGroup.class.getSimpleName()));
+        }
+        for (ModTutGroup modTutGroup : personModTutGroups) {
+            if (!ModTutGroup.isValidModTutGroup(modTutGroup.toString())) {
+                throw new IllegalValueException(ModTutGroup.MESSAGE_CONSTRAINTS);
+            }
+        }
         final Email modelEmail = new Email(email);
         final Set<ModTutGroup> modelTutGroups = new HashSet<>(personModTutGroups);
         return new Person(modelName, modelTelegramHandle, modelEmail, modelTutGroups);

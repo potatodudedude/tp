@@ -20,7 +20,7 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TELEGRAMHANDLE = "telegram";
-    private static final String INVALID_MOD = "CS2103T T21";
+    private static final String INVALID_MODTUTGROUP = "CS2103T T21";
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
@@ -85,11 +85,19 @@ public class JsonAdaptedPersonTest {
 
     @Test
     public void toModelType_invalidModTutGroup_throwsIllegalValueException() {
-        List<JsonAdaptedModTutGroup> invalidModTutGroup = new ArrayList<JsonAdaptedModTutGroup>(VALID_MODTUTGROUP);
-        invalidModTutGroup.add(new JsonAdaptedModTutGroup(INVALID_MOD));
+        List<JsonAdaptedModTutGroup> invalidModTutGroup = new ArrayList<>(VALID_MODTUTGROUP);
+        invalidModTutGroup.add(new JsonAdaptedModTutGroup(INVALID_MODTUTGROUP));
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, invalidModTutGroup);
         assertThrows(IllegalValueException.class, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullModTutGroup_throwsIllegalValueException() {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, null);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, "ModTutGroup");
+        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
 }
