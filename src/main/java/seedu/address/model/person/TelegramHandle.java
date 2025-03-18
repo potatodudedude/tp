@@ -11,7 +11,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class TelegramHandle {
 
     public static final String MESSAGE_CONSTRAINTS = "First character in telegram handle should be @, "
-            + "followed by at least five characters";
+            + "followed by at least five alphanumeric characters. "
+            + "Underscore is allowed, but not at the start or the end";
     private static final String VALIDATION_REGEX = "^@[a-zA-Z0-9_]{5,}";
 
     public final String value;
