@@ -42,8 +42,8 @@ public class CommandTestUtil {
     public static final String TELE_DESC_BOB = " " + PREFIX_TELEGRAM + VALID_TELE_BOB;
     public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
-    // public static final String MODTUT_DESC_AMY = " " + PREFIX_MOD + VALID_MODTUT_AMY;
-    // public static final String MODTUT_DESC_BOB = " " + PREFIX_MOD + VALID_MODTUT_BOB;
+    public static final String MODTUT_DESC_AMY = " " + PREFIX_MOD + VALID_MODTUT_AMY;
+    public static final String MODTUT_DESC_BOB = " " + PREFIX_MOD + VALID_MODTUT_BOB;
     public static final String MODTUT_DESC_HUSBAND = " " + PREFIX_MOD + VALID_MODTUT_HUSBAND;
     public static final String MODTUT_DESC_FRIEND = " " + PREFIX_MOD + VALID_MODTUT_FRIEND;
 

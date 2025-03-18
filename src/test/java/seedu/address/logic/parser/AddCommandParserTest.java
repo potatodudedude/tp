@@ -7,6 +7,8 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_MODTUT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TELE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -16,6 +18,7 @@ import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.TELE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TELE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -138,20 +141,20 @@ public class AddCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         // invalid name
-        assertParseFailure(parser, INVALID_NAME_DESC + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_HUSBAND
-                + MODTUT_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, INVALID_NAME_DESC + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_AMY
+                + MODTUT_DESC_BOB, Name.MESSAGE_CONSTRAINTS);
 
         // invalid tele
-        assertParseFailure(parser, NAME_DESC_BOB + INVALID_TELE_DESC + EMAIL_DESC_BOB + MODTUT_DESC_HUSBAND
-                + MODTUT_DESC_FRIEND, TelegramHandle.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, NAME_DESC_BOB + INVALID_TELE_DESC + EMAIL_DESC_BOB + MODTUT_DESC_AMY
+                + MODTUT_DESC_BOB, TelegramHandle.MESSAGE_CONSTRAINTS);
 
         // invalid email
-        assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + INVALID_EMAIL_DESC + MODTUT_DESC_HUSBAND
-                + MODTUT_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + INVALID_EMAIL_DESC + MODTUT_DESC_AMY
+                + MODTUT_DESC_BOB, Email.MESSAGE_CONSTRAINTS);
 
         // invalid modtut
         assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + INVALID_MODTUT_DESC
-                + VALID_MODTUT_FRIEND, ModTutGroup.MESSAGE_CONSTRAINTS);
+                + VALID_MODTUT_BOB, ModTutGroup.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + TELE_DESC_BOB + EMAIL_DESC_BOB + INVALID_MODTUT_DESC,
@@ -159,7 +162,7 @@ public class AddCommandParserTest {
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB
-                        + MODTUT_DESC_HUSBAND + MODTUT_DESC_FRIEND,
+                        + MODTUT_DESC_AMY + MODTUT_DESC_BOB,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }
