@@ -45,16 +45,16 @@ public class HelpCommand extends Command {
             return "";
         }
 
-        for (int i = 0; i < fileStrings.length; i++) {
-            String fileString = "seedu.address.logic.commands." + fileStrings[i];
+        for (String string : fileStrings) {
+            String fileString = "seedu.address.logic.commands." + string;
 
             if (!fileString.endsWith("Command.java")
-                    || fileStrings[i].equals("Command.java")) {
+                    || string.equals("Command.java")) {
                 continue;
             }
 
             int index = fileString.indexOf(".java");
-            fileString= fileString.substring(0, index);
+            fileString = fileString.substring(0, index);
 
             try {
                 Class<?> commandClass = Class.forName(fileString);
@@ -65,8 +65,7 @@ public class HelpCommand extends Command {
                 }
 
                 message.append(helpMessage).append("\n\n");
-            } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
-                continue;
+            } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ignored) {
             }
         }
 
