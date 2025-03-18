@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
@@ -14,7 +15,7 @@ import seedu.address.model.tag.Tag;
  */
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
-        return new Person[] {
+        return new Person[]{
         };
     }
 
@@ -32,6 +33,15 @@ public class SampleDataUtil {
     public static Set<Tag> getTagSet(String... strings) {
         return Arrays.stream(strings)
                 .map(Tag::new)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns a ModTutGroup set containing the list of mod-tut groups given.
+     */
+    public static Set<ModTutGroup> getModTutSet(String... modTut) {
+        return Arrays.stream(modTut)
+                .map(ModTutGroup::new)
                 .collect(Collectors.toSet());
     }
 
