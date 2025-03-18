@@ -2,6 +2,8 @@ package seedu.address.ui;
 
 //import java.util.Comparator;
 
+import java.util.Comparator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -35,11 +37,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private Label address;
+    private Label telegramHandle;
     @FXML
     private Label email;
     @FXML
-    private FlowPane tags;
+    private FlowPane modTutGroup;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -49,6 +51,10 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
+        telegramHandle.setText(person.getTelegramHandle().value);
         email.setText(person.getEmail().value);
+        person.getModTutGroups().stream()
+                .sorted(Comparator.comparing(group -> group.value))
+                .forEach(group -> modTutGroup.getChildren().add(new Label(group.value)));
     }
 }
