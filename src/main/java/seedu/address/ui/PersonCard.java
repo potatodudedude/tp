@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-//import java.util.Comparator;
-
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -34,8 +32,6 @@ public class PersonCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
-    @FXML
-    private Label phone;
     @FXML
     private Label telegramHandle;
     @FXML
