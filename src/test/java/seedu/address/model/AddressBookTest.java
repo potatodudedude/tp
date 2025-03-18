@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -75,24 +75,24 @@ public class AddressBookTest {
     @Test
     public void hasPerson_personWithSameIdentityNameFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB)
-                .build();
+        Person editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withTele(VALID_TELE_BOB).
+                withModTut(VALID_MODTUT_BOB).build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityEmailFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB)
-                .build();
+        Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withTele(VALID_TELE_BOB)
+                .withModTut(VALID_MODTUT_BOB).build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityTelegramFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB).withModTut(VALID_MODTUT_BOB)
-                .build();
+        Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
+                .withModTut(VALID_MODTUT_BOB).build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
 

@@ -164,7 +164,8 @@ public class ParserUtilTest {
     @Test
     public void parseModTutGroups_collectionWithValidModTutGroups_returnsModTutGroupSet() throws Exception {
         Set<ModTutGroup> actualModTutGroupSet = ParserUtil.parseModTutGroups(Arrays.asList(VALID_MOD_1, VALID_MOD_2));
-        Set<ModTutGroup> expectedModTutGroupSet = new HashSet<ModTutGroup>(Arrays.asList(new ModTutGroup(VALID_MOD_1), new ModTutGroup(VALID_MOD_2)));
+        Set<ModTutGroup> expectedModTutGroupSet = new HashSet<ModTutGroup>(Arrays.asList(new ModTutGroup(VALID_MOD_1),
+                new ModTutGroup(VALID_MOD_2)));
 
         assertEquals(expectedModTutGroupSet, actualModTutGroupSet);
     }
