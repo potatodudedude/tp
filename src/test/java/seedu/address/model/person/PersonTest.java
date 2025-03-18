@@ -36,18 +36,28 @@ public class PersonTest {
                 .withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // different name, all other attributes same -> returns false
+        // different name, all other attributes same -> returns true
         editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
+        assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // name differs in case, all other attributes same -> returns false
+        // name differs in case, all other attributes same -> returns true
         Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
-        assertFalse(BOB.isSamePerson(editedBob));
+        assertTrue(BOB.isSamePerson(editedBob));
 
-        // name has trailing spaces, all other attributes same -> returns false
+        // name has trailing spaces, all other attributes same -> returns true
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
-        assertFalse(BOB.isSamePerson(editedBob));
+        assertTrue(BOB.isSamePerson(editedBob));
+
+        // same telegram handle, all other attributes different -> returns true
+        Person editedAlice2 = new PersonBuilder(ALICE).withName(VALID_NAME_BOB)
+                .withEmail(VALID_EMAIL_BOB).withModTut(VALID_MODTUT_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice2));
+
+        // same email, all other attributes different -> return true
+        Person editedAlice3 = new PersonBuilder(ALICE).withName(VALID_NAME_BOB)
+                .withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice3));
     }
 
     @Test
