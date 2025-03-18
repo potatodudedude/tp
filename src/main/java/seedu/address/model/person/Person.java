@@ -27,11 +27,11 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Email email, TelegramHandle telegramHandle, Set<ModTutGroup> modTutGroups) {
+    public Person(Name name, TelegramHandle telegramHandle, Email email, Set<ModTutGroup> modTutGroups) {
         requireAllNonNull(name, email, telegramHandle, modTutGroups);
         this.name = name;
-        this.email = email;
         this.telegramHandle = telegramHandle;
+        this.email = email;
         this.modTutGroups.addAll(modTutGroups);
     }
 
@@ -93,19 +93,17 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, email, telegramHandle, modTutGroups);
+        return Objects.hash(name, telegramHandle, email, modTutGroups);
     }
 
     @Override
     public String toString() {
-        //        return new ToStringBuilder(this)
-        //                .add("name", name)
-        //                .add("email", email)
-        //                .add("telegramHandle", telegramHandle)
-        //                .add("modTutGroups", modTutGroups)
-        //                .toString();
-        return Person.class.getCanonicalName() + "{name=" + getName() + ", email=" + getEmail()
-                + ", telegramHandle=" + getTelegramHandle() + ", modTutGroups=" + getModTutGroups() + "}";
+        return new ToStringBuilder(this)
+                .add("name", name)
+                .add("telegramHandle", telegramHandle)
+                .add("email", email)
+                .add("modTutGroups", modTutGroups)
+                .toString();
     }
 
 }
