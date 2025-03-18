@@ -44,15 +44,6 @@ public class SampleDataUtil {
         return sampleAb;
     }
 
-    //    /**
-    //     * Returns a tag set containing the list of strings given.
-    //     */
-    //    public static Set<Tag> getTagSet(String... strings) {
-    //        return Arrays.stream(strings)
-    //                .map(Tag::new)
-    //                .collect(Collectors.toSet());
-    //    }
-
     /**
      * Returns a ModTutGroup set containing the list of mod-tut groups given.
      */
