@@ -1,13 +1,13 @@
 {
   "persons": [ {
-    "name": "Alice Pauline",
-    "telegramHandle": "@alice",
-    "email": "alice@example.com",
-    "modTutGroup": [ "CS1234-A10" ]
+    "name" : "Alice Pauline",
+    "telegramHandle" : "@alice",
+    "email" : "alice@example.com",
+    "modTutGroups" : [ "CS1234-A10" ]
   }, {
-    "name": "Alice Pauline",
-    "telegramHandle": "@alice",
-    "email": "pauline@example.com",
-    "modTutGroup": [ "CS1234-A10" ]
+    "name" : "Alice Pauline",
+    "telegramHandle" : "@alice",
+    "email" : "pauline@example.com",
+    "modTutGroups" : [ "CS1234-A10" ]
   } ]
 }
