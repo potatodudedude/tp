@@ -100,7 +100,7 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
 
-        return new Person(updatedName, updatedEmail, new TelegramHandle("@placeholder"), new HashSet<>());
+        return new Person(updatedName, new TelegramHandle("@placeholder"), updatedEmail, new HashSet<>());
     }
 
     @Override

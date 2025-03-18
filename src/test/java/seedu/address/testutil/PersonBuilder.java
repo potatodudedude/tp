@@ -117,7 +117,7 @@ public class PersonBuilder {
      */
     public Person build() {
         //        return new Person(name, phone, email, address, tags);
-        return new Person(name, email, teleHandle, modTutGrp);
+        return new Person(name, teleHandle, email, modTutGrp);
     }
 
 }
