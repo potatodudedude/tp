@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Email;
@@ -25,7 +26,7 @@ public class PersonBuilder {
     //private Phone phone;
     private Email email;
     private TelegramHandle telegramHandle;
-    private Set<ModTutGroup> modTutGroup;
+    private Set<ModTutGroup> modTutGroup = new HashSet<>();
     //private Address address;
     //private Set<Tag> tags;
 
