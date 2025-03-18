@@ -27,6 +27,8 @@ public class ModTutGroupTest {
         // invalid modTutGroup
         assertFalse(ModTutGroup.isValidModTutGroup("")); // empty string
         assertFalse(ModTutGroup.isValidModTutGroup(" ")); // spaces only
+        assertFalse(ModTutGroup.isValidModTutGroup("-")); // dash only
+        assertFalse(ModTutGroup.isValidModTutGroup(" - ")); // dash with spaces
         assertFalse(ModTutGroup.isValidModTutGroup("CS1234")); // one part only
         assertFalse(ModTutGroup.isValidModTutGroup("CS1234 A10")); // contains space instead of dash
         assertFalse(ModTutGroup.isValidModTutGroup("CS1234-")); // without tutorial group
