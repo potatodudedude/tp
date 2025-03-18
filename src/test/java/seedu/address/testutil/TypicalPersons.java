@@ -53,7 +53,7 @@ public class TypicalPersons {
             .withEmail("cornelia@example.com").withTele("@daniel")
             .withModTut("CS1234-A10").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer")
-            .withEmail("werner@example.com").withTele("@elle")
+            .withEmail("werner@example.com").withTele("@elleMeyer")
             .withModTut("ES2666-Z01").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz")
             .withEmail("lydia@example.com").withTele("@fiona")
