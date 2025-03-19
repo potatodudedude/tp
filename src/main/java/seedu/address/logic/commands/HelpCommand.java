@@ -1,10 +1,5 @@
 package seedu.address.logic.commands;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.logging.Logger;
-
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.Model;
 
 /**
@@ -20,14 +15,9 @@ public class HelpCommand extends Command {
     public static final String SHOWING_HELP_MESSAGE = HelpCommand.showHelpMessage();
 
     private static String showHelpMessage() {
-        return AddCommand.MESSAGE_USAGE + "\n\n" +
-                ClearCommand.MESSAGE_USAGE + "\n\n" +
-                DeleteCommand.MESSAGE_USAGE + "\n\n" +
-                EditCommand.MESSAGE_USAGE + "\n\n" +
-                ExitCommand.MESSAGE_USAGE + "\n\n" +
-                FindCommand.MESSAGE_USAGE + "\n\n" +
-                HelpCommand.MESSAGE_USAGE + "\n\n" +
-                ListCommand.MESSAGE_USAGE;
+        return AddCommand.MESSAGE_USAGE + "\n\n" + ClearCommand.MESSAGE_USAGE + "\n\n" + DeleteCommand.MESSAGE_USAGE
+                + "\n\n" + EditCommand.MESSAGE_USAGE + "\n\n" + ExitCommand.MESSAGE_USAGE + "\n\n"
+                + FindCommand.MESSAGE_USAGE + "\n\n" + HelpCommand.MESSAGE_USAGE + "\n\n" + ListCommand.MESSAGE_USAGE;
     }
 
     @Override
