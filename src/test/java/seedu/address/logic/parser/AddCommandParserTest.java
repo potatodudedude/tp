@@ -10,7 +10,6 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_TELE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
