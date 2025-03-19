@@ -16,7 +16,7 @@ public class StringUtilTest {
     public void isNonZeroUnsignedInteger() {
 
         // EP: empty strings
-        assertFalse(StringUtil.isNonZeroUnsignedInteger(""));  // Boundary value
+        assertFalse(StringUtil.isNonZeroUnsignedInteger("")); // Boundary value
         assertFalse(StringUtil.isNonZeroUnsignedInteger("  "));
 
         // EP: not a number
