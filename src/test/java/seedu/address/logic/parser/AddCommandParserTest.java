@@ -20,7 +20,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
