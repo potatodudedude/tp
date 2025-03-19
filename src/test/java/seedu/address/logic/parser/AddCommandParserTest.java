@@ -46,7 +46,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(BOB).withModTut(VALID_MODTUT_FRIEND).build();
+        Person expectedPerson = new PersonBuilder(BOB).withModTuts(VALID_MODTUT_FRIEND).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB
@@ -54,7 +54,7 @@ public class AddCommandParserTest {
 
 
         // multiple tags - all accepted
-        Person expectedPersonMultipleTags = new PersonBuilder(BOB).withModTut(VALID_MODTUT_FRIEND, VALID_MODTUT_HUSBAND)
+        Person expectedPersonMultipleTags = new PersonBuilder(BOB).withModTuts(VALID_MODTUT_FRIEND, VALID_MODTUT_HUSBAND)
                 .build();
         assertParseSuccess(parser,
                 NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_HUSBAND + MODTUT_DESC_FRIEND,

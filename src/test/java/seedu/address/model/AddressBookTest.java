@@ -48,7 +48,7 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         //Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(ALICE).withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB)
+        Person editedAlice = new PersonBuilder(ALICE).withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB)
                 .build();
         List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newPersons);
@@ -76,7 +76,7 @@ public class AddressBookTest {
     public void hasPerson_personWithSameIdentityNameFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
         Person editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withTele(VALID_TELE_BOB)
-                        .withModTut(VALID_MODTUT_BOB).build();
+                        .withModTuts(VALID_MODTUT_BOB).build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
 
@@ -84,7 +84,7 @@ public class AddressBookTest {
     public void hasPerson_personWithSameIdentityEmailFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
         Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withTele(VALID_TELE_BOB)
-                .withModTut(VALID_MODTUT_BOB).build();
+                .withModTuts(VALID_MODTUT_BOB).build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
 
@@ -92,7 +92,7 @@ public class AddressBookTest {
     public void hasPerson_personWithSameIdentityTelegramFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
         Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
-                .withModTut(VALID_MODTUT_BOB).build();
+                .withModTuts(VALID_MODTUT_BOB).build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
 

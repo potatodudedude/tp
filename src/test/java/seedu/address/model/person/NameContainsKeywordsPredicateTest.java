@@ -73,7 +73,7 @@ public class NameContainsKeywordsPredicateTest {
                 .asList("12345", "alice@email.com", "@alice", "CS1234-A10"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice")
                 .withEmail("alice@email.com").withTele("@alice")
-                .withModTut("CS1234-A10").build()));
+                .withModTuts("CS1234-A10").build()));
     }
 
     @Test
