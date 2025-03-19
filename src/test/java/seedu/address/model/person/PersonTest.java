@@ -33,7 +33,7 @@ public class PersonTest {
 
         // same name, all other attributes different -> returns true
         Person editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB)
-                .withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB).build();
+                .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // different name, all other attributes same -> returns true
@@ -51,12 +51,12 @@ public class PersonTest {
 
         // same telegram handle, all other attributes different -> returns true
         Person editedAlice2 = new PersonBuilder(ALICE).withName(VALID_NAME_BOB)
-                .withEmail(VALID_EMAIL_BOB).withModTut(VALID_MODTUT_BOB).build();
+                .withEmail(VALID_EMAIL_BOB).withModTuts(VALID_MODTUT_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice2));
 
         // same email, all other attributes different -> return true
         Person editedAlice3 = new PersonBuilder(ALICE).withName(VALID_NAME_BOB)
-                .withTele(VALID_TELE_BOB).withModTut(VALID_MODTUT_BOB).build();
+                .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice3));
     }
 
@@ -91,7 +91,7 @@ public class PersonTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different modTut -> returns false
-        editedAlice = new PersonBuilder(ALICE).withModTut(VALID_MODTUT_BOB).build();
+        editedAlice = new PersonBuilder(ALICE).withModTuts(VALID_MODTUT_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
     }
 

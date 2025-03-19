@@ -73,8 +73,8 @@ public class PersonBuilder {
      * Parses the {@code modTuts} into a {@code Set<ModTutGroup>}
      * and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withModTut(String... modTut) {
-        this.modTutGroup = SampleDataUtil.getModTutSet(modTut);
+    public PersonBuilder withModTuts(String... modTuts) {
+        this.modTutGroup = SampleDataUtil.getModTutSet(modTuts);
         return this;
     }
 
