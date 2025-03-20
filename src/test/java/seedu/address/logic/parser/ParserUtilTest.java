@@ -95,9 +95,9 @@ public class ParserUtilTest {
 
     @Test
     public void parseTelegramHandle_validValueWithWhitespace_returnsTrimmedTelegramHandle() throws Exception {
-        String TelegramHandleWithWhitespace = WHITESPACE + VALID_TELEGRAMHANDLE + WHITESPACE;
+        String telegramHandleWithWhitespace = WHITESPACE + VALID_TELEGRAMHANDLE + WHITESPACE;
         TelegramHandle expectedTelegramHandle = new TelegramHandle(VALID_TELEGRAMHANDLE);
-        assertEquals(expectedTelegramHandle, ParserUtil.parseTelegramHandle(TelegramHandleWithWhitespace));
+        assertEquals(expectedTelegramHandle, ParserUtil.parseTelegramHandle(telegramHandleWithWhitespace));
     }
 
     @Test
