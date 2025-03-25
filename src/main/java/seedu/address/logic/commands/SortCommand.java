@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.compare;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Comparator;
