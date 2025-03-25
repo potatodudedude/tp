@@ -37,6 +37,17 @@
     -fx-padding: 0 0 0 0;
     -fx-min-height: 0;
     -fx-max-height: 0;
+    -fx-background-color: blue;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #dddddd;
+    -fx-border-color: #cccccc;
+    -fx-padding: 3 8 3 8;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #aaaaaa;
 }
 
 .table-view {
@@ -146,11 +157,19 @@
     -fx-background-color: derive(#1d1d1d, 30%);
 }
 
+.result-box {
+    -fx-border-color: #ffffff;
+    -fx-background-color: #555555;
+    -fx-border-radius: 5;
+    -fx-fit-to-height: true;
+}
+
 .result-display {
     -fx-background-color: transparent;
     -fx-font-family: "Segoe UI Light";
-    -fx-font-size: 13pt;
+    -fx-font-size: 12pt;
     -fx-text-fill: white;
+    -fx-wrap-text: true;
 }
 
 .result-display .label {

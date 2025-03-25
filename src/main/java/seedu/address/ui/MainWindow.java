@@ -31,7 +31,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private ModuleTabPane moduleTabPane;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -44,8 +44,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane personListPanelPlaceholder;
 
-//    @FXML
-//    private Popup resultDisplayPlaceholder;
+    @FXML
+    private StackPane moduleTabPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -111,8 +111,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+        moduleTabPlaceholder.getChildren().add(moduleTabPane.getRoot());
 
         resultDisplay = new ResultDisplay();
 
@@ -163,10 +163,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
-    }
-
     /**
      * Executes the command and returns the result.
      *
@@ -176,6 +172,8 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
+            moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+            moduleTabPlaceholder.getChildren().add(moduleTabPane.getRoot());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
             resultDisplay.show(primaryStage);
 
