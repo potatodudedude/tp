@@ -16,6 +16,9 @@ public class ModTutGroup {
 
     public final String value;
 
+    public final Module module;
+    public final Tutorial tutorialGroup;
+
     /**
      * Constructs a module - tutorial group.
      *
@@ -25,6 +28,8 @@ public class ModTutGroup {
         requireNonNull(modTutGroup);
         checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
         value = modTutGroup;
+        module = new Module(modTutGroup.split("-")[0]);
+        tutorialGroup = new Tutorial(modTutGroup.split("-")[1]);
     }
 
     /**
