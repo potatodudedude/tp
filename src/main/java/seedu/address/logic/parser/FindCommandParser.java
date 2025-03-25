@@ -69,12 +69,6 @@ public class FindCommandParser implements Parser<FindCommand> {
             predicateList.add(new EmailContainsKeywordsPredicate(Arrays.asList(emailKeywords)));
         }
 
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-        }
-
         return new FindCommand(predicateList);
     }
 

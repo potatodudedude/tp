@@ -9,6 +9,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
@@ -23,8 +24,10 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.predicates.EmailContainsKeywordsPredicate;
 import seedu.address.model.person.predicates.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.predicates.TelegramHandleContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -70,10 +73,19 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
+        List<String> nameKeywords = Arrays.asList("foo", "bar", "baz");
+        List<String> telegramHandleKeywords = Arrays.asList("@foo", "@bar", "@baz");
+        List<String> emailKeywords = Arrays.asList("foo@gg.com", "bar@bb.com", "baz@zz.com");
+        List<Predicate<Person>> predicates = Arrays.asList(
+                new NameContainsKeywordsPredicate(nameKeywords),
+                new TelegramHandleContainsKeywordsPredicate(telegramHandleKeywords),
+                new EmailContainsKeywordsPredicate(emailKeywords));
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " "
+                        + "n/" + nameKeywords.stream().collect(Collectors.joining(" "))
+                        + " t/" + telegramHandleKeywords.stream().collect(Collectors.joining(" "))
+                        + " e/" + emailKeywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindCommand(predicates), command);
     }
 
     @Test
