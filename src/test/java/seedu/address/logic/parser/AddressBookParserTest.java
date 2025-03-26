@@ -27,6 +27,7 @@ import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.predicates.EmailContainsKeywordsPredicate;
+import seedu.address.model.person.predicates.FieldContainsKeywordsPredicate;
 import seedu.address.model.person.predicates.NameContainsKeywordsPredicate;
 import seedu.address.model.person.predicates.TelegramHandleContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -77,16 +78,28 @@ public class AddressBookParserTest {
         List<String> nameKeywords = Arrays.asList("foo", "bar", "baz");
         List<String> telegramHandleKeywords = Arrays.asList("@foo", "@bar", "@baz");
         List<String> emailKeywords = Arrays.asList("foo@gg.com", "bar@bb.com", "baz@zz.com");
-        List<Predicate<Person>> predicates = Arrays.asList(
-                new NameContainsKeywordsPredicate(nameKeywords),
-                new TelegramHandleContainsKeywordsPredicate(telegramHandleKeywords),
-                new EmailContainsKeywordsPredicate(emailKeywords));
-        FindCommand command = (FindCommand) parser.parseCommand(
+        FieldContainsKeywordsPredicate namePredicate =
+                new NameContainsKeywordsPredicate(nameKeywords);
+        FieldContainsKeywordsPredicate telegramHandlePredicate =
+                new TelegramHandleContainsKeywordsPredicate(telegramHandleKeywords);
+        FieldContainsKeywordsPredicate emailPredicate =
+                new EmailContainsKeywordsPredicate(emailKeywords);
+
+        FindCommand nameCommand = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " "
-                        + "n/" + nameKeywords.stream().collect(Collectors.joining(" "))
-                        + " t/" + telegramHandleKeywords.stream().collect(Collectors.joining(" "))
+                        + "n/" + nameKeywords.stream().collect(Collectors.joining(" ")));
+
+        FindCommand telegramHandleCommand = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " "
+                        + " t/" + telegramHandleKeywords.stream().collect(Collectors.joining(" ")));
+
+        FindCommand emailCommand = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " "
                         + " e/" + emailKeywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(predicates), command);
+
+        assertEquals(new FindCommand(namePredicate), nameCommand);
+        assertEquals(new FindCommand(telegramHandlePredicate), telegramHandleCommand);
+        assertEquals(new FindCommand(emailPredicate), emailCommand);
     }
 
     @Test

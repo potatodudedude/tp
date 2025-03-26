@@ -5,14 +5,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
-import java.util.List;
-import java.util.function.Predicate;
-
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.predicates.AlwaysTrueKeywordsPredicate;
+import seedu.address.model.person.predicates.FieldContainsKeywordsPredicate;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -32,17 +28,15 @@ public class FindCommand extends Command {
     public static final String MESSAGE_EMPTY_NAME = "The name that you gave was empty.";
     public static final String MESSAGE_EMPTY_TELEGRAMHANDLE = "The telegram handle that you gave was empty.";
     public static final String MESSAGE_EMPTY_EMAIL = "The email that you gave was empty.";
-    private List<Predicate<Person>> predicates;
+    private FieldContainsKeywordsPredicate predicate;
 
-    public FindCommand(List<Predicate<Person>> predicates) {
-        this.predicates = predicates;
+    public FindCommand(FieldContainsKeywordsPredicate predicate) {
+        this.predicate = predicate;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        Predicate<Person> predicate =
-                predicates.stream().reduce(new AlwaysTrueKeywordsPredicate(), Predicate::and);
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
@@ -60,13 +54,13 @@ public class FindCommand extends Command {
         }
 
         FindCommand otherFindCommand = (FindCommand) other;
-        return predicates.equals(otherFindCommand.predicates);
+        return predicate.equals(otherFindCommand.predicate);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("predicates", predicates)
+                .add("predicate", predicate)
                 .toString();
     }
 }
