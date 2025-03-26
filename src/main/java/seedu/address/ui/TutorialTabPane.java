@@ -14,6 +14,9 @@ import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Tutorial;
 
+/**
+ * Represents a tutorial tab.
+ */
 public class TutorialTabPane extends UiPart<TabPane> {
     private static final String FXML = "TutorialTabPane.fxml";
 
@@ -22,6 +25,11 @@ public class TutorialTabPane extends UiPart<TabPane> {
     @FXML
     private TabPane tutorialTabPane;
 
+    /**
+     * Constructor for a tutorial tab
+     *
+     * @param personList the list of persons to convert to tutorial tab view
+     */
     public TutorialTabPane(ObservableList<Person> personList, String moduleName) {
         super(FXML);
 

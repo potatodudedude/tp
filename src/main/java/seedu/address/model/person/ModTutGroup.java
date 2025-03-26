@@ -17,9 +17,9 @@ public class ModTutGroup {
             + "alphanumeric characters with a dash in between";
     private static final String VALIDATION_REGEX = "^[A-Za-z0-9]+-[A-Za-z0-9]+$";
 
-    public final String value;
-
     private static final Map<String, Map<String, Integer>> moduleMap = new HashMap<>();
+
+    public final String value;
 
     private final Module module;
     private final Tutorial tutorialGroup;

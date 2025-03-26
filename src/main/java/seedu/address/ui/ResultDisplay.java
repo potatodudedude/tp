@@ -14,7 +14,7 @@ import javafx.util.Duration;
 import seedu.address.commons.core.LogsCenter;
 
 /**
- * A ui for the status bar that is displayed at the header of the application.
+ * A ui for the result popup that is displayed at the top of the application.
  */
 public class ResultDisplay extends UiPart<Popup> {
 
@@ -29,6 +29,9 @@ public class ResultDisplay extends UiPart<Popup> {
 
     private Popup popup;
 
+    /**
+     * Constructor for the result display
+     */
     public ResultDisplay() {
         super(FXML);
         this.popup = new Popup();
