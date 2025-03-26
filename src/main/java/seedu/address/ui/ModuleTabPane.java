@@ -34,7 +34,7 @@ public class ModuleTabPane extends UiPart<TabPane> {
 
             Tab tab = new Tab(moduleName);
             tab.setClosable(false);
-            tab.setContent(new PersonListPanel(filteredList).getRoot());
+            tab.setContent(new TutorialTabPane(filteredList, moduleName).getRoot());
             moduleTabPane.getTabs().add(tab);
         }
     }
