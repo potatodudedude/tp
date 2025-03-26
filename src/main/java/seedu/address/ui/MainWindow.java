@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -42,13 +43,12 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
-
-    @FXML
-    private StackPane moduleTabPlaceholder;
+    private StackPane mainViewPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    private static boolean isViewAll;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -66,7 +66,13 @@ public class MainWindow extends UiPart<Stage> {
 
         setAccelerators();
 
+        isViewAll = false;
+
         helpWindow = new HelpWindow();
+    }
+
+    public static boolean isViewAll() {
+        return isViewAll;
     }
 
     public Stage getPrimaryStage() {
@@ -112,7 +118,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
-        moduleTabPlaceholder.getChildren().add(moduleTabPane.getRoot());
+        mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
 
         resultDisplay = new ResultDisplay();
 
@@ -163,6 +169,22 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    @FXML
+    private void viewAll() {
+        isViewAll = true;
+        PersonListPanel personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        mainViewPlaceholder.getChildren().clear();
+        mainViewPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
+    @FXML
+    private void viewTabs() {
+        isViewAll = false;
+        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+        mainViewPlaceholder.getChildren().clear();
+        mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -173,7 +195,8 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
-            moduleTabPlaceholder.getChildren().add(moduleTabPane.getRoot());
+            mainViewPlaceholder.getChildren().clear();
+            mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
             resultDisplay.show(primaryStage);
 

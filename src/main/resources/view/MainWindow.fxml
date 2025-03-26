@@ -30,11 +30,14 @@
           <Menu mnemonicParsing="false" text="Help">
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
+          <Menu mnemonicParsing="false" text="View">
+            <MenuItem fx:id="viewAll" mnemonicParsing="false" onAction="#viewAll" text="View All" />
+            <MenuItem fx:id="viewTabs" mnemonicParsing="false" onAction="#viewTabs" text="View Tabs" />
+          </Menu>
         </MenuBar>
 
-        <StackPane VBox.vgrow="ALWAYS" fx:id="moduleTabPlaceholder" styleClass="pane-with-border">
+        <StackPane VBox.vgrow="ALWAYS" fx:id="mainViewPlaceholder" styleClass="pane-with-border">
         </StackPane>
-
 
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
           <padding>

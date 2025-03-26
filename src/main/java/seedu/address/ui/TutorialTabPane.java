@@ -1,6 +1,5 @@
 package seedu.address.ui;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import seedu.address.model.person.ModTutGroup;
-import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Tutorial;
 
@@ -41,6 +39,4 @@ public class TutorialTabPane extends UiPart<TabPane> {
             tutorialTabPane.getTabs().add(tab);
         }
     }
-
-
 }
