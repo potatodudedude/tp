@@ -25,13 +25,15 @@ public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
 
+    private static boolean isViewAll;
+
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private ModuleTabPane moduleTabPane;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -42,10 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
-
-    @FXML
-    private StackPane resultDisplayPlaceholder;
+    private StackPane mainViewPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -62,10 +61,17 @@ public class MainWindow extends UiPart<Stage> {
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
+        primaryStage.centerOnScreen();
 
         setAccelerators();
 
+        isViewAll = false;
+
         helpWindow = new HelpWindow();
+    }
+
+    public static boolean isViewAll() {
+        return isViewAll;
     }
 
     public Stage getPrimaryStage() {
@@ -110,11 +116,10 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+        mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
 
         resultDisplay = new ResultDisplay();
-        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -163,8 +168,20 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    @FXML
+    private void viewAll() {
+        isViewAll = true;
+        PersonListPanel personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        mainViewPlaceholder.getChildren().clear();
+        mainViewPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
+    @FXML
+    private void viewTabs() {
+        isViewAll = false;
+        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+        mainViewPlaceholder.getChildren().clear();
+        mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
     }
 
     /**
@@ -176,7 +193,11 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
+            moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+            mainViewPlaceholder.getChildren().clear();
+            mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            resultDisplay.show(primaryStage);
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
@@ -190,6 +211,7 @@ public class MainWindow extends UiPart<Stage> {
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
+            resultDisplay.show(primaryStage);
             throw e;
         }
     }

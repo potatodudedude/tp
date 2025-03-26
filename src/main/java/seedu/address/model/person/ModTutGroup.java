@@ -3,6 +3,9 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * Represents a Person's module - tutorial group in ConnectS.
@@ -14,10 +17,12 @@ public class ModTutGroup {
             + "alphanumeric characters with a dash in between";
     private static final String VALIDATION_REGEX = "^[A-Za-z0-9]+-[A-Za-z0-9]+$";
 
+    private static final Map<String, Map<String, Integer>> moduleMap = new HashMap<>();
+
     public final String value;
 
-    public final Module module;
-    public final Tutorial tutorialGroup;
+    private final Module module;
+    private final Tutorial tutorialGroup;
 
     /**
      * Constructs a module - tutorial group.
@@ -28,8 +33,39 @@ public class ModTutGroup {
         requireNonNull(modTutGroup);
         checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
         value = modTutGroup;
-        module = new Module(modTutGroup.split("-")[0]);
-        tutorialGroup = new Tutorial(modTutGroup.split("-")[1]);
+
+        String moduleString = modTutGroup.split("-")[0];
+        String tutorialString = modTutGroup.split("-")[1];
+
+        module = new Module(moduleString);
+        tutorialGroup = new Tutorial(tutorialString);
+
+        Map<String, Integer> tutorialMap;
+        if (!moduleMap.containsKey(moduleString)) {
+            tutorialMap = new HashMap<>();
+            tutorialMap.put(tutorialString, 1);
+        } else {
+            tutorialMap = moduleMap.get(moduleString);
+            if (moduleMap.get(moduleString).containsKey(tutorialString)) {
+                int count = moduleMap.get(moduleString).get(tutorialString);
+                tutorialMap.put(tutorialString, count + 1);
+            } else {
+                tutorialMap.put(tutorialString, 1);
+            }
+        }
+        moduleMap.put(moduleString, tutorialMap);
+    }
+
+    public static Map<String, Map<String, Integer>> getModuleMap() {
+        return moduleMap;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public Tutorial getTutorial() {
+        return tutorialGroup;
     }
 
     /**
