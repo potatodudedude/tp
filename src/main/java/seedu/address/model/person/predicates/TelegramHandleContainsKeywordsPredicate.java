@@ -17,7 +17,7 @@ public class TelegramHandleContainsKeywordsPredicate extends FieldContainsKeywor
     @Override
     public boolean test(Person person) {
         return super.keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getTelegramHandle().value, keyword));
+                .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getTelegramHandle().value, keyword));
     }
 
 }

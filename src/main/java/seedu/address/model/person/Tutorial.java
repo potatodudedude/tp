@@ -5,7 +5,7 @@ package seedu.address.model.person;
  * Guarantees: immutable; is valid as declared in {@link ModTutGroup#isValidModTutGroup(String)}
  */
 public class Tutorial {
-    public final String value;
+    private final String value;
 
     public Tutorial(String name) {
         value = name;

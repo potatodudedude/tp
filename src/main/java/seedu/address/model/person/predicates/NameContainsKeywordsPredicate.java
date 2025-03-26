@@ -17,7 +17,7 @@ public class NameContainsKeywordsPredicate extends FieldContainsKeywordsPredicat
     @Override
     public boolean test(Person person) {
         return super.keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getName().fullName, keyword));
     }
 
 }

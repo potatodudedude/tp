@@ -17,7 +17,7 @@ public class EmailContainsKeywordsPredicate extends FieldContainsKeywordsPredica
     @Override
     public boolean test(Person person) {
         return super.keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getEmail().value, keyword));
+                .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getEmail().value, keyword));
     }
 
 }
