@@ -43,8 +43,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         TelegramHandle telegramHandle = ParserUtil.parseTelegramHandle(argMultimap.getValue(PREFIX_TELEGRAM).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Set<ModTutGroup> modTutGroupList = ParserUtil.parseModTutGroups(argMultimap.getAllValues(PREFIX_MOD));
+        boolean isPin = false; // default value when adding a person
 
-        Person person = new Person(name, telegramHandle, email, modTutGroupList);
+        Person person = new Person(name, telegramHandle, email, modTutGroupList, isPin);
 
         return new AddCommand(person);
     }

@@ -28,6 +28,8 @@ public class JsonAdaptedPersonTest {
     private static final List<JsonAdaptedModTutGroup> VALID_MODTUTGROUP = BENSON.getModTutGroups().stream()
             .map(JsonAdaptedModTutGroup::new)
             .collect(Collectors.toList());
+    // Pin is boolean, that is either true or false, thus it is always valid
+    private static final boolean VALID_PIN = BENSON.getPin();
 
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
@@ -38,7 +40,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(INVALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP);
+                new JsonAdaptedPerson(INVALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP, VALID_PIN);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -46,7 +48,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(null, VALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP);
+                new JsonAdaptedPerson(null, VALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP, VALID_PIN);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -54,7 +56,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidTelegramHandle_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, INVALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP);
+                new JsonAdaptedPerson(VALID_NAME, INVALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP, VALID_PIN);
         String expectedMessage = TelegramHandle.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -62,7 +64,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_nullTelegramHandle_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, null, VALID_EMAIL, VALID_MODTUTGROUP);
+                new JsonAdaptedPerson(VALID_NAME, null, VALID_EMAIL, VALID_MODTUTGROUP, VALID_PIN);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, TelegramHandle.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -70,7 +72,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidEmail_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, INVALID_EMAIL, VALID_MODTUTGROUP);
+                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, INVALID_EMAIL, VALID_MODTUTGROUP, VALID_PIN);
         String expectedMessage = Email.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -78,7 +80,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_nullEmail_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, null, VALID_MODTUTGROUP);
+                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, null, VALID_MODTUTGROUP, VALID_PIN);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -88,14 +90,14 @@ public class JsonAdaptedPersonTest {
         List<JsonAdaptedModTutGroup> invalidModTutGroup = new ArrayList<>(VALID_MODTUTGROUP);
         invalidModTutGroup.add(new JsonAdaptedModTutGroup(INVALID_MODTUTGROUP));
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, invalidModTutGroup);
+                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, invalidModTutGroup, VALID_PIN);
         assertThrows(IllegalValueException.class, person::toModelType);
     }
 
     @Test
     public void toModelType_nullModTutGroup_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, null);
+                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, null, VALID_PIN);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, "ModTutGroup");
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }

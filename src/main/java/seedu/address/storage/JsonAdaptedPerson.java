@@ -27,6 +27,7 @@ class JsonAdaptedPerson {
     private final String telegramHandle;
     private final String email;
     private final List<JsonAdaptedModTutGroup> modTutGroups = new ArrayList<>();
+    private final boolean isPin;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -34,13 +35,15 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("telegramHandle") String telegramHandle,
             @JsonProperty("email") String email,
-            @JsonProperty("modTutGroups") List<JsonAdaptedModTutGroup> modTutGroups) {
+            @JsonProperty("modTutGroups") List<JsonAdaptedModTutGroup> modTutGroups,
+                             @JsonProperty("isPin") boolean isPin) {
         this.name = name;
         this.telegramHandle = telegramHandle;
         this.email = email;
         if (modTutGroups != null) {
             this.modTutGroups.addAll(modTutGroups);
         }
+        this.isPin = isPin;
     }
 
     /**
@@ -54,6 +57,7 @@ class JsonAdaptedPerson {
         modTutGroups.addAll(source.getModTutGroups().stream()
                 .map(JsonAdaptedModTutGroup::new)
                 .collect(Collectors.toList()));
+        isPin = source.getPin();
     }
 
     /**
@@ -102,7 +106,7 @@ class JsonAdaptedPerson {
         }
         final Email modelEmail = new Email(email);
         final Set<ModTutGroup> modelTutGroups = new HashSet<>(personModTutGroups);
-        return new Person(modelName, modelTelegramHandle, modelEmail, modelTutGroups);
+        return new Person(modelName, modelTelegramHandle, modelEmail, modelTutGroups, isPin);
     }
 
 }

@@ -10,7 +10,9 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.PersonMustBeSameException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.WrongPinStatusException;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -103,7 +105,41 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public void sort(Comparator<Person> comparator) {
         requireNonNull(comparator);
+        // Remove pinned persons from the list before sorting, then add the temp list back to the front of the list
+        List<Person> temporaryList = internalList.stream().filter(Person::getPin).toList();
+        internalList.removeAll(temporaryList);
         internalList.sort(comparator);
+        internalList.addAll(0, temporaryList);
+    }
+
+    /**
+     * Replaces the person {@code target} in the list with {@code pinnedPerson},
+     * and pins the person to the top of the list.
+     * {@code target} and {@code pinnedPerson} must be the same person with different pin status.
+     */
+    public void pin(Person target, Person pinnedPerson) {
+        requireAllNonNull(target, pinnedPerson);
+        if (!pinnedPerson.getPin()) {
+            throw new WrongPinStatusException();
+        }
+        setPersonIfSamePersonWithDifferentPin(target, pinnedPerson);
+        internalList.remove(pinnedPerson);
+        internalList.add(0, pinnedPerson);
+    }
+
+    /**
+     * Replaces the {@code target} in the list with {@code unpinnedPerson}, and unpins the person.
+     * The person is then put at the bottom of the list.
+     * {@code target} and {@code unpinnedPerson} must be the same person with different pin status.
+     */
+    public void unpin(Person target, Person unpinnedPerson) {
+        requireAllNonNull(target, unpinnedPerson);
+        if (unpinnedPerson.getPin()) {
+            throw new WrongPinStatusException();
+        }
+        setPersonIfSamePersonWithDifferentPin(target, unpinnedPerson);
+        internalList.remove(unpinnedPerson);
+        internalList.add(unpinnedPerson);
     }
 
     /**
@@ -155,5 +191,26 @@ public class UniquePersonList implements Iterable<Person> {
             }
         }
         return true;
+    }
+
+    /**
+     * Replaces the person {@code target} in the list with {@code otherPerson}
+     * if they have the same identity but with different pin status.
+     */
+    private void setPersonIfSamePersonWithDifferentPin(Person target, Person otherPerson) {
+        requireAllNonNull(target, otherPerson);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new PersonNotFoundException();
+        }
+        if (!target.isSamePerson(otherPerson)) {
+            throw new PersonMustBeSameException();
+        }
+        if (target.getPin() == otherPerson.getPin()) {
+            throw new WrongPinStatusException();
+        }
+
+        internalList.set(index, otherPerson);
     }
 }

@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Comparator;
 import java.util.List;
@@ -102,6 +103,26 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void sort(Comparator<Person> comparator) {
         requireNonNull(comparator);
         persons.sort(comparator);
+    }
+
+    /**
+     * Replaces the person {@code target} in the list with {@code pinnedPerson},
+     * and pins the person to the top of the list.
+     * {@code target} and {@code pinnedPerson} must be the same person with different pin status.
+     */
+    public void pin(Person target, Person pinnedPerson) {
+        requireAllNonNull(target, pinnedPerson);
+        persons.pin(target, pinnedPerson);
+    }
+
+    /**
+     * Replaces the {@code target} in the list with {@code unpinnedPerson}, and unpins the person.
+     * The person is then put at the bottom of the list.
+     * {@code target} and {@code unpinnedPerson} must be the same person with different pin status.
+     */
+    public void unpin(Person target, Person unpinnedPerson) {
+        requireAllNonNull(target, unpinnedPerson);
+        persons.unpin(target, unpinnedPerson);
     }
 
     /// / util methods

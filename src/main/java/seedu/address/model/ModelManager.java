@@ -118,6 +118,18 @@ public class ModelManager implements Model {
         addressBook.sort(comparator);
     }
 
+    @Override
+    public void pinPerson(Person target, Person pinnedPerson) {
+        requireNonNull(target);
+        addressBook.pin(target, pinnedPerson);
+    }
+
+    @Override
+    public void unpinPerson(Person target, Person unpinnedPerson) {
+        requireNonNull(target);
+        addressBook.unpin(target, unpinnedPerson);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
