@@ -115,6 +115,7 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Replaces the person {@code target} in the list with {@code pinnedPerson},
      * and pins the person to the top of the list.
+     * {@code target} and {@code pinnedPerson} must be the same person with different pin status.
      */
     public void pin(Person target, Person pinnedPerson) {
         requireAllNonNull(target, pinnedPerson);
@@ -129,6 +130,7 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Replaces the {@code target} in the list with {@code unpinnedPerson}, and unpins the person.
      * The person is then put at the bottom of the list.
+     * {@code target} and {@code unpinnedPerson} must be the same person with different pin status.
      */
     public void unpin(Person target, Person unpinnedPerson) {
         requireAllNonNull(target, unpinnedPerson);

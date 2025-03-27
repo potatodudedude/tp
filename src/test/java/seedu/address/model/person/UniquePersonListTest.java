@@ -8,7 +8,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.PINNED_ALICE;
+import static seedu.address.testutil.TypicalPersons.PINNED_BOB;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +20,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.PersonMustBeSameException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.WrongPinStatusException;
 import seedu.address.testutil.PersonBuilder;
 
 public class UniquePersonListTest {
@@ -178,9 +183,87 @@ public class UniquePersonListTest {
     }
 
     @Test
+    public void pin_nullPerson_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniquePersonList.pin(null, null));
+        assertThrows(NullPointerException.class, () -> uniquePersonList.pin(ALICE, null));
+        assertThrows(NullPointerException.class, () -> uniquePersonList.pin(null, ALICE));
+    }
+
+    @Test
+    public void pin_personDoesNotExist_throwsPersonNotFoundException() {
+        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.pin(ALICE, PINNED_ALICE));
+    }
+
+    @Test
+    public void pin_differentPerson_throwsPersonMustBeSameException() {
+        uniquePersonList.add(ALICE);
+        assertThrows(PersonMustBeSameException.class, () -> uniquePersonList.pin(ALICE, PINNED_BOB));
+    }
+
+    @Test
+    public void pin_samePersonWithDifferentPinStatus_success() {
+        uniquePersonList.setPersons(new ArrayList<>(Arrays.asList(ALICE, BOB)));
+        uniquePersonList.pin(BOB, PINNED_BOB);
+        UniquePersonList expectedUniquePersonList = new UniquePersonList();
+        expectedUniquePersonList.setPersons(new ArrayList<>(Arrays.asList(PINNED_BOB, ALICE)));
+        assertEquals(expectedUniquePersonList, uniquePersonList);
+    }
+
+    @Test
+    public void pin_samePersonWithSamePinStatus_throwsWrongPinStatusException() {
+        uniquePersonList.add(ALICE);
+        assertThrows(WrongPinStatusException.class, () -> uniquePersonList.pin(ALICE, PINNED_ALICE));
+    }
+
+    @Test
+    public void pin_alreadyPinnedPerson_throwsWrongPinStatusException() {
+        uniquePersonList.add(PINNED_ALICE);
+        assertThrows(WrongPinStatusException.class, () -> uniquePersonList.pin(PINNED_ALICE, PINNED_ALICE));
+    }
+
+    @Test
+    public void unpin_nullPerson_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniquePersonList.unpin(null, null));
+        assertThrows(NullPointerException.class, () -> uniquePersonList.unpin(ALICE, null));
+        assertThrows(NullPointerException.class, () -> uniquePersonList.unpin(null, ALICE));
+    }
+
+    @Test
+    public void unpin_personDoesNotExist_throwsPersonNotFoundException() {
+        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.unpin(ALICE, PINNED_ALICE));
+    }
+
+    @Test
+    public void unpin_differentPerson_throwsPersonMustBeSameException() {
+        uniquePersonList.add(PINNED_ALICE);
+        assertThrows(PersonMustBeSameException.class, () -> uniquePersonList.unpin(PINNED_ALICE, BOB));
+    }
+
+    @Test
+    public void unpin_samePersonWithDifferentPinStatus_success() {
+        uniquePersonList.setPersons(new ArrayList<>(Arrays.asList(PINNED_BOB, ALICE)));
+        uniquePersonList.unpin(PINNED_BOB, BOB);
+        UniquePersonList expectedUniquePersonList = new UniquePersonList();
+        expectedUniquePersonList.setPersons(new ArrayList<>(Arrays.asList(ALICE, BOB)));
+        assertEquals(expectedUniquePersonList, uniquePersonList);
+    }
+
+    @Test
+    public void unpin_samePersonWithSamePinStatus_throwsWrongPinStatusException() {
+        uniquePersonList.add(PINNED_BOB);
+        assertThrows(WrongPinStatusException.class, () -> uniquePersonList.unpin(PINNED_BOB, PINNED_BOB));
+    }
+
+    @Test
+    public void unpin_alreadyUnpinnedPerson_throwsWrongPinStatusException() {
+        uniquePersonList.add(ALICE);
+        assertThrows(WrongPinStatusException.class, () -> uniquePersonList.unpin(ALICE, ALICE));
+    }
+
+    @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> uniquePersonList.asUnmodifiableObservableList().remove(0));
+                -> uniquePersonList.asUnmodifiableObservableList().remove(0));
     }
 
     @Test

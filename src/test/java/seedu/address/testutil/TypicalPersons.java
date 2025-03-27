@@ -55,6 +55,13 @@ public class TypicalPersons {
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
             .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withPin(false).build();
 
+    // Manually added - Pinned Persons
+    public static final Person PINNED_ALICE = new PersonBuilder().withName("Alice Pauline")
+            .withEmail("alice@example.com").withTele("@alice")
+            .withModTuts("CS1234-A10").withPin(true).build();
+    public static final Person PINNED_BOB = new PersonBuilder().withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
+            .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withPin(true).build();
+
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
     private TypicalPersons() {

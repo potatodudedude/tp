@@ -94,7 +94,7 @@ public class PersonBuilder {
      * Builds the {@code Person} object.
      */
     public Person build() {
-        return new Person(name, telegramHandle, email, modTutGroup, false);
+        return new Person(name, telegramHandle, email, modTutGroup, isPin);
     }
 
 }
