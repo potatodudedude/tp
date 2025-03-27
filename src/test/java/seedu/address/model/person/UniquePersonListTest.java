@@ -211,8 +211,8 @@ public class UniquePersonListTest {
 
     @Test
     public void pin_samePersonWithSamePinStatus_throwsWrongPinStatusException() {
-        uniquePersonList.add(ALICE);
-        assertThrows(WrongPinStatusException.class, () -> uniquePersonList.pin(ALICE, PINNED_ALICE));
+        uniquePersonList.add(PINNED_ALICE);
+        assertThrows(WrongPinStatusException.class, () -> uniquePersonList.pin(PINNED_ALICE, PINNED_ALICE));
     }
 
     @Test
@@ -230,7 +230,7 @@ public class UniquePersonListTest {
 
     @Test
     public void unpin_personDoesNotExist_throwsPersonNotFoundException() {
-        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.unpin(ALICE, PINNED_ALICE));
+        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.unpin(ALICE, ALICE));
     }
 
     @Test

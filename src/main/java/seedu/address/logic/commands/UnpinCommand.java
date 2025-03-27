@@ -26,7 +26,7 @@ public class UnpinCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_SUCCESS = "Unpinned person from the list";
+    public static final String MESSAGE_SUCCESS = "Unpinned Person: %1$s";
     public static final String MESSAGE_PERSON_ALREADY_UNPINNED = "This person is already unpinned.";
 
     private final Index index; // One-based index
@@ -52,7 +52,7 @@ public class UnpinCommand extends Command {
 
         assert unpinnedPerson.getPin() : "Person's pin status should be false before unpinning";
         model.unpinPerson(personToUnpin, unpinnedPerson);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(unpinnedPerson)));
     }
 
     private Person createUnpinnedPerson(Person personToUnpin) {

@@ -26,7 +26,7 @@ public class PinCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_SUCCESS = "Pinned person to the top of the list"; // to modify later
+    public static final String MESSAGE_SUCCESS = "Pinned Person: %1$s";
     public static final String MESSAGE_PERSON_ALREADY_PINNED = "This person is already pinned.";
 
     private final Index index; // One-based index
@@ -51,7 +51,7 @@ public class PinCommand extends Command {
 
         assert pinnedPerson.getPin() : "Person's pin status should be true before pinning";
         model.pinPerson(personToPin, pinnedPerson);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(pinnedPerson)));
     }
 
     private Person createPinnedPerson(Person personToPin) {
