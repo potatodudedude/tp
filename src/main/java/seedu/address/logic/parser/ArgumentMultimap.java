@@ -75,4 +75,17 @@ public class ArgumentMultimap {
             throw new ParseException(Messages.getErrorMessageForDuplicatePrefixes(duplicatedPrefixes));
         }
     }
+
+    /**
+     * Throws a {@code ParseException} if there is more than one {@code prefixes}
+     */
+    public void verifyOnlyOnePrefixFor(Prefix... prefixes) throws ParseException {
+        Prefix[] existingPrefixes = Stream.of(prefixes).distinct()
+                .filter(argMultimap::containsKey)
+                .toArray(Prefix[]::new);
+
+        if (existingPrefixes.length > 1) {
+            throw new ParseException(Messages.MESSAGE_MORE_THAN_ONE_FIELD);
+        }
+    }
 }
