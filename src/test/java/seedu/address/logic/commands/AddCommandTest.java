@@ -155,6 +155,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public void pinPerson(Person target, Person pinnedPerson) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void unpinPerson(Person target, Person unpinnedPerson) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Person> getFilteredPersonList() {
             throw new AssertionError("This method should not be called.");
         }
