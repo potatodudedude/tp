@@ -54,7 +54,7 @@ at the end of the guide.
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe t/@johndoe e/johnd@example.com m/CS2103T-F10` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe t/@johndoe e/johnd@example.com m/CS2103T-F10` : Adds a contact named `John Doe` to ConnectS.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -169,7 +169,7 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `list` followed by `delete 2` deletes the 2nd person in ConnectS.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
 ### Sorting entries: `sort`
@@ -177,6 +177,16 @@ Examples:
 This sorts your contacts in lexicographical order.
 
 Format: `sort`
+
+### Pinning a person: `pin`, `unpin`
+
+This pins one person to always show up at the top of the list, or unpins a person.
+
+Format:`pin INDEX`, `unpin INDEX`
+
+
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
 
 ### Clearing all entries : `clear`
 
@@ -230,13 +240,14 @@ Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME t/TELEGRAM_HANDLE e/EMAIL a/ADDRESS m/MODULE-TUTORIAL_GROUP…​` <br> e.g., `add n/James Ho t/@jameshoho e/jamesho@example.com m/CS2030S-T08`
+**Add**    | `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP…​` <br> e.g., `add n/James Ho t/@jameshoho e/jamesho@example.com m/CS2030S-T08`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [t/TELEGRAM_HANDLE] [e/EMAIL] [m/MODULE-TUTORIAL_GROUP]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find <n/NAME... t/TELEGRAM_HANDLE... e/EMAIL...>`<br> e.g., `find n/James Jake`
 **List**   | `list`
 **Sort**   | `sort`
+**Pin**    | `pin INDEX`
 **Help**   | `help`
 
 --------------------------------------------------------------------------------------------------------------------
