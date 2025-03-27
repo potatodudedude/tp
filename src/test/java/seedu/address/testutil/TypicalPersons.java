@@ -23,37 +23,37 @@ public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withEmail("alice@example.com").withTele("@alice")
-            .withModTuts("CS1234-A10").build();
+            .withModTuts("CS1234-A10").withPin(false).build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withEmail("johnd@example.com").withTele("@benson")
-            .withModTuts("CS1234-A10").build();
+            .withModTuts("CS1234-A10").withPin(false).build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz")
             .withEmail("heinz@example.com").withTele("@carl_kurz")
-            .withModTuts("CS1234-A10").build();
+            .withModTuts("CS1234-A10").withPin(false).build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier")
             .withEmail("cornelia@example.com").withTele("@daniel")
-            .withModTuts("CS1234-A10").build();
+            .withModTuts("CS1234-A10").withPin(false).build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer")
             .withEmail("werner@example.com").withTele("@elleMeyer")
-            .withModTuts("ES2666-Z01").build();
+            .withModTuts("ES2666-Z01").withPin(false).build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz")
             .withEmail("lydia@example.com").withTele("@fiona")
-            .withModTuts("ES2666-Z01").build();
+            .withModTuts("ES2666-Z01").withPin(false).build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best")
             .withEmail("anna@example.com").withTele("@george")
-            .withModTuts("ES2666-Z01").build();
+            .withModTuts("ES2666-Z01").withPin(false).build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withTele("@hoon_Meier")
-            .withEmail("stefan@example.com").withModTuts("CS1234-A10").build();
+            .withEmail("stefan@example.com").withModTuts("CS1234-A10").withPin(false).build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withTele("@ida_Mueller")
-            .withEmail("hans@example.com").withModTuts("CS1234-A10").build();
+            .withEmail("hans@example.com").withModTuts("CS1234-A10").withPin(false).build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withEmail(VALID_EMAIL_AMY)
-            .withTele(VALID_TELE_AMY).withModTuts(VALID_MODTUT_AMY).build();
+            .withTele(VALID_TELE_AMY).withModTuts(VALID_MODTUT_AMY).withPin(false).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
-            .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).build();
+            .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withPin(false).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

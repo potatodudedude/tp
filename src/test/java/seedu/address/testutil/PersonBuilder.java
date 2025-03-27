@@ -19,11 +19,13 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_TELEGRAMHANDLE = "@Amy_13ee";
     public static final String DEFAULT_MODTUTGRP = "CS1234-A10";
+    public static final boolean DEFAULT_PIN = false;
 
     private Name name;
     private Email email;
     private TelegramHandle telegramHandle;
     private Set<ModTutGroup> modTutGroup = new HashSet<>();
+    private boolean isPin;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -33,6 +35,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         telegramHandle = new TelegramHandle(DEFAULT_TELEGRAMHANDLE);
         modTutGroup.add(new ModTutGroup(DEFAULT_MODTUTGRP));
+        isPin = DEFAULT_PIN;
     }
 
     /**
@@ -43,6 +46,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         telegramHandle = personToCopy.getTelegramHandle();
         modTutGroup = personToCopy.getModTutGroups();
+        isPin = personToCopy.getPin();
     }
 
     /**
@@ -75,6 +79,14 @@ public class PersonBuilder {
      */
     public PersonBuilder withModTuts(String... modTuts) {
         this.modTutGroup = SampleDataUtil.getModTutSet(modTuts);
+        return this;
+    }
+
+    /**
+     * Sets the {@code isPin} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withPin(boolean isPin) {
+        this.isPin = isPin;
         return this;
     }
 
