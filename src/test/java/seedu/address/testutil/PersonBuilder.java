@@ -82,7 +82,7 @@ public class PersonBuilder {
      * Builds the {@code Person} object.
      */
     public Person build() {
-        return new Person(name, telegramHandle, email, modTutGroup);
+        return new Person(name, telegramHandle, email, modTutGroup, false);
     }
 
 }

@@ -91,4 +91,24 @@ public interface Model {
      * @throws NullPointerException if {@code comparator} is null.
      */
     void sortAddressBook(Comparator<Person> comparator);
+
+    /**
+     * Replaces the given person {@code target} with {@code pinnedPerson},
+     * and pins the {@code pinnedPerson} to the top of the list.
+     * <ul>
+     *     <li>{@code target} must exist in ConnectS.</li>
+     *     <li>{@code pinnedPerson} must have the same identity as {@code target}.</li>
+     * </ul>
+     */
+    void pinPerson(Person target, Person pinnedPerson);
+
+    /**
+     * Replaces the given person {@code target} with {@code unpinnedPerson},
+     * and adds the {@code unpinnedPerson} to the end of the list.
+     * <ul>
+     *     <li>{@code target} must exist in ConnectS.</li>
+     *     <li>{@code unpinnedPerson} must have the same identity as {@code target}.</li>
+     * </ul>
+     */
+    void unpinPerson(Person target, Person unpinnedPerson);
 }

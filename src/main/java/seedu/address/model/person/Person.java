@@ -22,17 +22,18 @@ public class Person {
     // Data fields
     private final TelegramHandle telegramHandle;
     private final Set<ModTutGroup> modTutGroups = new HashSet<>();
-
+    private final boolean isPin;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, TelegramHandle telegramHandle, Email email, Set<ModTutGroup> modTutGroups) {
+    public Person(Name name, TelegramHandle telegramHandle, Email email, Set<ModTutGroup> modTutGroups, boolean isPin) {
         requireAllNonNull(name, telegramHandle, email, modTutGroups);
         this.name = name;
         this.telegramHandle = telegramHandle;
         this.email = email;
         this.modTutGroups.addAll(modTutGroups);
+        this.isPin = isPin;
     }
 
     public Name getName() {
@@ -56,7 +57,14 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons have the same name.
+     * Returns true if the person is pinned, otherwise returns false.
+     */
+    public boolean getPin() {
+        return isPin;
+    }
+
+    /**
+     * Returns true if both persons have the same name, telegram handle or email.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Person otherPerson) {
@@ -89,7 +97,8 @@ public class Person {
         return name.equals(otherPerson.name)
                 && telegramHandle.equals(otherPerson.telegramHandle)
                 && email.equals(otherPerson.email)
-                && modTutGroups.equals(otherPerson.modTutGroups);
+                && modTutGroups.equals(otherPerson.modTutGroups)
+                && isPin == otherPerson.isPin;
     }
 
     @Override

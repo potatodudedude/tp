@@ -99,8 +99,8 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Set<ModTutGroup> updatedModTutGroups = editPersonDescriptor.getModTutGroup()
                 .orElse(personToEdit.getModTutGroups());
-
-        return new Person(updatedName, updatedTelegramHandle, updatedEmail, updatedModTutGroups);
+        boolean isPin = personToEdit.getPin(); // pin status should not be edited
+        return new Person(updatedName, updatedTelegramHandle, updatedEmail, updatedModTutGroups, isPin);
     }
 
     @Override

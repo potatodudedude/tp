@@ -21,18 +21,18 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[]{
             new Person(new Name("Alex Yeoh"), new TelegramHandle("@alexyeoh"), new Email("alexyeoh@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01")))),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))), false),
             new Person(new Name("Bernice Yu"), new TelegramHandle("@berniceyu"), new Email("berniceyu@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06")))),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))), false),
             new Person(new Name("Charlotte Oliveiro"), new TelegramHandle("@charly123"),
                     new Email("charlotte@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2103T-T11")))),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2103T-T11"))), false),
             new Person(new Name("David Li"), new TelegramHandle("@daviderr"), new Email("lidavid@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01")))),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))), false),
             new Person(new Name("Irfan Ibrahim"), new TelegramHandle("@irfany9"), new Email("irfan@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2106-T03")))),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2106-T03"))), false),
             new Person(new Name("Roy Balakrishnan"), new TelegramHandle("@royboy8"), new Email("royb@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))))
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))), false)
         };
     }
 
