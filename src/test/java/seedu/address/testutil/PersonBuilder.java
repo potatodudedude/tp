@@ -27,7 +27,7 @@ public class PersonBuilder {
     private Email email;
     private TelegramHandle telegramHandle;
     private Set<ModTutGroup> modTutGroup = new HashSet<>();
-    private Set<Tag> tags = new HashSet<>()
+    private Set<Tag> tags = new HashSet<>();
     private boolean isPin;
 
     /**
@@ -99,7 +99,7 @@ public class PersonBuilder {
      * Builds the {@code Person} object.
      */
     public Person build() {
-        return new Person(name, telegramHandle, email, modTutGroup, isPin);
+        return new Person(name, telegramHandle, email, modTutGroup, tags, isPin);
     }
 
 }
