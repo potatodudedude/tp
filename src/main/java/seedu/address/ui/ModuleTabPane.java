@@ -14,7 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import seedu.address.logic.Logic;
-import seedu.address.model.ModelManager;
 import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;

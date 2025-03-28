@@ -10,6 +10,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.ModTutGroup;
 
+/**
+ * Changes the tab view of the GUI to the specified Module-Tutorial Group.
+ */
 public class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";

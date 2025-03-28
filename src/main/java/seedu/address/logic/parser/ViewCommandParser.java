@@ -4,13 +4,15 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOD;
 
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ModTutGroup;
 
+/**
+ * Parses input arguments and creates a new ViewCommand object
+ */
 public class ViewCommandParser implements Parser<ViewCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the ViewCommand

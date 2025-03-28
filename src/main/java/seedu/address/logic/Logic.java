@@ -4,7 +4,6 @@ import java.nio.file.Path;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import javafx.scene.control.Tab;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;

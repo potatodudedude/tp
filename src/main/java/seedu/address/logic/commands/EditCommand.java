@@ -13,11 +13,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
@@ -75,7 +72,7 @@ public class EditCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> filteredList;
-        if(model.isViewAll()) {
+        if (model.isViewAll()) {
             filteredList = model.getFilteredPersonList();
         } else {
             List<String> selectedTabs = model.getSelectedTabs();
@@ -85,15 +82,15 @@ public class EditCommand extends Command {
             List<Person> personList = model.getAddressBook().getPersonList();
             filteredList = personList.stream()
                     .filter(p -> {
-                Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
-                return moduleStream.anyMatch(m -> m.getName().equals(moduleName));
-            })
+                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
+                        Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
+                        return moduleStream.anyMatch(m -> m.getName().equals(moduleName));
+                    })
                     .filter(p -> {
-                Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
-                return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
-            }).toList();
+                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
+                        Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
+                        return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
+                    }).toList();
         }
 
         if (index.getZeroBased() >= filteredList.size()) {
