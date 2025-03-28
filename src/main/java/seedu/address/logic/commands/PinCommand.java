@@ -61,6 +61,6 @@ public class PinCommand extends Command {
         Email email = personToPin.getEmail();
         Set<ModTutGroup> modTutGroups = personToPin.getModTutGroups();
         Set<Tag> tags = personToPin.getTags();
-        return new Person(name, telegramHandle, email, modTutGroups, tags,true);
+        return new Person(name, telegramHandle, email, modTutGroups, tags, true);
     }
 }

@@ -62,6 +62,6 @@ public class UnpinCommand extends Command {
         Email email = personToUnpin.getEmail();
         Set<ModTutGroup> modTutGroups = personToUnpin.getModTutGroups();
         Set<Tag> tags = personToUnpin.getTags();
-        return new Person(name, telegramHandle, email, modTutGroups, tags,false);
+        return new Person(name, telegramHandle, email, modTutGroups, tags, false);
     }
 }

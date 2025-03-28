@@ -29,7 +29,8 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, TelegramHandle telegramHandle, Email email, Set<ModTutGroup> modTutGroups, Set<Tag> tags, boolean isPin) {
+    public Person(Name name, TelegramHandle telegramHandle, Email email, Set<ModTutGroup> modTutGroups,
+                  Set<Tag> tags, boolean isPin) {
         requireAllNonNull(name, telegramHandle, email, modTutGroups, tags);
         this.name = name;
         this.telegramHandle = telegramHandle;
