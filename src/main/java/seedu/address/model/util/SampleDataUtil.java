@@ -13,6 +13,7 @@ import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -21,18 +22,18 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[]{
             new Person(new Name("Alex Yeoh"), new TelegramHandle("@alexyeoh"), new Email("alexyeoh@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))), false),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))),getTagSet("friends"), false),
             new Person(new Name("Bernice Yu"), new TelegramHandle("@berniceyu"), new Email("berniceyu@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))), false),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))), getTagSet("colleagues", "friends"), false),
             new Person(new Name("Charlotte Oliveiro"), new TelegramHandle("@charly123"),
                     new Email("charlotte@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2103T-T11"))), false),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2103T-T11"))), getTagSet("family"), false),
             new Person(new Name("David Li"), new TelegramHandle("@daviderr"), new Email("lidavid@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))), false),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))), getTagSet("neighbours"), false),
             new Person(new Name("Irfan Ibrahim"), new TelegramHandle("@irfany9"), new Email("irfan@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2106-T03"))), false),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2106-T03"))), getTagSet("classmates"), false),
             new Person(new Name("Roy Balakrishnan"), new TelegramHandle("@royboy8"), new Email("royb@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))), false)
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))), getTagSet("colleagues"), false)
         };
     }
 
@@ -53,4 +54,12 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
+    /**
+     * Returns a tag set containing the list of strings given.
+     */
+    public static Set<Tag> getTagSet(String... strings) {
+        return Arrays.stream(strings)
+                .map(Tag::new)
+                .collect(Collectors.toSet());
+    }
 }

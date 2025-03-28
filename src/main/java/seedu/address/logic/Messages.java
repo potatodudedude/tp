@@ -44,6 +44,8 @@ public class Messages {
                 .append(person.getEmail())
                 .append("; Module - Tutorial Group: ");
         person.getModTutGroups().forEach(builder::append);
+        builder.append("; Tags: ");
+        person.getTags().forEach(builder::append);
         return builder.toString();
     }
 

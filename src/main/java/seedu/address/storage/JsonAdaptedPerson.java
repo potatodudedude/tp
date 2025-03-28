@@ -15,6 +15,7 @@ import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -27,6 +28,7 @@ class JsonAdaptedPerson {
     private final String telegramHandle;
     private final String email;
     private final List<JsonAdaptedModTutGroup> modTutGroups = new ArrayList<>();
+    private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final boolean isPin;
 
     /**
@@ -34,14 +36,15 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("telegramHandle") String telegramHandle,
-            @JsonProperty("email") String email,
-            @JsonProperty("modTutGroups") List<JsonAdaptedModTutGroup> modTutGroups,
-                             @JsonProperty("isPin") boolean isPin) {
+                             @JsonProperty("email") String email,
+                             @JsonProperty("modTutGroups") List<JsonAdaptedModTutGroup> modTutGroups,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("isPin") boolean isPin) {
         this.name = name;
         this.telegramHandle = telegramHandle;
         this.email = email;
-        if (modTutGroups != null) {
-            this.modTutGroups.addAll(modTutGroups);
+        this.modTutGroups.addAll(modTutGroups);
+        if (tags != null) {
+            this.tags.addAll(tags);
         }
         this.isPin = isPin;
     }
@@ -57,6 +60,9 @@ class JsonAdaptedPerson {
         modTutGroups.addAll(source.getModTutGroups().stream()
                 .map(JsonAdaptedModTutGroup::new)
                 .collect(Collectors.toList()));
+        tags.addAll(source.getTags().stream()
+                .map(JsonAdaptedTag::new)
+                .collect(Collectors.toList()));
         isPin = source.getPin();
     }
 
@@ -69,6 +75,10 @@ class JsonAdaptedPerson {
         final List<ModTutGroup> personModTutGroups = new ArrayList<>();
         for (JsonAdaptedModTutGroup modTutGroup : modTutGroups) {
             personModTutGroups.add(modTutGroup.toModelType());
+        }
+        final List<Tag> personTags = new ArrayList<>();
+        for (JsonAdaptedTag tag : tags) {
+            personTags.add(tag.toModelType());
         }
 
         if (name == null) {
@@ -106,7 +116,8 @@ class JsonAdaptedPerson {
         }
         final Email modelEmail = new Email(email);
         final Set<ModTutGroup> modelTutGroups = new HashSet<>(personModTutGroups);
-        return new Person(modelName, modelTelegramHandle, modelEmail, modelTutGroups, isPin);
+        final Set<Tag> modelTags = new HashSet<>(personTags);
+        return new Person(modelName, modelTelegramHandle, modelEmail, modelTutGroups, modelTags, isPin);
     }
 
 }

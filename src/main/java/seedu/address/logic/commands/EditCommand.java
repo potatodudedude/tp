@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -25,6 +26,7 @@ import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.tag.Tag;
 
 
 /**
@@ -41,7 +43,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM HANDLE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_MOD + "MOD-TUT GROUP]...\n"
+            + "[" + PREFIX_MOD + "MOD-TUT GROUP]"
+            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TELEGRAM + "@johndoe "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -99,8 +102,9 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Set<ModTutGroup> updatedModTutGroups = editPersonDescriptor.getModTutGroup()
                 .orElse(personToEdit.getModTutGroups());
+        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         boolean isPin = personToEdit.getPin(); // pin status should not be edited
-        return new Person(updatedName, updatedTelegramHandle, updatedEmail, updatedModTutGroups, isPin);
+        return new Person(updatedName, updatedTelegramHandle, updatedEmail, updatedModTutGroups, updatedTags, isPin);
     }
 
     @Override
@@ -136,6 +140,7 @@ public class EditCommand extends Command {
         private TelegramHandle telegramHandle;
         private Email email;
         private Set<ModTutGroup> modTutGroup;
+        private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
 
@@ -148,13 +153,14 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setTelegramHandle(toCopy.telegramHandle);
             setModTutGroup(toCopy.modTutGroup);
+            setTags(toCopy.tags);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, telegramHandle, email, modTutGroup);
+            return CollectionUtil.isAnyNonNull(name, telegramHandle, email, modTutGroup, tags);
         }
 
         public void setName(Name name) {
@@ -198,6 +204,23 @@ public class EditCommand extends Command {
             return (modTutGroup != null) ? Optional.of(Collections.unmodifiableSet(modTutGroup)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code tags} to this object's {@code tags}.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public void setTags(Set<Tag> tags) {
+            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        }
+
+        /**
+         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code tags} is null.
+         */
+        public Optional<Set<Tag>> getTags() {
+            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -223,7 +246,9 @@ public class EditCommand extends Command {
                     .add("telegramHandle", telegramHandle)
                     .add("email", email)
                     .add("modTutGroup", modTutGroup)
+                    .add("tags", tags)
                     .toString();
         }
+
     }
 }

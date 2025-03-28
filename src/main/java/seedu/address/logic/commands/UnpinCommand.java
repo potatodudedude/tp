@@ -14,6 +14,7 @@ import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.tag.Tag;
 
 /**
  * Unpins a person from the list.
@@ -60,6 +61,7 @@ public class UnpinCommand extends Command {
         TelegramHandle telegramHandle = personToUnpin.getTelegramHandle();
         Email email = personToUnpin.getEmail();
         Set<ModTutGroup> modTutGroups = personToUnpin.getModTutGroups();
-        return new Person(name, telegramHandle, email, modTutGroups, false);
+        Set<Tag> tags = personToUnpin.getTags();
+        return new Person(name, telegramHandle, email, modTutGroups, tags,false);
     }
 }

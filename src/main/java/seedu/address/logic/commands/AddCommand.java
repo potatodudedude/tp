@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -27,12 +28,16 @@ public class AddCommand extends Command {
             + PREFIX_TELEGRAM + "TELEGRAM HANDLE "
             + PREFIX_EMAIL + "EMAIL "
             + "[" + PREFIX_MOD + "MOD-TUT GROUP]...\n"
+            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_TELEGRAM + "@johndoe123 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_MOD + "CS2103T-T21 "
-            + PREFIX_MOD + "CS2109S-T05";
+            + PREFIX_MOD + "CS2109S-T05"
+            + "[" + PREFIX_TAG + "TAG]...\n"
+            + PREFIX_TAG + "need more help "
+            + PREFIX_TAG + "bad at programming";;
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in ConnectS";
