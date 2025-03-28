@@ -22,7 +22,7 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[]{
             new Person(new Name("Alex Yeoh"), new TelegramHandle("@alexyeoh"), new Email("alexyeoh@example.com"),
-                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))),getTagSet("friends"), false),
+                    new HashSet<>(Collections.singleton(new ModTutGroup("CS2100-T01"))), getTagSet("friends"), false),
             new Person(new Name("Bernice Yu"), new TelegramHandle("@berniceyu"), new Email("berniceyu@example.com"),
                     new HashSet<>(Collections.singleton(new ModTutGroup("CS2105-T06"))),
                     getTagSet("colleagues", "friends"), false),
