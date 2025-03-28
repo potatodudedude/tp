@@ -1,8 +1,10 @@
 package seedu.address.logic;
 
 import java.nio.file.Path;
+import java.util.List;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.Tab;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -47,4 +49,25 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns true if view all option is set to "All"
+     */
+    boolean isViewAll();
+
+    /**
+     * @param isViewAll true if view all option is "All", false if option is "Tabs"
+     */
+    void setViewAll(boolean isViewAll);
+
+    /**
+     * Returns a list containing the names of the selected module and tutorial tab
+     */
+    List<String> getSelectedTabs();
+
+    /**
+     * @param selectedModuleTab the name of the selected module tab
+     * @param selectedTutorialTab the name of the selected tutorial tab
+     */
+    void setSelectedTabs(String selectedModuleTab, String selectedTutorialTab);
 }
