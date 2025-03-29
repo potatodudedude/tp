@@ -247,6 +247,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean isViewAll() {
+            return true;
+        }
+
+        @Override
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
         }

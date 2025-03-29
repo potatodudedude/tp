@@ -12,8 +12,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
-
-
 /**
  * Adds a person to ConnectS.
  */
@@ -53,6 +51,12 @@ public class AddCommand extends Command {
 
         if (model.hasPerson(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        }
+
+        if (!model.isViewAll()) {
+            String moduleName = toAdd.getModTutGroups().iterator().next().getModule().getName();
+            String tutorialName = toAdd.getModTutGroups().iterator().next().getTutorial().getName();
+            model.setSelectedTabs(moduleName, tutorialName);
         }
 
         model.addPerson(toAdd);
