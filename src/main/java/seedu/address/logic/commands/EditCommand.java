@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -22,9 +23,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.ModTutGroup;
+import seedu.address.model.person.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.person.Tutorial;
 
 
 /**
@@ -68,13 +71,33 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Person> filteredList;
+        if (model.isViewAll()) {
+            filteredList = model.getFilteredPersonList();
+        } else {
+            List<String> selectedTabs = model.getSelectedTabs();
+            String moduleName = selectedTabs.get(0);
+            String tutorialName = selectedTabs.get(1);
 
-        if (index.getZeroBased() >= lastShownList.size()) {
+            List<Person> personList = model.getAddressBook().getPersonList();
+            filteredList = personList.stream()
+                    .filter(p -> {
+                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
+                        Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
+                        return moduleStream.anyMatch(m -> m.getName().equals(moduleName));
+                    })
+                    .filter(p -> {
+                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
+                        Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
+                        return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
+                    }).toList();
+        }
+
+        if (index.getZeroBased() >= filteredList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
+        Person personToEdit = filteredList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
