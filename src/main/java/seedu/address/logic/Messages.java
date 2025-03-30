@@ -19,6 +19,7 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_MORE_THAN_ONE_FIELD = "Only one field is allowed for this command.";
+    public static final String MESSAGE_INVALID_MODULE_TUTORIAL_GROUP = "No such Module-Tutorial Group: %1$s";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
