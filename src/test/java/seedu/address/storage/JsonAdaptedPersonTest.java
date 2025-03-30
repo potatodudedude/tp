@@ -108,7 +108,8 @@ public class JsonAdaptedPersonTest {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP, invalidTags, VALID_PIN);
+                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP,
+                        invalidTags, VALID_PIN);
         assertThrows(IllegalValueException.class, person::toModelType);
     }
 
