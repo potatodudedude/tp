@@ -10,6 +10,7 @@ import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.tag.Tag;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -35,6 +36,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setTelegramHandle(person.getTelegramHandle());
         descriptor.setEmail(person.getEmail());
         descriptor.setModTutGroup(person.getModTutGroups());
+        descriptor.setTags(person.getTags());;
     }
 
     /**
@@ -71,8 +73,20 @@ public class EditPersonDescriptorBuilder {
         return this;
     }
 
+    /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
+     * that we are building.
+     */
+    public EditPersonDescriptorBuilder withTags(String... tags) {
+        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
+        descriptor.setTags(tagSet);
+        return this;
+    }
+
     public EditPersonDescriptor build() {
         return descriptor;
     }
+
+
 }
 

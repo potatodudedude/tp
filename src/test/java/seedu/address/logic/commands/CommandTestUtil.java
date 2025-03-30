@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -35,6 +36,8 @@ public class CommandTestUtil {
     public static final String VALID_TELE_BOB = "@bobchoo";
     public static final String VALID_MODTUT_AMY = "CS1234-A10";
     public static final String VALID_MODTUT_BOB = "ES2666-Z01";
+    public static final String VALID_TAG_HUSBAND = "husband";
+    public static final String VALID_TAG_FRIEND = "friend";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -46,11 +49,15 @@ public class CommandTestUtil {
     public static final String MODTUT_DESC_BOB = " " + PREFIX_MOD + VALID_MODTUT_BOB;
     public static final String MODTUT_DESC_HUSBAND = " " + PREFIX_MOD + VALID_MODTUT_HUSBAND;
     public static final String MODTUT_DESC_FRIEND = " " + PREFIX_MOD + VALID_MODTUT_FRIEND;
+    public static final String TAG_DESC_AMY = " " + PREFIX_TAG + VALID_TAG_FRIEND;
+    public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
+    public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_TELE_DESC = " " + PREFIX_TELEGRAM + "bobby"; // missing '@' symbol
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_MODTUT_DESC = " " + PREFIX_MOD + "CS1234 A10"; // missing dash
+    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -61,10 +68,11 @@ public class CommandTestUtil {
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withTelegramHandle(VALID_TELE_AMY).withEmail(VALID_EMAIL_AMY)
-                .withModTutGroups(VALID_MODTUT_FRIEND).build();
+                .withModTutGroups(VALID_MODTUT_FRIEND).withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withTelegramHandle(VALID_TELE_BOB).withEmail(VALID_EMAIL_BOB)
-                .withModTutGroups(VALID_MODTUT_HUSBAND, VALID_MODTUT_FRIEND).build();
+                .withModTutGroups(VALID_MODTUT_HUSBAND, VALID_MODTUT_FRIEND)
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
 
     /**

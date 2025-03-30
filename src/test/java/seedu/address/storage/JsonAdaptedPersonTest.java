@@ -104,12 +104,12 @@ public class JsonAdaptedPersonTest {
     }
 
     @Test
-    public void toModelType_nullModTutGroup_throwsIllegalValueException() {
+    public void toModelType_invalidTags_throwsIllegalValueException() {
+        List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
+        invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, null,
-                        VALID_TAGS, VALID_PIN);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, "ModTutGroup");
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+                new JsonAdaptedPerson(VALID_NAME, VALID_TELEGRAMHANDLE, VALID_EMAIL, VALID_MODTUTGROUP, invalidTags, VALID_PIN);
+        assertThrows(IllegalValueException.class, person::toModelType);
     }
 
 }

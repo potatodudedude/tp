@@ -88,6 +88,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
+     */
+    public PersonBuilder withTags(String ... tags) {
+        this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
      * Sets the {@code isPin} of the {@code Person} that we are building.
      */
     public PersonBuilder withPin(boolean isPin) {
