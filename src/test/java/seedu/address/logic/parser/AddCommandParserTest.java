@@ -57,8 +57,8 @@ public class AddCommandParserTest {
 
 
         // multiple tags - all accepted
-        Person expectedPersonMultipleTags = new PersonBuilder(BOB)
-                .withModTuts(VALID_MODTUT_FRIEND, VALID_MODTUT_AMY).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
+        Person expectedPersonMultipleTags = new PersonBuilder(BOB).withModTuts(VALID_MODTUT_FRIEND, VALID_MODTUT_AMY)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         assertParseSuccess(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_AMY
                         + MODTUT_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 new AddCommand(expectedPersonMultipleTags));

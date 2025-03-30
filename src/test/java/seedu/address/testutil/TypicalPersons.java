@@ -55,7 +55,8 @@ public class TypicalPersons {
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withEmail(VALID_EMAIL_AMY)
             .withTele(VALID_TELE_AMY).withModTuts(VALID_MODTUT_AMY).withTags(VALID_TAG_FRIEND).withPin(false).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
-            .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).withPin(false).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+            .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withPin(false).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
     // Manually added - Pinned Persons
     public static final Person PINNED_ALICE = new PersonBuilder().withName("Alice Pauline")
