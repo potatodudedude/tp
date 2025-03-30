@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -111,4 +112,25 @@ public interface Model {
      * </ul>
      */
     void unpinPerson(Person target, Person unpinnedPerson);
+
+    /**
+     * Returns true if view all option is set to "All"
+     */
+    boolean isViewAll();
+
+    /**
+     * @param isViewAll true if view all option is "All", false if option is "Tabs"
+     */
+    void setViewAll(boolean isViewAll);
+
+    /**
+     * Returns a list containing the names of the selected module and tutorial tab
+     */
+    List<String> getSelectedTabs();
+
+    /**
+     * @param selectedModuleTab the name of the selected module tab
+     * @param selectedTutorialTab the name of the selected tutorial tab
+     */
+    void setSelectedTabs(String selectedModuleTab, String selectedTutorialTab);
 }

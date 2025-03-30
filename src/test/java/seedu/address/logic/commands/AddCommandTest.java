@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -86,7 +87,7 @@ public class AddCommandTest {
     }
 
     /**
-     * A default model stub that have all of the methods failing.
+     * A default model stub that have all the methods failing.
      */
     private class ModelStub implements Model {
         @Override
@@ -164,6 +165,39 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        /**
+         * Returns true if view all option is set to "All"
+         */
+        @Override
+        public boolean isViewAll() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        /**
+         * @param isViewAll true if view all option is "All", false if option is "Tabs"
+         */
+        @Override
+        public void setViewAll(boolean isViewAll) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        /**
+         * Returns a list containing the names of the selected module and tutorial tab
+         */
+        @Override
+        public List<String> getSelectedTabs() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        /**
+         * @param selectedModuleTab   the name of the selected module tab
+         * @param selectedTutorialTab the name of the selected tutorial tab
+         */
+        @Override
+        public void setSelectedTabs(String selectedModuleTab, String selectedTutorialTab) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public ObservableList<Person> getFilteredPersonList() {
             throw new AssertionError("This method should not be called.");
@@ -210,6 +244,11 @@ public class AddCommandTest {
         public void addPerson(Person person) {
             requireNonNull(person);
             personsAdded.add(person);
+        }
+
+        @Override
+        public boolean isViewAll() {
+            return true;
         }
 
         @Override

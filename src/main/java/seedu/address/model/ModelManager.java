@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -20,9 +22,12 @@ import seedu.address.model.person.Person;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private boolean isViewAll;
+
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final List<String> selectedTabs;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -32,9 +37,11 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with ConnectS: " + addressBook + " and user prefs " + userPrefs);
 
+        this.isViewAll = false;
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        selectedTabs = new ArrayList<>();
     }
 
     public ModelManager() {
@@ -128,6 +135,28 @@ public class ModelManager implements Model {
     public void unpinPerson(Person target, Person unpinnedPerson) {
         requireNonNull(target);
         addressBook.unpin(target, unpinnedPerson);
+    }
+
+    @Override
+    public boolean isViewAll() {
+        return isViewAll;
+    }
+
+    @Override
+    public void setViewAll(boolean isViewAll) {
+        this.isViewAll = isViewAll;
+    }
+
+    @Override
+    public List<String> getSelectedTabs() {
+        return selectedTabs;
+    }
+
+    @Override
+    public void setSelectedTabs(String selectedModuleTab, String selectedTutorialTab) {
+        selectedTabs.clear();
+        selectedTabs.add(selectedModuleTab);
+        selectedTabs.add(selectedTutorialTab);
     }
 
     //=========== Filtered Person List Accessors =============================================================
