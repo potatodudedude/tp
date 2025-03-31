@@ -4,36 +4,43 @@
     "name" : "Alice Pauline",
     "telegramHandle" : "@alice",
     "email" : "alice@example.com",
-    "modTutGroups" : [ "CS1234-A10" ]
+    "modTutGroups" : [ "CS1234-A10" ],
+    "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "telegramHandle" : "@benson",
     "email" : "johnd@example.com",
-    "modTutGroups" : [ "CS1234-A10" ]
+    "modTutGroups" : [ "CS1234-A10" ],
+    "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "telegramHandle" : "@carl_kurz",
     "email" : "heinz@example.com",
-    "modTutGroups" : [ "CS1234-A10" ]
+    "modTutGroups" : [ "CS1234-A10" ],
+    "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
     "telegramHandle" : "@daniel",
     "email" : "cornelia@example.com",
-    "modTutGroups" : [ "CS1234-A10" ]
+    "modTutGroups" : [ "CS1234-A10" ],
+    "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "telegramHandle" : "@elleMeyer",
     "email" : "werner@example.com",
-    "modTutGroups" : [ "ES2666-Z01" ]
+    "modTutGroups" : [ "ES2666-Z01" ],
+    "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "telegramHandle" : "@fiona",
     "email" : "lydia@example.com",
-    "modTutGroups" : [ "ES2666-Z01" ]
+    "modTutGroups" : [ "ES2666-Z01" ],
+    "tags" : [ ]
   }, {
     "name" : "George Best",
     "telegramHandle" : "@george",
     "email" : "anna@example.com",
-    "modTutGroups" : [ "ES2666-Z01" ]
+    "modTutGroups" : [ "ES2666-Z01" ],
+    "tags" : [ ]
   } ]
 }

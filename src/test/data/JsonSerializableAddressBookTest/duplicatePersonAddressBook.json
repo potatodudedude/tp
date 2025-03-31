@@ -3,7 +3,8 @@
     "name" : "Alice Pauline",
     "telegramHandle" : "@alice",
     "email" : "alice@example.com",
-    "modTutGroups" : [ "CS1234-A10" ]
+    "modTutGroups" : [ "CS1234-A10" ],
+    "tags": [ "friends" ]
   }, {
     "name" : "Alice Pauline",
     "telegramHandle" : "@alice",

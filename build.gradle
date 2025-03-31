@@ -69,4 +69,8 @@ shadowJar {
     archiveFileName = 'ConnectS.jar'
 }
 
+run {
+    enableAssertions = true
+}
+
 defaultTasks 'clean', 'test'

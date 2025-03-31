@@ -14,6 +14,7 @@ import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.tag.Tag;
 
 /**
  * Pins a person to the top of the list.
@@ -59,7 +60,8 @@ public class PinCommand extends Command {
         TelegramHandle telegramHandle = personToPin.getTelegramHandle();
         Email email = personToPin.getEmail();
         Set<ModTutGroup> modTutGroups = personToPin.getModTutGroups();
-        return new Person(name, telegramHandle, email, modTutGroups, true);
+        Set<Tag> tags = personToPin.getTags();
+        return new Person(name, telegramHandle, email, modTutGroups, tags, true);
     }
 
     @Override

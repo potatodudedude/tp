@@ -1,8 +1,9 @@
 {
   "persons": [ {
     "name": "Hans Muster",
-    "phone": "9482424",
-    "email": "invalid@email!3e",
-    "address": "4th street"
+    "telegramHandle" : "@hansmuster666",
+    "email" : "invalid@email!3e",
+    "modTutGroups" : [ "ES2666-Z01" ],
+    "tags" : [ ]
   } ]
 }

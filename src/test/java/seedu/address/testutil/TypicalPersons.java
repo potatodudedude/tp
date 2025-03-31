@@ -6,6 +6,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
 
@@ -23,16 +25,16 @@ public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withEmail("alice@example.com").withTele("@alice")
-            .withModTuts("CS1234-A10").withPin(false).build();
+            .withModTuts("CS1234-A10").withTags("friends").withPin(false).build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withEmail("johnd@example.com").withTele("@benson")
-            .withModTuts("CS1234-A10").withPin(false).build();
+            .withModTuts("CS1234-A10").withTags("owesMoney", "friends").withPin(false).build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz")
             .withEmail("heinz@example.com").withTele("@carl_kurz")
             .withModTuts("CS1234-A10").withPin(false).build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier")
             .withEmail("cornelia@example.com").withTele("@daniel")
-            .withModTuts("CS1234-A10").withPin(false).build();
+            .withModTuts("CS1234-A10").withTags("friends").withPin(false).build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer")
             .withEmail("werner@example.com").withTele("@elleMeyer")
             .withModTuts("ES2666-Z01").withPin(false).build();
@@ -51,9 +53,10 @@ public class TypicalPersons {
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withEmail(VALID_EMAIL_AMY)
-            .withTele(VALID_TELE_AMY).withModTuts(VALID_MODTUT_AMY).withPin(false).build();
+            .withTele(VALID_TELE_AMY).withModTuts(VALID_MODTUT_AMY).withTags(VALID_TAG_FRIEND).withPin(false).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
-            .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withPin(false).build();
+            .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withPin(false).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
     // Manually added - Pinned Persons
     public static final Person PINNED_ALICE = new PersonBuilder().withName("Alice Pauline")

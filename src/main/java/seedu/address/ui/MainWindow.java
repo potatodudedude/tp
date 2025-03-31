@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -24,8 +25,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
-
-    private static boolean isViewAll;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -65,13 +64,7 @@ public class MainWindow extends UiPart<Stage> {
 
         setAccelerators();
 
-        isViewAll = false;
-
         helpWindow = new HelpWindow();
-    }
-
-    public static boolean isViewAll() {
-        return isViewAll;
     }
 
     public Stage getPrimaryStage() {
@@ -116,7 +109,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList(), logic);
         mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -170,7 +163,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void viewAll() {
-        isViewAll = true;
+        logic.setViewAll(true);
         PersonListPanel personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         mainViewPlaceholder.getChildren().clear();
         mainViewPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -178,8 +171,8 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void viewTabs() {
-        isViewAll = false;
-        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+        logic.setViewAll(false);
+        moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList(), logic);
         mainViewPlaceholder.getChildren().clear();
         mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
     }
@@ -193,15 +186,21 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
-            moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList());
+
             mainViewPlaceholder.getChildren().clear();
-            mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
+            if (logic.isViewAll()) {
+                PersonListPanel personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+                mainViewPlaceholder.getChildren().add(personListPanel.getRoot());
+            } else {
+                List<String> currentSelectedTabs = List.copyOf(logic.getSelectedTabs());
+                if (!commandResult.isView()) {
+                    moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList(), logic);
+                }
+                moduleTabPane.setSelectedTab(null, currentSelectedTabs, 0);
+                mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
+            }
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
             resultDisplay.show(primaryStage);
-
-            if (commandResult.isShowHelp()) {
-                handleHelp();
-            }
 
             if (commandResult.isExit()) {
                 handleExit();

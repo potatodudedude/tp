@@ -38,6 +38,8 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane modTutGroup;
+    @FXML
+    private FlowPane tags;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -52,5 +54,8 @@ public class PersonCard extends UiPart<Region> {
         person.getModTutGroups().stream()
                 .sorted(Comparator.comparing(group -> group.value))
                 .forEach(group -> modTutGroup.getChildren().add(new Label(group.value)));
+        person.getTags().stream()
+                .sorted(Comparator.comparing(tag -> tag.tagName))
+                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 }
