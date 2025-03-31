@@ -49,7 +49,7 @@ public class PinCommand extends Command {
         }
         Person pinnedPerson = createPinnedPerson(personToPin);
 
-        assert pinnedPerson.getPin() : "Person's pin status should be true before pinning";
+        assert pinnedPerson.getPin() : "Newly created pinnedPerson's pin status should be true";
         model.pinPerson(personToPin, pinnedPerson);
         return new CommandResult(String.format(MESSAGE_PIN_PERSON_SUCCESS, Messages.format(pinnedPerson)));
     }
@@ -60,5 +60,20 @@ public class PinCommand extends Command {
         Email email = personToPin.getEmail();
         Set<ModTutGroup> modTutGroups = personToPin.getModTutGroups();
         return new Person(name, telegramHandle, email, modTutGroups, true);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof PinCommand)) {
+            return false;
+        }
+
+        PinCommand otherPinCommand = (PinCommand) other;
+        return index.equals(otherPinCommand.index);
     }
 }

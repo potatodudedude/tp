@@ -50,7 +50,7 @@ public class UnpinCommand extends Command {
         }
         Person unpinnedPerson = createUnpinnedPerson(personToUnpin);
 
-        assert unpinnedPerson.getPin() : "Person's pin status should be false before unpinning";
+        assert !unpinnedPerson.getPin() : "Newly created pinnedPerson's pin status should be false";
         model.unpinPerson(personToUnpin, unpinnedPerson);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(unpinnedPerson)));
     }
@@ -61,5 +61,20 @@ public class UnpinCommand extends Command {
         Email email = personToUnpin.getEmail();
         Set<ModTutGroup> modTutGroups = personToUnpin.getModTutGroups();
         return new Person(name, telegramHandle, email, modTutGroups, false);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof UnpinCommand)) {
+            return false;
+        }
+
+        UnpinCommand otherUnpinCommand = (UnpinCommand) other;
+        return index.equals(otherUnpinCommand.index);
     }
 }

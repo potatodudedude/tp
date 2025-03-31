@@ -61,6 +61,9 @@ public class TypicalPersons {
             .withModTuts("CS1234-A10").withPin(true).build();
     public static final Person PINNED_BOB = new PersonBuilder().withName(VALID_NAME_BOB).withEmail(VALID_EMAIL_BOB)
             .withTele(VALID_TELE_BOB).withModTuts(VALID_MODTUT_BOB).withPin(true).build();
+    public static final Person PINNED_CARL = new PersonBuilder().withName("Carl Kurz")
+            .withEmail("heinz@example.com").withTele("@carl_kurz")
+            .withModTuts("CS1234-A10").withPin(true).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
@@ -70,9 +73,9 @@ public class TypicalPersons {
     /**
      * Returns an {@code AddressBook} with all the typical persons in sorted order.
      */
-    public static AddressBook getTypicalAddressBook() {
+    public static AddressBook getSortedTypicalAddressBook() {
         AddressBook ab = new AddressBook();
-        for (Person person : getTypicalPersons()) {
+        for (Person person : getSortedTypicalPersons()) {
             ab.addPerson(person);
         }
         return ab;
@@ -89,11 +92,28 @@ public class TypicalPersons {
         return ab;
     }
 
-    public static List<Person> getTypicalPersons() {
+    /**
+     * Returns an {@code AddressBook} with all the typical persons in unsorted order
+     * with two pinned Persons {@code PINNED_CARL} and {@code PINNED_ALICE}. <br>
+     * {@code ALICE} will be first in the list followed by {@code CARL}.
+     */
+    public static AddressBook getPinnedTypicalAddressBook() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getPinnedTypicalPersons()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
+    public static List<Person> getSortedTypicalPersons() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 
     public static List<Person> getUnsortedTypicalPersons() {
         return new ArrayList<>(Arrays.asList(GEORGE, FIONA, ELLE, DANIEL, CARL, BENSON, ALICE));
+    }
+
+    public static List<Person> getPinnedTypicalPersons() {
+        return new ArrayList<>(Arrays.asList(PINNED_ALICE, PINNED_CARL, BENSON, DANIEL, ELLE, FIONA, GEORGE));
     }
 }
