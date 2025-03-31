@@ -1,7 +1,9 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalPersons.getPinnedTypicalAddressBook;
@@ -45,5 +47,27 @@ public class UnpinCommandTest {
     public void execute_alreadyUnpinnedPerson_failure() {
         UnpinCommand unpinCommand = new UnpinCommand(INDEX_THIRD_PERSON);
         assertCommandFailure(unpinCommand, model, UnpinCommand.MESSAGE_PERSON_ALREADY_UNPINNED);
+    }
+
+    @Test
+    public void equals() {
+        UnpinCommand unpinFirstCommand = new UnpinCommand(INDEX_FIRST_PERSON);
+        UnpinCommand unpinSecondCommand = new UnpinCommand(INDEX_SECOND_PERSON);
+
+        //same object -> returns true
+        assert(unpinFirstCommand.equals(unpinFirstCommand));
+
+        //same values -> returns true
+        UnpinCommand unpinFirstCommandCopy = new UnpinCommand(INDEX_FIRST_PERSON);
+        assert(unpinFirstCommand.equals(unpinFirstCommandCopy));
+
+        //different types -> returns false
+        assertFalse(unpinFirstCommand.equals(1));
+
+        //null -> returns false
+        assertFalse(unpinFirstCommand.equals(null));
+
+        //different person -> returns false
+        assertFalse(unpinFirstCommand.equals(unpinSecondCommand));
     }
 }
