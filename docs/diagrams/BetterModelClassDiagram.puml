@@ -19,7 +19,7 @@ UniqueTutList -right-> "*" ModTutGroup
 Person -up-> "*" Tag
 
 Person *--> Name
-Person *--> Telegram 
+Person *--> Telegram
 Person *--> Email
 Person *--> "1..*" ModTutGroup
 
