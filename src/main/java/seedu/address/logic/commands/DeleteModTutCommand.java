@@ -28,5 +28,4 @@ public class DeleteModTutCommand extends Command {
         return new CommandResult(MESSAGE_DELETE_MOD_SUCCESS + modTutGroup.toString(), false, false);
     }
 
-
 }
