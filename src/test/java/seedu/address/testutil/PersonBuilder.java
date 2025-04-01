@@ -20,7 +20,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_TELEGRAMHANDLE = "@Amy_13ee";
     public static final String DEFAULT_MODTUTGRP = "CS1234-A10";
-    public static final String DEFAULT_TAG = "Friend";
+    public static final String DEFAULT_TAG = "";
     public static final boolean DEFAULT_PIN = false;
 
     private Name name;
@@ -38,7 +38,6 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         telegramHandle = new TelegramHandle(DEFAULT_TELEGRAMHANDLE);
         modTutGroup.add(new ModTutGroup(DEFAULT_MODTUTGRP));
-        tags.add(new Tag(DEFAULT_TAG));
         isPin = DEFAULT_PIN;
     }
 
