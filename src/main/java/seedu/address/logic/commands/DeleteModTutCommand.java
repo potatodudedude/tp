@@ -6,26 +6,49 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.ModTutGroup;
 
-
+/**
+ * Deletes a tutorial group from all persons in the address book.
+ * Also deletes persons who are taking only the specified tutorial group.
+ */
 public class DeleteModTutCommand extends Command {
+
+    /** Command word to trigger this command. */
     public static final String COMMAND_WORD = "deleteTut";
 
+    /** Usage instructions for this command. */
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the tutorial as specified as well as contacts who only takes the tutorial.\n"
+            + ": Deletes the tutorial as specified as well as contacts who only take the tutorial.\n"
             + "Parameters: Module-Tutorial\n"
             + "Example: " + COMMAND_WORD + " CS2103T-T12";
-    private final ModTutGroup modTutGroup;
 
+    /** Success message displayed after the tutorial is deleted. */
     public static final String MESSAGE_DELETE_MOD_SUCCESS = "Tutorial Deleted ";
 
+    /** The ModTutGroup to be deleted from persons and the address book. */
+    private final ModTutGroup modTutGroup;
+
+    /**
+     * Constructs a DeleteModTutCommand with the specified ModTutGroup.
+     *
+     * @param modTutGroup The tutorial group to delete from persons.
+     */
     public DeleteModTutCommand(ModTutGroup modTutGroup) {
         this.modTutGroup = modTutGroup;
     }
 
+    /**
+     * Executes the delete tutorial group command.
+     * Removes the specified tutorial group from all persons.
+     * Deletes any person who only has that tutorial group.
+     *
+     * @param model The model containing the address book and data.
+     * @return A CommandResult indicating the success of the operation.
+     * @throws CommandException If an error occurs during command execution.
+     */
+    @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.deleteModTut(this.modTutGroup);
         return new CommandResult(MESSAGE_DELETE_MOD_SUCCESS + modTutGroup.toString(), false, false);
     }
-
 }

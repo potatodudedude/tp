@@ -61,8 +61,14 @@ public interface Model {
      */
     boolean hasPerson(Person person);
 
+    /**
+     * Deletes the given tutorial group and people who takes only that tutorial group.
+     */
     void deleteModTut(ModTutGroup modTutGroup);
 
+    /**
+     * Deletes the given module and people who takes only that module.
+     */
     void deleteMod(Module module);
     /**
      * Deletes the given person.

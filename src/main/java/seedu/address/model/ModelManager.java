@@ -107,11 +107,6 @@ public class ModelManager implements Model {
 
 
     @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
-    }
-
-
     public void deleteMod(Module module) {
         requireNonNull(module);
 
@@ -155,6 +150,7 @@ public class ModelManager implements Model {
     }
 
 
+    @Override
     public void deleteModTut(ModTutGroup modTutGroup) {
         requireNonNull(modTutGroup);
 
@@ -200,6 +196,10 @@ public class ModelManager implements Model {
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
+    @Override
+    public void deletePerson(Person target) {
+        addressBook.removePerson(target);
+    }
 
     @Override
     public void addPerson(Person person) {

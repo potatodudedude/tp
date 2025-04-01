@@ -92,7 +92,8 @@ public class ModTutGroup {
         }
 
         ModTutGroup otherModTutGroup = (ModTutGroup) other;
-        return this.module.equals(otherModTutGroup.getModule()) && this.tutorialGroup.equals(otherModTutGroup.getTutorial());
+        return this.module.equals(otherModTutGroup.getModule())
+                && this.tutorialGroup.equals(otherModTutGroup.getTutorial());
     }
 
     @Override
