@@ -24,13 +24,14 @@ public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_TELEGRAMHANDLE = "telegram";
     private static final String INVALID_EMAIL = "example.com";
-    private static final String INVALID_MOD = "CS2109_T12";
+    private static final String INVALID_TUT = "CS2109_T12";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TELEGRAMHANDLE = "@telegram";
-    private static final String VALID_MOD_1 = "CS2109S-T12";
-    private static final String VALID_MOD_2 = "CS2103T-T01";
+    private static final String VALID_MOD = "CS2109S";
+    private static final String VALID_TUT_1 = "CS2109S-T12";
+    private static final String VALID_TUT_2 = "CS2103T-T01";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -130,19 +131,19 @@ public class ParserUtilTest {
 
     @Test
     public void parseModTutGroup_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseModTutGroup(INVALID_MOD));
+        assertThrows(ParseException.class, () -> ParserUtil.parseModTutGroup(INVALID_TUT));
     }
 
     @Test
     public void parseModTutGroup_validValueWithoutWhitespace_returnsModTutGroup() throws Exception {
-        ModTutGroup expectedModTutGroup = new ModTutGroup(VALID_MOD_1);
-        assertEquals(expectedModTutGroup, ParserUtil.parseModTutGroup(VALID_MOD_1));
+        ModTutGroup expectedModTutGroup = new ModTutGroup(VALID_TUT_1);
+        assertEquals(expectedModTutGroup, ParserUtil.parseModTutGroup(VALID_TUT_1));
     }
 
     @Test
     public void parseModTutGroup_validValueWithWhitespace_returnsTrimmedModTutGroup() throws Exception {
-        String modTutGroupWithWhitespace = WHITESPACE + VALID_MOD_1 + WHITESPACE;
-        ModTutGroup expectedModTutGroup = new ModTutGroup(VALID_MOD_1);
+        String modTutGroupWithWhitespace = WHITESPACE + VALID_TUT_1 + WHITESPACE;
+        ModTutGroup expectedModTutGroup = new ModTutGroup(VALID_TUT_1);
         assertEquals(expectedModTutGroup, ParserUtil.parseModTutGroup(modTutGroupWithWhitespace));
     }
 
@@ -153,7 +154,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseModTutGroups_collectionWithInvalidModTutGroups_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseModTutGroups(Arrays.asList(VALID_MOD_1, INVALID_MOD)));
+        assertThrows(ParseException.class, () -> ParserUtil.parseModTutGroups(Arrays.asList(VALID_TUT_1, INVALID_TUT)));
     }
 
     @Test
@@ -163,9 +164,9 @@ public class ParserUtilTest {
 
     @Test
     public void parseModTutGroups_collectionWithValidModTutGroups_returnsModTutGroupSet() throws Exception {
-        Set<ModTutGroup> actualModTutGroupSet = ParserUtil.parseModTutGroups(Arrays.asList(VALID_MOD_1, VALID_MOD_2));
-        Set<ModTutGroup> expectedModTutGroupSet = new HashSet<ModTutGroup>(Arrays.asList(new ModTutGroup(VALID_MOD_1),
-                new ModTutGroup(VALID_MOD_2)));
+        Set<ModTutGroup> actualModTutGroupSet = ParserUtil.parseModTutGroups(Arrays.asList(VALID_TUT_1, VALID_TUT_2));
+        Set<ModTutGroup> expectedModTutGroupSet = new HashSet<ModTutGroup>(Arrays.asList(new ModTutGroup(VALID_TUT_1),
+                new ModTutGroup(VALID_TUT_2)));
 
         assertEquals(expectedModTutGroupSet, actualModTutGroupSet);
     }

@@ -50,4 +50,19 @@ public class DeleteModCommand extends Command {
         model.deleteMod(this.module);
         return new CommandResult(MESSAGE_DELETE_MOD_SUCCESS + module.toString(), false, false);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof DeleteModCommand)) {
+            return false;
+        }
+
+        DeleteModCommand otherDeleteModCommand = (DeleteModCommand) other;
+        return module.equals(otherDeleteModCommand.module);
+    }
 }
