@@ -13,10 +13,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.DeleteModTutCommand.MESSAGE_DELETE_TUT_SUCCESS;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;
 
 public class DeleteModTutCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getSortedTypicalAddressBook(), new UserPrefs());
 
     @Test
     public void execute_validModTut_success() {
