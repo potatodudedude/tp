@@ -18,7 +18,8 @@
         <padding>
           <Insets top="5" right="5" bottom="5" left="15" />
         </padding>
-        <FlowPane fx:id="modTutGroup" styleClass=""/>
+        <FlowPane fx:id="modTutGroup" styleClass="" />
+        <FlowPane fx:id="tags" styleClass="" />
         <Label fx:id="telegramHandle" styleClass="cell_small_label" text="\$telegramHandle" />
         <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       </VBox>
