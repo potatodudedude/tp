@@ -328,7 +328,21 @@
 
 #cardPane {
     -fx-background-color: transparent;
-    -fx-border-width: 0;
+    -fx-padding: 0.8;
+}
+
+#cardPane .title {
+    -fx-background-color: derive(#1d1d1d, 90%);
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 14pt;
+}
+
+#cardPane .content {
+    -fx-background-color: derive(#1d1d1d, 70%);
+}
+
+#personListPanel {
+    -fx-background-color: derive(#1d1d1d, 40%);
 }
 
 #commandTypeLabel {
@@ -347,7 +361,7 @@
     -fx-text-fill: white;
 }
 
-#filterField, #personListPanel, #personWebpage {
+#filterField, #personWebpage {
     -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
 }
 
