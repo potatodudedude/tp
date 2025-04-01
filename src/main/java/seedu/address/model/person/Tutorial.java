@@ -30,7 +30,7 @@ public class Tutorial {
         }
 
         Tutorial otherTutorial = (Tutorial) other;
-        return value.equals(otherTutorial.value);
+        return value.equalsIgnoreCase(otherTutorial.value);
     }
 
     @Override

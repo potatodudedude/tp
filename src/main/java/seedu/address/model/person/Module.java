@@ -30,7 +30,7 @@ public class Module {
         }
 
         Module otherModule = (Module) other;
-        return value.equals(otherModule.value);
+        return value.equalsIgnoreCase(otherModule.value);
     }
 
     @Override

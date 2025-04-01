@@ -7,6 +7,8 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.ModTutGroup;
+import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;
 
 /**
@@ -59,6 +61,9 @@ public interface Model {
      */
     boolean hasPerson(Person person);
 
+    void deleteModTut(ModTutGroup modTutGroup);
+
+    void deleteMod(Module module);
     /**
      * Deletes the given person.
      * The person must exist in ConnectS.
@@ -77,6 +82,7 @@ public interface Model {
      * The person identity of {@code editedPerson} must not be the same as another existing person in ConnectS.
      */
     void setPerson(Person target, Person editedPerson);
+
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
