@@ -20,21 +20,6 @@ public abstract class FieldContainsKeywordsPredicate implements Predicate<Person
     public abstract boolean test(Person person);
 
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(other instanceof FieldContainsKeywordsPredicate)) {
-            return false;
-        }
-
-        FieldContainsKeywordsPredicate otherFieldContainsKeywordsPredicate = (FieldContainsKeywordsPredicate) other;
-        return keywords.equals(otherFieldContainsKeywordsPredicate.keywords);
-    }
-
-    @Override
     public String toString() {
         return new ToStringBuilder(this).add("keywords", keywords).toString();
     }
