@@ -1,22 +1,31 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
+
 /**
  * Represents a Person's module in ConnectS.
  * Guarantees: immutable; is valid as declared in {@link ModTutGroup#isValidModTutGroup(String)}
+ * and asserted in constructor
  */
 public class Module {
-    private final String value;
+    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    private final String name;
 
+    /**
+     * Constructs a {@code Module} with given {@code name}.
+     */
     public Module(String name) {
-        value = name;
-    }
-
-    public String toString() {
-        return value;
+        requireNonNull(name);
+        assert isValidModule(name) : "Module name should be alphanumeric";
+        this.name = name;
     }
 
     public String getName() {
-        return value;
+        return name;
+    }
+
+    public static boolean isValidModule(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override
@@ -30,11 +39,11 @@ public class Module {
         }
 
         Module otherModule = (Module) other;
-        return value.equals(otherModule.value);
+        return name.equals(otherModule.name);
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return name.hashCode();
     }
 }
