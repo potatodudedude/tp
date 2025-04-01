@@ -130,10 +130,20 @@ public class FieldContainsKeywordsPredicateTest {
     @Test
     public void toStringMethod() {
         List<String> keywords = List.of("keyword1", "keyword2");
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
+        NameContainsKeywordsPredicate namePredicate = new NameContainsKeywordsPredicate(keywords);
+        TelegramHandleContainsKeywordsPredicate telegramHandlePredicate =
+                new TelegramHandleContainsKeywordsPredicate(keywords);
+        EmailContainsKeywordsPredicate emailPredicate = new EmailContainsKeywordsPredicate(keywords);
 
-        String expected = NameContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
-        assertEquals(expected, predicate.toString());
+        String expectedNameString = NameContainsKeywordsPredicate.class.getCanonicalName()
+                + "{keywords=" + keywords + "}";
+        assertEquals(expectedNameString, namePredicate.toString());
+        String expectedTelegramHandleString = TelegramHandleContainsKeywordsPredicate.class.getCanonicalName()
+                + "{keywords=" + keywords + "}";
+        assertEquals(expectedTelegramHandleString, telegramHandlePredicate.toString());
+        String expectedEmailString = EmailContainsKeywordsPredicate.class.getCanonicalName()
+                + "{keywords=" + keywords + "}";
+        assertEquals(expectedEmailString, emailPredicate.toString());
     }
 }
 
