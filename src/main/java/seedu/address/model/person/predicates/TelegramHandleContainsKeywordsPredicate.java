@@ -20,4 +20,19 @@ public class TelegramHandleContainsKeywordsPredicate extends FieldContainsKeywor
                 .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getTelegramHandle().value, keyword));
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof TelegramHandleContainsKeywordsPredicate)) {
+            return false;
+        }
+
+        TelegramHandleContainsKeywordsPredicate otherTelegramHandleContainsKeywordsPredicate =
+                (TelegramHandleContainsKeywordsPredicate) other;
+        return keywords.equals(otherTelegramHandleContainsKeywordsPredicate.keywords);
+    }
 }

@@ -30,8 +30,8 @@ public abstract class FieldContainsKeywordsPredicate implements Predicate<Person
             return false;
         }
 
-        FieldContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (FieldContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        FieldContainsKeywordsPredicate otherFieldContainsKeywordsPredicate = (FieldContainsKeywordsPredicate) other;
+        return keywords.equals(otherFieldContainsKeywordsPredicate.keywords);
     }
 
     @Override

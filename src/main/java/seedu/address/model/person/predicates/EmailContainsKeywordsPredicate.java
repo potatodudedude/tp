@@ -20,4 +20,18 @@ public class EmailContainsKeywordsPredicate extends FieldContainsKeywordsPredica
                 .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getEmail().value, keyword));
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof EmailContainsKeywordsPredicate)) {
+            return false;
+        }
+
+        EmailContainsKeywordsPredicate otherEmailContainsKeywordsPredicate = (EmailContainsKeywordsPredicate) other;
+        return keywords.equals(otherEmailContainsKeywordsPredicate.keywords);
+    }
 }
