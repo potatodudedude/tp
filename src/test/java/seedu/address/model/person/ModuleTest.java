@@ -19,6 +19,12 @@ public class ModuleTest {
     }
 
     @Test
+    public void getName_success() {
+        Module cs2103t = new Module("CS2103T");
+        assertEquals("CS2103T", cs2103t.getName());
+    }
+
+    @Test
     public void isValidModule() {
         // null module name
         assertThrows(NullPointerException.class, () -> Module.isValidModule(null));

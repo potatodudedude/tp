@@ -19,6 +19,12 @@ public class TutorialTest {
     }
 
     @Test
+    public void getName_success() {
+        Tutorial t01 = new Tutorial("T01");
+        assertEquals("T01", t01.getName());
+    }
+
+    @Test
     public void isValidTutorial() {
         // null tutorial name
         assertThrows(NullPointerException.class, () -> Tutorial.isValidTutorial(null));
