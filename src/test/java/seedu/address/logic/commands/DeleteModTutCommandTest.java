@@ -1,12 +1,5 @@
 package seedu.address.logic.commands;
 
-import org.junit.jupiter.api.Test;
-
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.person.ModTutGroup;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
@@ -14,6 +7,14 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.DeleteModTutCommand.MESSAGE_DELETE_TUT_SUCCESS;
 import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.person.ModTutGroup;
+
 
 public class DeleteModTutCommandTest {
     private Model model = new ModelManager(getSortedTypicalAddressBook(), new UserPrefs());
