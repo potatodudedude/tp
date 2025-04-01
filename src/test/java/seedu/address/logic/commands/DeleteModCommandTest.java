@@ -5,11 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MOD_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MOD_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-
 import static seedu.address.logic.commands.DeleteModCommand.MESSAGE_DELETE_MOD_SUCCESS;
+import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;
 
-import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;;
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
