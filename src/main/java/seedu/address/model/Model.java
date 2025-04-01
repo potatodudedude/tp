@@ -60,9 +60,16 @@ public interface Model {
     boolean hasPerson(Person person);
 
     /**
+     * Returns true if there's a person with the same identity as {@code editedPerson}, excluding {@code personToEdit}.
+     */
+
+    boolean hasEditedPerson(Person personToEdit, Person editedPerson);
+
+    /**
      * Deletes the given person.
      * The person must exist in ConnectS.
      */
+
     void deletePerson(Person target);
 
     /**
