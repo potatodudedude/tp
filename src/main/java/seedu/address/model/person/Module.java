@@ -44,7 +44,7 @@ public class Module {
 
         Module otherModule = (Module) other;
 
-        return value.equalsIgnoreCase(otherModule.value);
+        return name.equalsIgnoreCase(otherModule.name);
 
     }
 

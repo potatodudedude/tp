@@ -40,7 +40,7 @@ public class Tutorial {
 
         Tutorial otherTutorial = (Tutorial) other;
 
-        return value.equalsIgnoreCase(otherTutorial.value);
+        return name.equalsIgnoreCase(otherTutorial.name);
     }
 
     @Override
