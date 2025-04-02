@@ -23,6 +23,6 @@ Person *--> Telegram
 Person *--> Email
 Person *--> "1..*" ModTutGroup
 
-ModTutGroup *--> Module
-ModTutGroup *--> Tutorial
+ModTutGroup *--> "1" Module
+ModTutGroup *--> "1" Tutorial
 @enduml
