@@ -3,18 +3,13 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.ModTutGroup;
-import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Tutorial;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.
