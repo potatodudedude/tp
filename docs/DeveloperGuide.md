@@ -162,6 +162,8 @@ This section describes some noteworthy details on how certain features are imple
 
 <puml src="diagrams/ViewAllSequenceDiagram.puml" alt="View All Sequence Diagram" />
 
+<br>
+
 <puml src="diagrams/ViewTabsSequenceDiagram.puml" alt="View Tabs Sequence Diagram" />
 
 #### Design considerations:
