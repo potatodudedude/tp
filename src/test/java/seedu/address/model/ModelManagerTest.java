@@ -15,6 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.predicates.NameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 
@@ -98,6 +99,17 @@ public class ModelManagerTest {
     public void getCurrentTabPersonList_modifyList_throwsUnsupportedOperationException() {
         modelManager.setViewAll(false);
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getCurrentTabPersonList().remove(0));
+    }
+
+    @Test
+    public void getCurrentTabPersonList_onePerson_tabViewShowsPerson() {
+        modelManager.addPerson(ALICE);
+        ModTutGroup firstModTutGroup = ALICE.getModTutGroups().iterator().next();
+        String moduleName = firstModTutGroup.getModule().getName();
+        String tutorialName = firstModTutGroup.getTutorial().getName();
+        modelManager.setViewAll(false);
+        modelManager.setSelectedTabs(moduleName, tutorialName);
+        assertEquals(modelManager.getCurrentTabPersonList().get(0), ALICE);
     }
 
     @Test
