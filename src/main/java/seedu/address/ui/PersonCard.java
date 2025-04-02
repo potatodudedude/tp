@@ -5,6 +5,7 @@ import java.util.Comparator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import seedu.address.model.person.Person;
 
@@ -25,6 +26,8 @@ public class PersonCard extends UiPart<TitledPane> {
 
     public final Person person;
 
+    private boolean isPin;
+
     @FXML
     private TitledPane cardPane;
     @FXML
@@ -39,6 +42,8 @@ public class PersonCard extends UiPart<TitledPane> {
     private FlowPane modTutGroup;
     @FXML
     private FlowPane tags;
+    @FXML
+    private ImageView pinImage;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -54,6 +59,10 @@ public class PersonCard extends UiPart<TitledPane> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        isPin = person.getPin();
+        if (isPin) {
+            cardPane.setStyle("-fx-border-width: 3; -fx-border-radius: 3; -fx-border-color: lightblue;");
+        }
 
         cardPane.setText(displayedIndex + ". " + person.getName().fullName);
     }
