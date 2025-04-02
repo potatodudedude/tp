@@ -19,5 +19,18 @@ public class NameContainsKeywordsPredicate extends FieldContainsKeywordsPredicat
         return super.keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getName().fullName, keyword));
     }
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
 
+        // instanceof handles nulls
+        if (!(other instanceof NameContainsKeywordsPredicate)) {
+            return false;
+        }
+
+        NameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (NameContainsKeywordsPredicate) other;
+        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+    }
 }

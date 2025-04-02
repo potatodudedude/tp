@@ -8,6 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
+import seedu.address.model.person.ModTutGroup;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.predicates.FieldContainsKeywordsPredicate;
 
 /**
@@ -38,6 +40,13 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
+        if (!model.getFilteredPersonList().isEmpty()) {
+            Person firstPerson = model.getFilteredPersonList().get(0);
+            ModTutGroup firstModTutGroup = firstPerson.getModTutGroups().iterator().next();
+            String moduleName = firstModTutGroup.getModule().getName();
+            String tutorialName = firstModTutGroup.getTutorial().getName();
+            model.setSelectedTabs(moduleName, tutorialName);
+        }
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }

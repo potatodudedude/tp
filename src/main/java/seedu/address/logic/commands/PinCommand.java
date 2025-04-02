@@ -27,7 +27,7 @@ public class PinCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_SUCCESS = "Pinned Person: %1$s";
+    public static final String MESSAGE_PIN_PERSON_SUCCESS = "Pinned Person: %1$s";
     public static final String MESSAGE_PERSON_ALREADY_PINNED = "This person is already pinned.";
 
     private final Index index; // One-based index
@@ -50,9 +50,9 @@ public class PinCommand extends Command {
         }
         Person pinnedPerson = createPinnedPerson(personToPin);
 
-        assert pinnedPerson.getPin() : "Person's pin status should be true before pinning";
+        assert pinnedPerson.getPin() : "Newly created pinnedPerson's pin status should be true";
         model.pinPerson(personToPin, pinnedPerson);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(pinnedPerson)));
+        return new CommandResult(String.format(MESSAGE_PIN_PERSON_SUCCESS, Messages.format(pinnedPerson)));
     }
 
     private Person createPinnedPerson(Person personToPin) {
@@ -62,5 +62,20 @@ public class PinCommand extends Command {
         Set<ModTutGroup> modTutGroups = personToPin.getModTutGroups();
         Set<Tag> tags = personToPin.getTags();
         return new Person(name, telegramHandle, email, modTutGroups, tags, true);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof PinCommand)) {
+            return false;
+        }
+
+        PinCommand otherPinCommand = (PinCommand) other;
+        return index.equals(otherPinCommand.index);
     }
 }

@@ -7,13 +7,17 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.ModTutGroup;
+import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;
 
 /**
@@ -99,6 +103,97 @@ public class ModelManager implements Model {
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return addressBook.hasPerson(person);
+    }
+
+
+    @Override
+    public void deleteMod(Module module) {
+        requireNonNull(module);
+
+        List<Person> personsToRemove = new ArrayList<>();
+        List<Person> personsToUpdate = new ArrayList<>();
+
+        for (Person person : addressBook.getPersonList()) {
+            Set<ModTutGroup> originalGroups = person.getModTutGroups();
+
+            // Find all groups belonging to the specified module
+            Set<ModTutGroup> groupsToKeep = originalGroups.stream()
+                    .filter(group -> !group.getModule().equals(module))
+                    .collect(Collectors.toSet());
+
+            if (groupsToKeep.isEmpty() && !originalGroups.isEmpty()) {
+                // All groups were from the target module → delete person
+                personsToRemove.add(person);
+            } else if (groupsToKeep.size() < originalGroups.size()) {
+                // Person had a mix of target + other modules → update person
+                Person updatedPerson = person.withUpdatedModTutGroups(groupsToKeep);
+                personsToUpdate.add(updatedPerson);
+            }
+        }
+
+        // Perform deletion
+        for (Person person : personsToRemove) {
+            addressBook.removePerson(person);
+        }
+
+        // Perform updates
+        for (Person updatedPerson : personsToUpdate) {
+            // Find the original person
+            Person originalPerson = addressBook.getPersonList().stream()
+                    .filter(p -> p.isSamePerson(updatedPerson))
+                    .findFirst()
+                    .orElseThrow(); // Should never happen
+
+            addressBook.setPerson(originalPerson, updatedPerson);
+        }
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+
+    @Override
+    public void deleteModTut(ModTutGroup modTutGroup) {
+        requireNonNull(modTutGroup);
+
+        List<Person> personsToRemove = new ArrayList<>();
+        List<Person> personsToUpdate = new ArrayList<>();
+
+        for (Person person : addressBook.getPersonList()) {
+            Set<ModTutGroup> originalGroups = person.getModTutGroups();
+
+            if (!originalGroups.contains(modTutGroup)) {
+                continue; // Person doesn't have this group, skip
+            }
+
+            Set<ModTutGroup> groupsToKeep = originalGroups.stream()
+                    .filter(group -> !group.equals(modTutGroup))
+                    .collect(Collectors.toSet());
+
+            if (groupsToKeep.isEmpty()) {
+                // This was their only group → delete
+                personsToRemove.add(person);
+            } else {
+                // Person had other groups too → update
+                Person updatedPerson = person.withUpdatedModTutGroups(groupsToKeep);
+                personsToUpdate.add(updatedPerson);
+            }
+        }
+
+        // Delete persons
+        for (Person person : personsToRemove) {
+            addressBook.removePerson(person);
+        }
+
+        // Update persons
+        for (Person updatedPerson : personsToUpdate) {
+            Person originalPerson = addressBook.getPersonList().stream()
+                    .filter(p -> p.isSamePerson(updatedPerson))
+                    .findFirst()
+                    .orElseThrow(); // Should never happen
+
+            addressBook.setPerson(originalPerson, updatedPerson);
+        }
+
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
