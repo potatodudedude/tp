@@ -8,7 +8,8 @@
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/AY2425S2-CS2103T-F10-4/tp/actions)
 [![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
 
-![Ui](images/Ui.png)
+[//]: # (![Ui]&#40;images/Ui.png&#41;)
+<img src="images/Ui.png" alt="Tab View of Connects" width="500" />
 
 **AddressBook is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
