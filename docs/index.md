@@ -9,7 +9,7 @@
 [![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
 
 [//]: # (![Ui]&#40;images/Ui.png&#41;)
-<img src="images/Ui.png" alt="Tab View of Connects" width="500" />
+<img src="images/UI.png" alt="Tab View of Connects" width="500" />
 
 **AddressBook is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
