@@ -44,22 +44,7 @@ public class DeleteCommand extends Command {
         if (model.isViewAll()) {
             filteredList = model.getFilteredPersonList();
         } else {
-            List<String> selectedTabs = model.getSelectedTabs();
-            String moduleName = selectedTabs.get(0);
-            String tutorialName = selectedTabs.get(1);
-
-            List<Person> personList = model.getAddressBook().getPersonList();
-            filteredList = personList.stream()
-                    .filter(p -> {
-                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                        Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
-                        return moduleStream.anyMatch(m -> m.getName().equals(moduleName));
-                    })
-                    .filter(p -> {
-                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                        Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
-                        return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
-                    }).toList();
+            filteredList = model.getCurrentTabPersonList();
         }
 
         if (targetIndex.getZeroBased() >= filteredList.size()) {

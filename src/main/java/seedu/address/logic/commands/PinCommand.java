@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
@@ -11,9 +12,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.ModTutGroup;
+import seedu.address.model.person.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.person.Tutorial;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -39,12 +42,18 @@ public class PinCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
+        List<Person> filteredList;
+        if (model.isViewAll()) {
+            filteredList = model.getFilteredPersonList();
+        } else {
+            filteredList = model.getCurrentTabPersonList();
+        }
+
+        if (index.getZeroBased() >= filteredList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
-        Person personToPin = lastShownList.get(index.getZeroBased());
+        Person personToPin = filteredList.get(index.getZeroBased());
         if (personToPin.getPin()) {
             throw new CommandException(MESSAGE_PERSON_ALREADY_PINNED);
         }
