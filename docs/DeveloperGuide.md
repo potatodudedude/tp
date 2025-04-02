@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# ConnectS Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -322,7 +322,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User requests to <ins> list contacts (UC1)</ins>.
 2.  User requests to delete a specific contact in the list.
-3.  AddressBook deletes the contact.
+3.  ConnectS deletes the contact.
 
     Use case ends.
 
