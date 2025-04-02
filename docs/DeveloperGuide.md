@@ -160,11 +160,15 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Change View Mode
 
+The behaviour of the view all button can be seen below.
+
 <puml src="diagrams/ViewAllSequenceDiagram.puml" alt="View All Sequence Diagram" />
 
-<br>
+The behaviour of the view tabs button can also be seen here.
 
 <puml src="diagrams/ViewTabsSequenceDiagram.puml" alt="View Tabs Sequence Diagram" />
+
+In order to maintain a similar architecture to the original AB3, new methods such as `setViewAll()` have been implemented.
 
 #### Design considerations:
 
