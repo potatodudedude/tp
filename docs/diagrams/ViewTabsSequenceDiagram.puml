@@ -1,0 +1,74 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Ui UI_COLOR_T1
+participant ":MainWindow" as MainWindow UI_COLOR
+participant "placeholder:StackPane" as StackPane UI_COLOR
+participant "moduleTabPane:ModuleTabPane" as ModuleTabPane UI_COLOR
+participant "children:ObservableList<Node>" as Children UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":Logic" as Logic LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> MainWindow : viewAll()
+activate MainWindow
+
+MainWindow -> Logic : setViewAll(false)
+activate Logic
+
+Logic -> Model : setViewAll(false)
+activate Model
+
+Model --> Logic
+deactivate Model
+
+Logic -> MainWindow
+deactivate Logic
+
+MainWindow -> Logic : getFilteredPersonList()
+activate Logic
+
+Logic -> Model : getFilteredPersonList()
+activate Model
+
+Model --> Logic : filteredPersons
+deactivate Model
+
+Logic -> MainWindow : filteredPersons
+deactivate Logic
+
+create ModuleTabPane
+MainWindow -> ModuleTabPane
+activate ModuleTabPane
+
+ModuleTabPane --> MainWindow : moduleTabPane
+deactivate ModuleTabPane
+
+MainWindow -> StackPane : getChildren()
+activate StackPane
+
+StackPane --> MainWindow : children
+deactivate StackPane
+
+MainWindow -> Children : clear()
+activate Children
+
+Children --> MainWindow
+deactivate Children
+
+MainWindow -> Children : add(moduleTabPane)
+activate Children
+
+Children --> MainWindow
+deactivate Children
+
+[<--MainWindow
+deactivate MainWindow
+@enduml

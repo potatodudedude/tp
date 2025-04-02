@@ -1,0 +1,74 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Ui UI_COLOR_T1
+participant ":MainWindow" as MainWindow UI_COLOR
+participant "placeholder:StackPane" as StackPane UI_COLOR
+participant "personListPanel:PersonListPanel" as PersonListPanel UI_COLOR
+participant "children:ObservableList<Node>" as Children UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":Logic" as Logic LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> MainWindow : viewAll()
+activate MainWindow
+
+MainWindow -> Logic : setViewAll(true)
+activate Logic
+
+Logic -> Model : setViewAll(true)
+activate Model
+
+Model --> Logic
+deactivate Model
+
+Logic -> MainWindow
+deactivate Logic
+
+MainWindow -> Logic : getFilteredPersonList()
+activate Logic
+
+Logic -> Model : getFilteredPersonList()
+activate Model
+
+Model --> Logic : filteredPersons
+deactivate Model
+
+Logic -> MainWindow : filteredPersons
+deactivate Logic
+
+create PersonListPanel
+MainWindow -> PersonListPanel
+activate PersonListPanel
+
+PersonListPanel --> MainWindow : personListPanel
+deactivate PersonListPanel
+
+MainWindow -> StackPane : getChildren()
+activate StackPane
+
+StackPane --> MainWindow : children
+deactivate StackPane
+
+MainWindow -> Children : clear()
+activate Children
+
+Children --> MainWindow
+deactivate Children
+
+MainWindow -> Children : add(personListPanel)
+activate Children
+
+Children --> MainWindow
+deactivate Children
+
+[<--MainWindow
+deactivate MainWindow
+@enduml
