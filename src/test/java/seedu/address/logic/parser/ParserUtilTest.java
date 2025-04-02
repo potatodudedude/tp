@@ -31,7 +31,7 @@ public class ParserUtilTest {
     private static final String VALID_TELEGRAMHANDLE = "@telegram";
     private static final String VALID_MOD = "CS2109S";
     private static final String VALID_TUT_1 = "CS2109S-T12";
-    private static final String VALID_TUT_2 = "CS2103T-T01";
+    private static final String VALID_TUT_2 = "cs2103T-t01";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -136,8 +136,13 @@ public class ParserUtilTest {
 
     @Test
     public void parseModTutGroup_validValueWithoutWhitespace_returnsModTutGroup() throws Exception {
+        // Input modTutGroup string is in uppercase -> success
         ModTutGroup expectedModTutGroup = new ModTutGroup(VALID_TUT_1);
         assertEquals(expectedModTutGroup, ParserUtil.parseModTutGroup(VALID_TUT_1));
+
+        // Input modTutGroup string is in lowercase -> successful parsing to uppercase
+        ModTutGroup expectedModTutGroup2 = new ModTutGroup(VALID_TUT_2.toUpperCase());
+        assertEquals(expectedModTutGroup2, ParserUtil.parseModTutGroup(VALID_TUT_2));
     }
 
     @Test
@@ -166,7 +171,7 @@ public class ParserUtilTest {
     public void parseModTutGroups_collectionWithValidModTutGroups_returnsModTutGroupSet() throws Exception {
         Set<ModTutGroup> actualModTutGroupSet = ParserUtil.parseModTutGroups(Arrays.asList(VALID_TUT_1, VALID_TUT_2));
         Set<ModTutGroup> expectedModTutGroupSet = new HashSet<ModTutGroup>(Arrays.asList(new ModTutGroup(VALID_TUT_1),
-                new ModTutGroup(VALID_TUT_2)));
+                new ModTutGroup(VALID_TUT_2.toUpperCase())));
 
         assertEquals(expectedModTutGroupSet, actualModTutGroupSet);
     }

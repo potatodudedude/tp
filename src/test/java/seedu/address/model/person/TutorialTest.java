@@ -19,6 +19,11 @@ public class TutorialTest {
     }
 
     @Test
+    public void constructor_lowercaseTutorial_throwsAssertion() {
+        assertThrows(AssertionError.class, () -> new Tutorial("t01")); // contains lowercase character
+    }
+
+    @Test
     public void getName_success() {
         Tutorial t01 = new Tutorial("T01");
         assertEquals("T01", t01.getName());

@@ -90,7 +90,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String modTutGroup} into a {@code ModTutGroup}.
+     * Parses a {@code String modTutGroup} into a {@code ModTutGroup} in UpperCase.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @param modTutGroup the ModTut group as a string
@@ -103,7 +103,7 @@ public class ParserUtil {
         if (!ModTutGroup.isValidModTutGroup(trimmedModTutGroup)) {
             throw new ParseException(ModTutGroup.MESSAGE_CONSTRAINTS);
         }
-        return new ModTutGroup(trimmedModTutGroup);
+        return new ModTutGroup(trimmedModTutGroup.toUpperCase());
     }
 
     /**
