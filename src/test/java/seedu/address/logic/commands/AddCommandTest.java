@@ -143,6 +143,10 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasEditedPerson(Person personToEdit, Person editedPerson) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         public void deleteMod(Module module) {
             throw new AssertionError("This method should not be called.");
         }

@@ -71,6 +71,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if there's a person with the same identity as {@code editedPerson}, excluding {@code personToEdit}.
+     */
+    public boolean hasEditedPerson(Person personToEdit, Person editedPerson) {
+        requireAllNonNull(personToEdit, editedPerson);
+        return persons.containsExcluding(editedPerson, personToEdit);
+    }
+
+    /**
      * Adds a person to ConnectS.
      * The person must not already exist in ConnectS.
      */

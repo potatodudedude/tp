@@ -62,6 +62,12 @@ public interface Model {
     boolean hasPerson(Person person);
 
     /**
+     * Returns true if there's a person with the same identity as {@code editedPerson}, excluding {@code personToEdit}.
+     */
+
+    boolean hasEditedPerson(Person personToEdit, Person editedPerson);
+
+    /**
      * Deletes the given tutorial group and people who takes only that tutorial group.
      */
     void deleteModTut(ModTutGroup modTutGroup);
@@ -70,10 +76,12 @@ public interface Model {
      * Deletes the given module and people who takes only that module.
      */
     void deleteMod(Module module);
+
     /**
      * Deletes the given person.
      * The person must exist in ConnectS.
      */
+
     void deletePerson(Person target);
 
     /**
