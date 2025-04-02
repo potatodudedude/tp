@@ -160,9 +160,9 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Change View Mode
 
-<puml src="diagrams/ViewAllSequenceDiagram.puml" alt="View All Sequence Diagram">
+<puml src="diagrams/ViewAllSequenceDiagram.puml" alt="View All Sequence Diagram" />
 
-<puml src="diagrams/ViewTabsSequenceDiagram.puml" alt="View Tabs Sequence Diagram">
+<puml src="diagrams/ViewTabsSequenceDiagram.puml" alt="View Tabs Sequence Diagram" />
 
 #### Design considerations:
 
