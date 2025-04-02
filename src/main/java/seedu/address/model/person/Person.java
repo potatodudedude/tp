@@ -91,6 +91,13 @@ public class Person {
     }
 
     /**
+     * Returns a new Person with the same data except for updated ModTutGroups.
+     */
+    public Person withUpdatedModTutGroups(Set<ModTutGroup> newModTutGroups) {
+        return new Person(name, telegramHandle, email, newModTutGroups, tags, isPin);
+    }
+
+    /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */

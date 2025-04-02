@@ -20,6 +20,10 @@ public class Module {
         this.name = name;
     }
 
+    public String toString() {
+        return name;
+    }
+
     public String getName() {
         return name;
     }
@@ -39,7 +43,9 @@ public class Module {
         }
 
         Module otherModule = (Module) other;
-        return name.equals(otherModule.name);
+
+        return name.equalsIgnoreCase(otherModule.name);
+
     }
 
     @Override
