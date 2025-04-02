@@ -1,8 +1,8 @@
 {
   "baseUrl": "",
   "titlePrefix": "ConnectS",
-  "titleSuffix": "AddressBook Level-3",
-  "faviconPath": "images/SeEduLogo.png",
+  "titleSuffix": "",
+  "faviconPath": "images/ConnectS.png",
   "style": {
     "codeTheme": "light"
   },
