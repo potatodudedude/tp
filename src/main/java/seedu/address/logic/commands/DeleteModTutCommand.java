@@ -22,7 +22,7 @@ public class DeleteModTutCommand extends Command {
             + "Example: " + COMMAND_WORD + " CS2103T-T12";
 
     /** Success message displayed after the tutorial is deleted. */
-    public static final String MESSAGE_DELETE_TUT_SUCCESS = "Tutorial Deleted ";
+    public static final String MESSAGE_DELETE_TUT_SUCCESS = "Tutorial Deleted: ";
 
     /** The ModTutGroup to be deleted from persons and the address book. */
     private final ModTutGroup modTutGroup;

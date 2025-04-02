@@ -22,7 +22,7 @@ public class DeleteModCommand extends Command {
             + "Example: " + COMMAND_WORD + " CS2103T";
 
     /** Success message displayed after module is deleted. */
-    public static final String MESSAGE_DELETE_MOD_SUCCESS = "Course Deleted";
+    public static final String MESSAGE_DELETE_MOD_SUCCESS = "Course Deleted: ";
 
     /** The module to be deleted from the address book. */
     private final Module module;
