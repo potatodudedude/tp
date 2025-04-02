@@ -281,11 +281,15 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Person> getCurrentTabPersonList() {
         assert (!isViewAll());
+        List<Person> personList = this.getAddressBook().getPersonList();
+        if (personList.isEmpty()) {
+            return FXCollections.emptyObservableList();
+        }
+
         List<String> selectedTabs = this.getSelectedTabs();
         String moduleName = selectedTabs.get(0);
         String tutorialName = selectedTabs.get(1);
 
-        List<Person> personList = this.getAddressBook().getPersonList();
         return personList.stream()
                 .filter(p -> {
                     Set<ModTutGroup> modTutGroups = p.getModTutGroups();

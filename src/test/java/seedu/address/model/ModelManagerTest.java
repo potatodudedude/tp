@@ -90,7 +90,14 @@ public class ModelManagerTest {
 
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
+        modelManager.setViewAll(true);
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPersonList().remove(0));
+    }
+
+    @Test
+    public void getCurrentTabPersonList_modifyList_throwsUnsupportedOperationException() {
+        modelManager.setViewAll(false);
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getCurrentTabPersonList().remove(0));
     }
 
     @Test
