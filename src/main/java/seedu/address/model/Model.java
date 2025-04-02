@@ -107,6 +107,9 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    /** Returns an unmodifiable view of the filtered person list in tab view */
+    ObservableList<Person> getCurrentTabPersonList();
+
     /**
      * Sorts the address book by the given {@code comparator}.
      * @throws NullPointerException if {@code comparator} is null.

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -24,11 +23,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.ModTutGroup;
-import seedu.address.model.person.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TelegramHandle;
-import seedu.address.model.person.Tutorial;
 import seedu.address.model.tag.Tag;
 
 
@@ -60,7 +57,7 @@ public class EditCommand extends Command {
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param index                of the person in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
      */
     public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
@@ -69,47 +66,6 @@ public class EditCommand extends Command {
 
         this.index = index;
         this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
-    }
-
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        List<Person> filteredList;
-        if (model.isViewAll()) {
-            filteredList = model.getFilteredPersonList();
-        } else {
-            List<String> selectedTabs = model.getSelectedTabs();
-            String moduleName = selectedTabs.get(0);
-            String tutorialName = selectedTabs.get(1);
-
-            List<Person> personList = model.getAddressBook().getPersonList();
-            filteredList = personList.stream()
-                    .filter(p -> {
-                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                        Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
-                        return moduleStream.anyMatch(m -> m.getName().equals(moduleName));
-                    })
-                    .filter(p -> {
-                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                        Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
-                        return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
-                    }).toList();
-        }
-
-        if (index.getZeroBased() >= filteredList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        Person personToEdit = filteredList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
-
-        if (model.hasEditedPerson(personToEdit, editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        }
-
-        model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
 
     /**
@@ -128,6 +84,32 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         boolean isPin = personToEdit.getPin(); // pin status should not be edited
         return new Person(updatedName, updatedTelegramHandle, updatedEmail, updatedModTutGroups, updatedTags, isPin);
+    }
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+        List<Person> filteredList;
+        if (model.isViewAll()) {
+            filteredList = model.getFilteredPersonList();
+        } else {
+            filteredList = model.getCurrentTabPersonList();
+        }
+
+        if (index.getZeroBased() >= filteredList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        Person personToEdit = filteredList.get(index.getZeroBased());
+        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+
+        if (model.hasEditedPerson(personToEdit, editedPerson)) {
+            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        }
+
+        model.setPerson(personToEdit, editedPerson);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
 
     @Override
@@ -165,7 +147,8 @@ public class EditCommand extends Command {
         private Set<ModTutGroup> modTutGroup;
         private Set<Tag> tags;
 
-        public EditPersonDescriptor() {}
+        public EditPersonDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -186,36 +169,28 @@ public class EditCommand extends Command {
             return CollectionUtil.isAnyNonNull(name, telegramHandle, email, modTutGroup, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
-        }
-
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
         }
 
-        public void setTelegramHandle(TelegramHandle telegramHandle) {
-            this.telegramHandle = telegramHandle;
+        public void setName(Name name) {
+            this.name = name;
         }
 
         public Optional<TelegramHandle> getTelegramHandle() {
             return Optional.ofNullable(telegramHandle);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setTelegramHandle(TelegramHandle telegramHandle) {
+            this.telegramHandle = telegramHandle;
         }
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setModTutGroup(Set<ModTutGroup> modTutGroup) {
-            this.modTutGroup = (modTutGroup != null) ? new HashSet<>(modTutGroup) : null;
+        public void setEmail(Email email) {
+            this.email = email;
         }
 
         /**
@@ -231,8 +206,8 @@ public class EditCommand extends Command {
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
          */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setModTutGroup(Set<ModTutGroup> modTutGroup) {
+            this.modTutGroup = (modTutGroup != null) ? new HashSet<>(modTutGroup) : null;
         }
 
         /**
@@ -242,6 +217,14 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        /**
+         * Sets {@code tags} to this object's {@code tags}.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public void setTags(Set<Tag> tags) {
+            this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
         @Override

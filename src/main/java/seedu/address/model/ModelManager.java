@@ -11,7 +11,9 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -19,19 +21,18 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Tutorial;
 
 /**
  * Represents the in-memory model of ConnectS data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
-
-    private boolean isViewAll;
-
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final List<String> selectedTabs;
+    private boolean isViewAll;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -55,14 +56,14 @@ public class ModelManager implements Model {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
@@ -90,13 +91,13 @@ public class ModelManager implements Model {
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public ReadOnlyAddressBook getAddressBook() {
+        return addressBook;
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public void setAddressBook(ReadOnlyAddressBook addressBook) {
+        this.addressBook.resetData(addressBook);
     }
 
     @Override
@@ -275,6 +276,31 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Person> getCurrentTabPersonList() {
+        assert (!isViewAll());
+        List<Person> personList = this.getAddressBook().getPersonList();
+        if (personList.isEmpty()) {
+            return FXCollections.emptyObservableList();
+        }
+
+        List<String> selectedTabs = this.getSelectedTabs();
+        String moduleName = selectedTabs.get(0);
+        String tutorialName = selectedTabs.get(1);
+
+        return personList.stream()
+                .filter(p -> {
+                    Set<ModTutGroup> modTutGroups = p.getModTutGroups();
+                    Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
+                    return moduleStream.anyMatch(m -> m.getName().equals(moduleName));
+                })
+                .filter(p -> {
+                    Set<ModTutGroup> modTutGroups = p.getModTutGroups();
+                    Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
+                    return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
+                }).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
     @Override

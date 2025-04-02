@@ -27,6 +27,7 @@ public class PinCommandTest {
 
     @Test
     public void execute_pin_success() {
+        model.setViewAll(true);
         Person pinnedPerson = TypicalPersons.PINNED_CARL;
         PinCommand pinCommand = new PinCommand(INDEX_THIRD_PERSON);
 
@@ -40,6 +41,7 @@ public class PinCommandTest {
 
     @Test
     public void execute_invalidPersonIndex_failure() {
+        model.setViewAll(true);
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         PinCommand pinCommand = new PinCommand(outOfBoundIndex);
         assertCommandFailure(pinCommand, model , Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -48,6 +50,7 @@ public class PinCommandTest {
     @Test
     public void execute_alreadyPinnedPerson_failure() {
         Model actualModel = new ModelManager(getPinnedTypicalAddressBook(), new UserPrefs());
+        actualModel.setViewAll(true);
         PinCommand pinCommand1 = new PinCommand(INDEX_FIRST_PERSON);
         PinCommand pinCommand2 = new PinCommand(INDEX_SECOND_PERSON);
         assertCommandFailure(pinCommand1, actualModel, PinCommand.MESSAGE_PERSON_ALREADY_PINNED);

@@ -224,6 +224,11 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public ObservableList<Person> getCurrentTabPersonList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
