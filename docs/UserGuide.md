@@ -6,22 +6,67 @@
 
 # ConnectS User Guide
 
-**Welcome the ConnectS user guide! ConnectS is any computing teaching assistants(TAs) best friend in helping them
-manage their tutees' contact information.**
+**Welcome to ConnectS' user guide! As computing teaching assistants(TAs), ConnectS is your best friend in helping you centralise all
+your tutees' contact information into one management app.**
 
-If you are fast at typing, ConnectS' command line interface(CLI) specialisation can help you manage your contacts faster 
-than other contact apps, whilst still allowing you the convenience of a graphic user interface(GUI).
+ConnectS separates your tutee contacts into their different modules and tutorial groups, and records information you will use the most,
+like telegram handles and emails. You can enjoy the many commands available to help you navigate, edit, delete, find and sort through your tutees' information.
+
+If you are fast at typing, ConnectS' command line interface(CLI) specialisation can help you manage your tutee's 
+contacts faster than other contact apps, whilst still allowing you the convenience of a graphic user interface(GUI).
 
 <!-- * Table of Contents -->
 <page-nav-print />
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Table of contents
+
+* [How to use this Guide](#how-to-use-this-guide)
+* [Features](#features)
+  * [Command Formatting](command-formatting)
+  * [Parameter Formatting](parameter-formatting)
+  * Commands
+    * [Getting Help](#viewing-help-help)
+    * [Adding a tutee](#adding-a-tutee-add)
+    * [Listing all tutees](#listing-all-tutees-list)
+    * [Editing a tutee](#editing-a-tutee-edit)
+    * [Finding a tutee](#finding-a-tutee-find)
+    * [Deleting a tutee](#deleting-a-tutee-delete)
+    * [Deleting a module](#deleting-a-module-deletemod)
+    * [Deleting a tutorial](#deleting-a-tutorial-of-a-specific-module--deletetut)
+    * [Sorting a tutee](#sorting-tutees-sort)
+    * [Pinning a tutee](#pinning-a-tutee-pin-unpin)
+    * [Viewing a specific module and tutorial](#viewing-a-tab-view)
+    * [Clearing all tutees](#clearing-all-tutees-clear)
+    * [Exiting ConnectS](#exiting-connects)
+  * [Saving data](#saving-the-data)
+  * [Editing save files](#editing-the-data-file)
+* [FAQ](#faq)
+* [Known issues](#known-issues)
+* [Command Summary](#command-summary)
+* [Glossary](#glossary)
+
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## How to use this Guide
 
-You can  navigate the guide using the table on the right side of the website. If you're looking to get started, visit the
-[Quick Start](#quick-start) section just below. You can also find a [short summary of the commands](#command-summary)
-at the end of the guide.
+If you are a beginner looking to get started: Visit the [Quick Start](#quick-start) section just below.
+
+If you've already set up ConnectS, visit the [features](#features) section to see what commands are available in ConnectS.
+
+If you are a returning user looking to refresh yourself on command formatting, visit if [command summary](#command-summary) for
+a quick overview.
+
+Confused by what certain terms mean? Visit the [glossary](#glossary).
+
+Visit the [table](#table-of-contents) above to quickly access parts of the guide via hyperlink.
+
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -29,61 +74,71 @@ at the end of the guide.
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
 
-   [Setup Guide](https://www3.cs.stonybrook.edu/~amione/CSE114_Course/materials/resources/InstallingJava17.pdf)
+   * **For Window, Linux and Mac**: [Setup Guide](https://www3.cs.stonybrook.edu/~amione/CSE114_Course/materials/resources/InstallingJava17.pdf)
 
+   <box type="info" seamless>
+   
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-
+   </box>
+   
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F10-4/tp/releases/tag/v1.3).
 
 3. Create a new folder where you want to store ConnectS, and place the `.jar` file inside.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in.
    
-   Guide to open command terminal in the `.jar` folder: 
+   * Guide to open command terminal in the `.jar` folder: 
 
-   Windows and Linux: Navigate to the folder, then right-click in the folder and select "open in terminal" or "Open PowerShell window here"
+     * **For Windows and Linux**: Navigate to the folder, then right-click in the folder and select "open in terminal" or "Open PowerShell window here"
 
-   [For Mac users](https://support.apple.com/en-sg/guide/terminal/trmlb20c7888/mac#:~:text=On%20your%20Mac%2C%20open%20a,window%3A%20Choose%20Open%20in%20Terminal.)
+     * **For Mac users**: [Terminal Guide](https://support.apple.com/en-sg/guide/terminal/trmlb20c7888/mac#:~:text=On%20your%20Mac%2C%20open%20a,window%3A%20Choose%20Open%20in%20Terminal.)
  
 5. Use the `java -jar ConnectS.jar` command to run ConnectS.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI like the image below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
 6. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all commands.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all tutee.
 
-   * `add n/John Doe t/@johndoe e/johnd@example.com m/CS2103T-F10` : Adds a contact named `John Doe` to ConnectS.
+   * `add n/John Doe t/@johndoe e/johnd@example.com m/CS2103T-F10` : Adds a tutee named `John Doe` to ConnectS.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the 3rd tutee shown in the current list.
 
-   * `clear` : Deletes all contacts.
+   * `view m/CS2103T-T02` : Switches the viewing tab to tutorial group T02 under module CS2103T, if it exists.
 
    * `exit` : Exits the app.
 
-7.  Refer to the [Features](#features) below for details of each command.
+7.  Refer to the [features](#features) below for details of each command.
+
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
 
+
 <box type="info" seamless>
 
+### Command formatting
 **Notes about the command format:**<br>
 
 * When you see a word in `UPPER_CASE`, that word is a parameter that you enter.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
-* If you see parameters in square brackets, you can use any combination of the parameters, but you
-  must have at least one.<br>
-  e.g. `edit INDEX [n/NAME t/TELEGRAM_HANDLE e/EMAIL]` can be used as `edit 1 n/Doe` or as `edit 2 n/Doe t/@JohnDoe` or as `edit 1 e/john@example.com`, but not `edit 1` alone.
+* If you see parameters in square brackets, they are optional.<br>
+  e.g. `add [tag/TAG...]` allows for the tag parameter to be omitted.
 
-* If you see parameters in triangle brackets, you can use any of them, but you must have only one.
+* If you see parameters in curly brackets, you can use any combination of the parameters, but you
+  must have at least one.<br>
+  e.g. `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL}` can be used as `edit 1 n/Doe` or as `edit 2 n/Doe t/@JohnDoe` or as `edit 1 e/john@example.com`, but not `edit 1` alone.
+
+* If you see parameters in triangle brackets, you can use any of them, but you must have only one.<br>
   e.g. `find <n/NAME... t/TELEGRAM_HANDLE... e/EMAIL...>` can be used as `find n/Doe` or `find t/@johndoe`, but not as `find n/Doe t/@johndoe`.
 
-* If you see parameters with `…`​ after them, it means they can be used multiple times excluding zero times.<br>
-  e.g. `m/MODULE-TUTORIAL_GROUP…​` can be used as `m/CS2101-T06`, `m/CS1101S-T55 m/CS2030S-T08` etc.
+* If you see parameters with `...` after them, it means they can be used multiple times excluding zero times.<br>
+  e.g. `m/MODULE-TUTORIAL_GROUP...` can be used as `m/CS2101-T06`, `m/CS1101S-T55 m/CS2030S-T08` etc.
 
 * You can give parameters in any order.<br>
   e.g. if the command specifies `n/NAME t/TELEGRAM_HANDLE`, `t/TELEGRAM_HANDLE n/NAME` is also acceptable.
@@ -91,57 +146,121 @@ at the end of the guide.
 * If you type in extra lines behind commands that don't require parameters (such as `help`, `list`, `exit` and `clear`), it will be ignored.<br>
   e.g. if you type `help 123`, it will be interpreted as `help`.
 
-* When you see the `MODULE-TUTORIAL_GROUP` parameter, you will need to specify both module and tutorial group of the contact, separated by a hyphen.
-  e.g. `CS2101-T01` is valid, but `CS2101 T01` is not
+* When you see a command that requires you to input the `INDEX` of a tutee, it refers to the numbering of that tutee in the
+  current view you are in.<br>
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands as some spaces may be omitted.
 </box>
 
+<br>
+
+<box type="info" seamless>
+
+### Parameter formatting
+**Notes about the parameter restrictions:**<br>
+
+* `NAME` parameters only allow alphanumeric characters, and can have multiple words.<br>
+   e.g. `John`, `John Doe` or `John @123` are allowed, but `John (Doe)` is not.
+
+* `TELEGRAM_HANDLE` parameters only allow one word which must start with `@`, followed by 5 alphanumeric characters.
+  `_` is allowed, but not at the start or end of the handle.<br> 
+   e.g. `@johnny` and `@john_doe` are allowed, but `johnny`, `@john` and `@_john` are not.
+
+* `EMAIL` parameters only allow for the format `LOCAL_PART`@`DOMAIN`.
+   * `LOCAL_PART` consists of alphanumeric characters. It can also include `+` `-` `_` `.` characters, but cannot start or end with them.
+   * `DOMAIN` consists of `DOMAIN_LABELS`
+     * `DOMAIN_LABELS` consists of alphanumeric characters, separated only by hyphens, if any.
+     * A `DOMAIN` consists of at least two `DOMAIN_LABELS`, separated by a `.`.
+     * The last `DOMAIN_LABEL` must be at least 2 characters long.
+
+   e.g. `john+doe@example.com` is allowed, but `+johndoe@example.com` and `john+doe@example` are not.
+
+* `MODULE-TUTORIAL_GROUP` parameters only allow for the format `MODULE`-`TUTORIAl`.
+   * `MODULE` and `TUTORIAl` both consist of only alphanumeric characters, and are case-insensitive.
+   * `MODULE` and `TUTORIAL` are separated by a hyphen.
+
+  e.g. `cs2103T-t02` id allowed, but `HSI1000 W01` is not.
+
+* `TAG` parameters only allow alphanumeric characters, and can have only one word.<br>
+   e.g. `latecomer` is allowed, but `needs more help` is not.
+</box>
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 ### Viewing help : `help`
 
-This shows you a list of commands you can use.
+You can find a brief overview of all the commands by using this command.
 
 Format: `help`
 
-### Adding a person: `add`
+<br>
 
-This allows you to add a contact to ConnectS.
+--------------------------------------------------------------------------------------------------------------------
 
-Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP…​`
+### Adding a tutee: `add`
+
+You can add a tutee and their name, telegram handle, email, module-tutorial group and custom tags with this command.
+
+Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TAG...]`
 
 <box type="tip" seamless>
 
-**Tip:** You may add multiple module-tutorial groups to a single person!
+**Tip:** You may add multiple module-tutorial groups to a single tutee!
 </box>
 
-Examples:
-* `add n/John Doe t/@johndoey e/johnd@example.com m/CS2100-T07`
-* `add n/Betsy Crowe m/CS2105-T02 t/@betsymetsy m/CS1231S-T03 e/betsycrowe@example.com`
+Example:
+* `add n/John Doe t/@johndoe123 e/johnd@example.com m/CS2103T-T21 m/CS2109S-T05 tag/struggling tag/exchangestudent` adds a tutee with the provided details.
 
-### Listing all persons : `list`
+<details>   
+<summary>This confirmation message will appear:</summary>
 
-This shows you a list of all your contacts in ConnectS.
+![addResult](images/addResult.png)
+</details>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Listing all tutees : `list`
+
+You can see all the tutees you added with this command.
 
 Format: `list`
 
-### Editing a person : `edit`
+<box type="tip" seamless>
 
-This edits a contact you specify.
+**Tip:** After a [find command](#finding-a-tutee-find), use this to be able to see all the tutees again.
+</box>
 
-Format: `edit INDEX [n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP…​]`
+<br>
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+--------------------------------------------------------------------------------------------------------------------
+
+### Editing a tutee : `edit`
+
+You can edit a tutee's information with this command.
+
+Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... tag/TAG...}`
+
+* Edits the tutee at the specified `INDEX`. The index refers to the index number shown in the currently displayed tutee list. The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing module-tutorial groups, the existing module-tutorial groups of the person will be overwritten.
+* When editing module-tutorial groups or tags, the existing module-tutorial groups or tags of the tutee will be overwritten.
 
-Examples:
-*  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st person to be `@johndoey` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
+Example:
+*  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johndoe@example.com` respectively.
+<details>   
+<summary>This confirmation message will appear:</summary>
 
-### Locating persons by name: `find`
+![addResult](images/editResult.png)
+</details>
 
-Finds persons whose names contain any of the given keywords.
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+### Finding a tutee: `find`
+
+Finds tutee whose names contain any of the given keywords.
 
 Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...>`
 
@@ -150,93 +269,174 @@ Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...
 * Only the name, telegram handle, or email can be searched.
 * Only one field can be searched at a time.
 * Partial words can also be matched e.g. `Han` will match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Tutees matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` or `an` will return `Hans Gruber`, `Bo Yang`
 
-Examples:
-* `find n/John` returns contacts with names `john` and `John Doe`
-* `find t/@alex @david` returns contacts with telegram handles `@alexyeoh`, `@david`<br>
-  ![result for 'find t/@alex @david'](images/findAlexDavidResult.png)
+Example:
+* `find n/Amy Bob` returns tutees with names `Amy Cheng` and `Bob Ross`.<br>
+<details>   
+<summary>This confirmation message will appear:</summary>
 
-### Deleting a person : `delete`
+![addResult](images/findResult.png)
+</details>
 
-This deletes the contact you specify.
+<br>
+
+<box type="tip" seamless>
+
+**Tip:** After using this command, use a [list command](#listing-all-tutees--list) to be able to see all the tutees again.
+</box>
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------  
+### Deleting a tutee : `delete`
+
+This deletes the tutee you specify.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the tutee at the specified `INDEX`.
+* The index refers to the index number shown in the currently displayed tutee list.
+* The index **must be a positive integer** 1, 2, 3, ...
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in ConnectS.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+Example:
+* `find n/John` followed by `delete 1` deletes the 1st tutee in the results of the `find` command.
+<details>   
+<summary>This confirmation message will appear:</summary>
 
+![addResult](images/deleteResult.png)
+</details>
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 ### Deleting a module : `deleteMod`
 
-This deletes the module you specify. The module will be deleted from every tutee's module-tutorial
-list. If after the deletion, a tutee does not have any item in his/her module-tutorial list,
-the tutee will be automatically deleted.
+You can delete a module with this command. 
 
 Format: `deleteMod MODULE_CODE`
 
-* Deletes the module as specified.
+* The module and all its associated tutorials will be deleted from every tutee's module-tutorial list.
+* After the deletion, if a tutee does not have belong to any module-tutorial group, they will be automatically deleted.
 * If nobody takes the module, deleteMod will return successful message without changing any information.
 
-Examples:
-* `deleteMod CS2103T` deletes the module CS2103T in ConnectS.
+Example:
+* `deleteMod CS2109S` deletes the module CS2109S in ConnectS.
+<details>   
+<summary>This confirmation message will appear:</summary>
 
+![addResult](images/deleteModResult.png)
+</details>
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 ### Deleting a tutorial (of a specific module) : `deleteTut`
 
-This deletes the tutorial group (of a module) you specify. The tutorial group must be of the form 
-MODULE-TUTORIAL_GROUP. The tutorial group will be deleted from every tutee's module-tutorial
-list. If after the tutorial group is deleted, a tutee does not have any item in his/her module-tutorial list,
-the tutee will be automatically deleted.
+You can delete a tutorial(of a specific module) with this command.   
 
 Format: `deleteTut MODULE-TUTORIAL_GROUP`
 
-* Deletes the tutorial group as specified.
+* The tutorial group will be deleted from every tutee's module-tutorial list.
+* After the deletion, if a tutee does not have belong to any module-tutorial group, they will be automatically deleted.
 * If nobody takes the tutorial group, deleteTut will return successful message without changing any information.
 
-Examples:
+Example:
 * `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
+<details>   
+<summary>This confirmation message will appear:</summary>
 
-### Sorting entries: `sort`
+![addResult](images/deleteTutResult.png)
+</details>
 
-This sorts your contacts in lexicographical order.
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+### Sorting tutees: `sort`
+
+You can sort your tutees in lexicographical order with this command.
 
 Format: `sort`
 
-### Pinning a person: `pin`, `unpin`
+<br>
 
-This pins one person to always show up at the top of the list, or unpins a person.
+--------------------------------------------------------------------------------------------------------------------
+### Pinning a tutee: `pin`, `unpin`
 
-Format:`pin INDEX`, `unpin INDEX`
+You can pin one tutee to always show up at the top of the list, or unpin a already pinned tutee.
 
+Format:` pin INDEX`, `unpin INDEX`
 
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index refers to the index number shown in the currently displayed tutee list.
+* The index **must be a positive integer** 1, 2, 3, ...
+* The pinned tutee(s) will have a blue outline.
 
-### Clearing all entries : `clear`
+Example:
+* `pin 7` pins the 7th tutee in the list.
+<details>   
+<summary>How a pinned tutee looks:</summary>
+
+![addResult](images/pinnedTutee.png)
+</details>
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+### Viewing a tab: `view`
+
+You can swap the tabs to view a specific module and tutorial, or switch to a view all tab which displays a list of all tutees.
+
+Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
+
+<details>   
+<summary>View all tab:</summary>
+
+![addResult](images/viewAll.png)
+</details>
+
+<details>   
+<summary>View a specific module and tutorial:</summary>
+
+![addResult](images/viewTab.png)
+</details>
+
+* You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+### Clearing all tutees : `clear`
+
+You can delete all tutees from ConnectS with this command.
 
 <box type="warning" seamless>
 
 **Caution:**
-This deletes all your contacts from ConnectS.<br>
+This is not reversible!<br>
 </box>
 
 Format: `clear`
 
-### Exiting the program : `exit`
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+### Exiting ConnectS: `exit`
 
 Bye bye :).
 
 Format: `exit`
 
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 ### Saving the data
 
 ConnectS data are saved in the hard disk automatically after any command you give that changes the data. There is no need to save manually.
 
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 ### Editing the data file
 
 ConnectS data are saved automatically as a JSON file `[JAR file location]/data/ConnectS.json`. You are welcome to update data directly by editing that data file if you're an advanced user.
@@ -246,8 +446,10 @@ ConnectS data are saved automatically as a JSON file `[JAR file location]/data/C
 **Caution:**
 If your changes to the data file makes its format invalid, ConnectS will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+
 </box>
 
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -256,6 +458,8 @@ Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ConnectS home folder.
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -263,21 +467,28 @@ Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP…​` <br> e.g., `add n/James Ho t/@jameshoho e/jamesho@example.com m/CS2030S-T08`
+**Add**    | `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TAG]...` <br> e.g. `add n/James Ho t/@jameshoho e/jamesho@example.com m/CS2030S-T08`
 **Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [t/TELEGRAM_HANDLE] [e/EMAIL] [m/MODULE-TUTORIAL_GROUP]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find <n/NAME... t/TELEGRAM_HANDLE... e/EMAIL...>`<br> e.g., `find n/James Jake`
+**Delete a Tutee** | `delete INDEX`<br> e.g. `delete 3`
+**Delete a Module** | `deleteMod MODULE` <br> e.g. `deleteMod CS2103T`
+**Delete a Tutorial** | `deleteTut MODULE-TUTORIAL_GROUP` <br> e.g. `deleteTut CS2103T-T01`
+**Edit**   | `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... tag/TAG...}`<br> e.g. `edit 2 n/James Lee e/jameslee@example.com`
+**Find**   | `find <n/NAME... t/TELEGRAM_HANDLE... e/EMAIL...>`<br> e.g. `find n/James Jake`
 **List**   | `list`
 **Sort**   | `sort`
-**Pin**    | `pin INDEX`
+**Pin**    | `pin INDEX`, `unpin INDEX` <br> e.g. `pin 7`
+**View**   | `view m/MODULE-TUTORIAL_GROUP`, `view m/all` <br> e.g. `view m/CS2103T-T03`
 **Help**   | `help`
+
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -285,9 +496,10 @@ Action     | Format, Examples
 
 Term   | Meaning
 --------------------|-----------------------------------------------------------------------------------------------
-**Lexicographical** | A sorting order that sorts according to the unicode of the name, i.e. numbers 0-9 come first, sorted by ascending order, then capital letters by alphabetical order, then lower case letters in alphabetical order. e.g. `Alex123`, `alex456`, `123alex` will be sorted as `123alex`, `Alex123`, `alex456`
-**Module-Tutorial Group** | A input parameter that combines the module and tutorial group numbers of a contact e.g. `CS2101-T02`
-**Index**| Ordering of the contacts, starting from 1
 **Command Line Interface**| A texted-based user interface where the user executes functions by typing in commands.
 **Graphical User Interface**| A graphics-based user interface where the user executes functions by using mouse and menus.
-
+**Parameter**| Information that you give to a command.
+**Index**| Ordering of the tutees, starting from 1.
+**Module-Tutorial Group** | A input parameter that combines the module and tutorial group numbers of a tutee e.g. `CS2101-T02`.
+**Lexicographical** | A sorting order that sorts according to the unicode of the name, i.e. numbers 0-9 come first, sorted by ascending order, then capital letters by alphabetical order, then lower case letters in alphabetical order. e.g. `Alex123`, `alex456`, `123alex` will be sorted as `123alex`, `Alex123`, `alex456`.
+**Alphanumeric Characters** | A group of characters that includes all english alphabet letters(capitalised and not) and numbers 0-9.
