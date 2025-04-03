@@ -22,7 +22,7 @@ public class DeleteModTutCommand extends Command {
             + "Example: " + COMMAND_WORD + " CS2103T-T12";
 
     /** Success message displayed after the tutorial is deleted. */
-    public static final String MESSAGE_DELETE_TUT_SUCCESS = "Tutorial Deleted ";
+    public static final String MESSAGE_DELETE_TUT_SUCCESS = "Tutorial Deleted: %1$s";
 
     /** The ModTutGroup to be deleted from persons and the address book. */
     private final ModTutGroup modTutGroup;
@@ -49,7 +49,7 @@ public class DeleteModTutCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.deleteModTut(this.modTutGroup);
-        return new CommandResult(MESSAGE_DELETE_TUT_SUCCESS + modTutGroup.toString(), false, false);
+        return new CommandResult(String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroup.toString()), false, false);
     }
 
     @Override

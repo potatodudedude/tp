@@ -24,7 +24,7 @@ public class DeleteModTutCommandTest {
         ModTutGroup modTutGroup = new ModTutGroup(VALID_MODTUT_AMY);
         DeleteModTutCommand deleteModTutCommand = new DeleteModTutCommand(modTutGroup);
 
-        String expectedMessage = MESSAGE_DELETE_TUT_SUCCESS + modTutGroup.toString();
+        String expectedMessage = String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroup.toString());
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
         expectedModel.deleteModTut(modTutGroup);

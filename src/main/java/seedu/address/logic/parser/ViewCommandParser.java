@@ -37,6 +37,12 @@ public class ViewCommandParser implements Parser<ViewCommand> {
 
         String modTutGroup = argMultimap.getValue(PREFIX_MOD).get();
 
+        // If getting view for all
+        if (modTutGroup.equalsIgnoreCase("ALL")) {
+            return new ViewCommand();
+        }
+
+        // If getting view for specific module
         if (!ModTutGroup.isValidModTutGroup(modTutGroup)) {
             throw new ParseException(String.format(MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroup));
         }

@@ -148,6 +148,7 @@ public class ModelManager implements Model {
             addressBook.setPerson(originalPerson, updatedPerson);
         }
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        ModTutGroup.deleteModule(module.getName());
     }
 
 
@@ -195,6 +196,7 @@ public class ModelManager implements Model {
         }
 
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        ModTutGroup.deleteTutorial(modTutGroup.toString());
     }
 
     @Override
@@ -206,6 +208,10 @@ public class ModelManager implements Model {
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+        Set<ModTutGroup> modTutGroups = target.getModTutGroups();
+        for (ModTutGroup modTutGroup : modTutGroups) {
+            ModTutGroup.decreaseTutorialCount(modTutGroup.toString());
+        }
     }
 
     @Override

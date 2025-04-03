@@ -159,8 +159,6 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 * `EMAIL` parameters only allow for the format `LOCAL_PART@DOMAIN`
    * `LOCAL_PART` consists of alphanumeric characters. It can also include `+` `-` `_` `.` characters, but cannot start or end with them.
    * `DOMAIN` consists of
-
-
 </box>
 
 
@@ -169,7 +167,6 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 This shows you a list of commands you can use.
 
 Format: `help`
-
 
 
 ### Adding a tutee: `add`
@@ -188,13 +185,11 @@ Examples:
 * `add n/Betsy Crowe m/CS2105-T02 t/@betsymetsy m/CS1231S-T03 e/betsycrowe@example.com`
 
 
-
 ### Listing all tutees : `list`
 
 This shows you a list of all your tutees in ConnectS.
 
 Format: `list`
-
 
 
 ### Editing a tutee : `edit`
@@ -211,7 +206,6 @@ Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP...
 Examples:
 *  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower` Edits the name of the 2nd tutee to be `Betsy Crower`.
-
 
 
 ### Finding a tutee: `find`
@@ -233,8 +227,7 @@ Examples:
 * `find n/Amy Bob` returns tutees with names `Amy Cheng` and `Bob Ross`.<br>
   ![findResult](images/findResult.png)
 
-
-
+  
 ### Deleting a tutee : `delete`
 
 This deletes the tutee you specify.
@@ -250,13 +243,42 @@ Examples:
 * `find Betsy` followed by `delete 1` deletes the 1st tutee in the results of the `find` command.
 
 
+### Deleting a module : `deleteMod`
+
+This deletes the module you specify. The module will be deleted from every tutee's module-tutorial
+list. If after the deletion, a tutee does not have any item in his/her module-tutorial list,
+the tutee will be automatically deleted.
+
+Format: `deleteMod MODULE_CODE`
+
+* Deletes the module as specified.
+* If nobody takes the module, deleteMod will return successful message without changing any information.
+
+Examples:
+* `deleteMod CS2103T` deletes the module CS2103T in ConnectS.
+
+
+### Deleting a tutorial (of a specific module) : `deleteTut`
+
+This deletes the tutorial group (of a module) you specify. The tutorial group must be of the form 
+MODULE-TUTORIAL_GROUP. The tutorial group will be deleted from every tutee's module-tutorial
+list. If after the tutorial group is deleted, a tutee does not have any item in his/her module-tutorial list,
+the tutee will be automatically deleted.
+
+Format: `deleteTut MODULE-TUTORIAL_GROUP`
+
+* Deletes the tutorial group as specified.
+* If nobody takes the tutorial group, deleteTut will return successful message without changing any information.
+
+Examples:
+* `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
+
 
 ### Sorting tutees: `sort`
 
 This sorts your tutees in lexicographical order.
 
 Format: `sort`
-
 
 
 ### Pinning a tutee: `pin`, `unpin`
@@ -267,7 +289,6 @@ Format:` pin INDEX`, `unpin INDEX`
 
 * The index refers to the index number shown in the displayed tutee list.
 * The index **must be a positive integer** 1, 2, 3, ...
-
 
 
 ### Viewing a tab: `view`
@@ -283,7 +304,6 @@ Format: `view m/MODULE-TUTORIAL_GROUP`
   ![viewTab](images/viewTab.png)
 
 
-
 ### Clearing all tutees : `clear`
 
 <box type="warning" seamless>
@@ -295,7 +315,6 @@ This deletes all your tutees from ConnectS.<br>
 Format: `clear`
 
 
-
 ### Exiting ConnectS: `exit`
 
 Bye bye :).
@@ -303,11 +322,9 @@ Bye bye :).
 Format: `exit`
 
 
-
 ### Saving the data
 
 ConnectS data are saved in the hard disk automatically after any command you give that changes the data. There is no need to save manually.
-
 
 
 ### Editing the data file
@@ -319,8 +336,8 @@ ConnectS data are saved automatically as a JSON file `[JAR file location]/data/C
 **Caution:**
 If your changes to the data file makes its format invalid, ConnectS will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
 
+</box>
 
 --------------------------------------------------------------------------------------------------------------------
 
