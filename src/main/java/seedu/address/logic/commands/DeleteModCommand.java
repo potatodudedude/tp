@@ -17,8 +17,8 @@ public class DeleteModCommand extends Command {
 
     /** Usage instructions for this command. */
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the module as specified, as well as contacts who only take that course.\n"
-            + "Parameters: Module Code\n"
+            + ": Deletes the module as specified, as well as contacts who only take that module.\n"
+            + "Parameters: MODULE_CODE (Case-insensitive)\n"
             + "Example: " + COMMAND_WORD + " CS2103T";
 
     /** Success message displayed after module is deleted. */
