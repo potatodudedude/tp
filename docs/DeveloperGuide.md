@@ -170,6 +170,15 @@ The behaviour of the view tabs button can also be seen here.
 
 In order to maintain a similar architecture to the original AB3, new methods such as `setViewAll()` have been implemented.
 
+### Sort tutees feature
+
+The sort tutees feature allow the user to sort the entire list of tutees by their names in lexicographical order.
+
+The behaviour of the sort feature can be seen below.
+
+<puml src="diagrams/SortSequenceDiagram.puml" alt="Sort Sequence Diagram" />
+
+
 #### Design considerations:
 
 **Aspect: How undo & redo executes:**
