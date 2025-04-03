@@ -33,8 +33,8 @@ public class AddCommand extends Command {
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_MOD + "CS2103T-T21 "
             + PREFIX_MOD + "CS2109S-T05 "
-            + PREFIX_TAG + "need more help "
-            + PREFIX_TAG + "bad at programming";
+            + PREFIX_TAG + "struggling "
+            + PREFIX_TAG + "exchangestudent";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in ConnectS";
