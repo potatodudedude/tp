@@ -111,7 +111,6 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 7.  Refer to the [features](#features) below for details of each command.
 
 <br>
-<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -185,7 +184,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 </box>
 
 <br>
-<div style="page-break-after: always;"></div>
+
 
 --------------------------------------------------------------------------------------------------------------------
 ### Viewing help : `help`
