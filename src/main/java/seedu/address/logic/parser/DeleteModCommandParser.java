@@ -31,7 +31,7 @@ public class DeleteModCommandParser implements Parser<DeleteModCommand> {
         }
 
         try {
-            Module module = new Module(keyword);
+            Module module = new Module(keyword.toUpperCase());
             return new DeleteModCommand(module);
         } catch (Exception e) {
             throw new ParseException(
