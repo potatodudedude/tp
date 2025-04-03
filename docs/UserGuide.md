@@ -269,7 +269,7 @@ Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...
 * Only the name, telegram handle, or email can be searched.
 * Only one field can be searched at a time.
 * Partial words can also be matched e.g. `Han` will match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Tutees matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` or `an` will return `Hans Gruber`, `Bo Yang`
 
 Example:
@@ -296,7 +296,7 @@ This deletes the tutee you specify.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
+* Deletes the tutee at the specified `INDEX`.
 * The index refers to the index number shown in the currently displayed tutee list.
 * The index **must be a positive integer** 1, 2, 3, ...
 
@@ -499,7 +499,7 @@ Term   | Meaning
 **Command Line Interface**| A texted-based user interface where the user executes functions by typing in commands.
 **Graphical User Interface**| A graphics-based user interface where the user executes functions by using mouse and menus.
 **Parameter**| Information that you give to a command.
-**Index**| Ordering of the contacts, starting from 1.
-**Module-Tutorial Group** | A input parameter that combines the module and tutorial group numbers of a contact e.g. `CS2101-T02`.
+**Index**| Ordering of the tutees, starting from 1.
+**Module-Tutorial Group** | A input parameter that combines the module and tutorial group numbers of a tutee e.g. `CS2101-T02`.
 **Lexicographical** | A sorting order that sorts according to the unicode of the name, i.e. numbers 0-9 come first, sorted by ascending order, then capital letters by alphabetical order, then lower case letters in alphabetical order. e.g. `Alex123`, `alex456`, `123alex` will be sorted as `123alex`, `Alex123`, `alex456`.
 **Alphanumeric Characters** | A group of characters that includes all english alphabet letters(capitalised and not) and numbers 0-9.
