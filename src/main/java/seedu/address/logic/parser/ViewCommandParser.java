@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOD;
@@ -21,6 +22,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      */
     @Override
     public ViewCommand parse(String args) throws ParseException {
+        requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_MOD);
 
@@ -35,7 +37,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
 
-        String modTutGroup = argMultimap.getValue(PREFIX_MOD).get();
+        String modTutGroup = argMultimap.getValue(PREFIX_MOD).get().toUpperCase();
 
         // If getting view for all
         if (modTutGroup.equalsIgnoreCase("ALL")) {
