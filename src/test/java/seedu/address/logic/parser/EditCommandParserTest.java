@@ -20,6 +20,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -42,6 +43,7 @@ import seedu.address.testutil.EditPersonDescriptorBuilder;
 public class EditCommandParserTest {
 
     private static final String MODTUTGROUP_EMPTY = " " + PREFIX_MOD;
+    private static final String TAGS_EMPTY = " " + PREFIX_TAG;
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
@@ -188,9 +190,9 @@ public class EditCommandParserTest {
     @Test
     public void parse_resetTags_success() {
         Index targetIndex = INDEX_THIRD_PERSON;
-        String userInput = targetIndex.getOneBased() + MODTUTGROUP_EMPTY;
+        String userInput = targetIndex.getOneBased() + TAGS_EMPTY;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withModTutGroups().build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
