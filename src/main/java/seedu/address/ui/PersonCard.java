@@ -54,8 +54,8 @@ public class PersonCard extends UiPart<TitledPane> {
         telegramHandle.setText(person.getTelegramHandle().value);
         email.setText(person.getEmail().value);
         person.getModTutGroups().stream()
-                .sorted(Comparator.comparing(group -> group.value))
-                .forEach(group -> modTutGroup.getChildren().add(new Label(group.value)));
+                .sorted(Comparator.comparing(group -> group.modTutGroupString))
+                .forEach(group -> modTutGroup.getChildren().add(new Label(group.modTutGroupString)));
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

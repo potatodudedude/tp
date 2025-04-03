@@ -5,7 +5,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
 
 /**
  * Container for user visible messages.
@@ -38,15 +40,27 @@ public class Messages {
      */
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
-                .append("; Telegram Handle: ")
-                .append(person.getTelegramHandle())
-                .append("; Email: ")
-                .append(person.getEmail())
-                .append("; Module - Tutorial Group: ");
-        person.getModTutGroups().forEach(builder::append);
-        builder.append("; Tags: ");
-        person.getTags().forEach(builder::append);
+        builder.append(person.getName()).append("\n")
+                .append("Telegram Handle: ").append(person.getTelegramHandle()).append("\n")
+                .append("Email: ").append(person.getEmail()).append("\n")
+                .append("Module Tutorial Group(s): ");
+        ModTutGroup[] modTutGroups = person.getModTutGroups().toArray(new ModTutGroup[0]);
+        for (int i = 0; i < modTutGroups.length; i++) {
+            builder.append(modTutGroups[i]);
+            if (i < modTutGroups.length - 1) {
+                builder.append(", ");
+            }
+        }
+        if (!person.getTags().isEmpty()) {
+            builder.append("\nTag(s): ");
+            Tag[] tags = person.getTags().toArray(new Tag[0]);
+            for (int i = 0; i < tags.length; i++) {
+                builder.append(tags[i]);
+                if (i < tags.length - 1) {
+                    builder.append(", ");
+                }
+            }
+        }
         return builder.toString();
     }
 

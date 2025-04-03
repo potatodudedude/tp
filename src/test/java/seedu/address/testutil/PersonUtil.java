@@ -35,7 +35,7 @@ public class PersonUtil {
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(PREFIX_TELEGRAM + person.getTelegramHandle().value + " ");
         sb.append(PREFIX_MOD);
-        person.getModTutGroups().forEach(m -> sb.append(m.value + " "));
+        person.getModTutGroups().forEach(m -> sb.append(m.modTutGroupString + " "));
         person.getTags().stream().forEach(
                 s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -56,7 +56,7 @@ public class PersonUtil {
             if (modTutGroups.isEmpty()) {
                 sb.append(PREFIX_MOD);
             } else {
-                modTutGroups.forEach(s -> sb.append(PREFIX_MOD).append(s.value).append(" "));
+                modTutGroups.forEach(s -> sb.append(PREFIX_MOD).append(s.modTutGroupString).append(" "));
             }
         }
         if (descriptor.getTags().isPresent()) {
