@@ -211,7 +211,7 @@ Example:
   
 This confirmation message will appear:
   
-<img alt="Add Result" src="images/addResult.png" width="550" />
+<img alt="Add Result" src="images/addResult.png" width="500" />
 
 <br>
 
@@ -246,9 +246,9 @@ Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP...
 Example:
 *  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johndoe@example.com` respectively.
   
-* This confirmation message will appear:
+This confirmation message will appear:
   
-![editResult](images/editResult.png)
+<img alt="Edit Result" src="images/editResult.png" width="500" />
 
 <br>
 
@@ -271,8 +271,8 @@ Example:
 * `find n/Amy Bob` returns tutees with names `Amy Cheng` and `Bob Ross`.<br>
   
 This confirmation message will appear:
-  
-![findResult](images/findResult.png)
+
+<img alt="Find Result" src="images/findResult.png" width="500" />
 
 <br>
 
@@ -298,8 +298,8 @@ Example:
 * `find n/John` followed by `delete 1` deletes the 1st tutee in the results of the `find` command.
   
 This confirmation message will appear:
-  
-![deleteResult](images/deleteResult.png)
+
+<img alt="Delete Result" src="images/deleteResult.png" width="500" />
 
 <br>
 
@@ -318,8 +318,8 @@ Example:
 * `deleteMod CS2109S` deletes the module CS2109S in ConnectS.
   
 This confirmation message will appear:
-  
-![deleteModResult](images/deleteModResult.png)
+
+<img alt="Delete Module Result" src="images/deleteModResult.png.png" width="500" />
 
 <br>
 
@@ -338,8 +338,8 @@ Example:
 * `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
   
 This confirmation message will appear:
-  
-![deleteTutResult](images/deleteTutResult.png)
+
+<img alt="Delete Tutorial Result" src="images/deleteTutResult.png.png" width="500" />
 
 <br>
 
@@ -367,8 +367,8 @@ Example:
 * `pin 7` pins the 7th tutee in the list.
   
 How a pinned tutee looks:
-  
-![pinnedTutee](images/pinnedTutee.png)
+
+<img alt="Pinned Tutee" src="images/pinnedTutee.png" width="500" />
 
 <br>
 
@@ -380,12 +380,12 @@ You can swap the tabs to view a specific module and tutorial, or switch to a vie
 Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
   
 **View all tab:**
-  
-![viewAll](images/viewAll.png)
+
+<img alt="View All" src="images/viewAll.png" width="500" />
   
 **View a specific module and tutorial:**
-  
-![viewTab](images/viewTab.png)
+
+<img alt="View Tab" src="images/viewTab.png.png" width="500" />
   
 * You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
 
