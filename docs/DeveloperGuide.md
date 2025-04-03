@@ -435,7 +435,7 @@ testers are expected to do more *exploratory* testing.
 
 1. While in ConnectS, enter `help` into the command box.
     <br><br>
-    Expected: A pop-up message showing all commands appears for about 5 seconds
+    Expected: A pop-up message showing all commands appears for about 10 seconds
     <br><br>
 2. To visit the user guide, click on the help button at the top of the application window. A small window will appear, click on Copy URL and paste into your preferred browser to visit the user guide.
 <br>
@@ -568,7 +568,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Saving Data
 1. Dealing with corrupted data file
-   1. Edit addressbook.json such that the data do not make sense for ConnectS. For example, removing the name field of any person.
+   1. Edit `ConnectS.json` in the data folder such that the data do not make sense for ConnectS. For example, removing the name field of any person.
    
    2. Launch ConnectS from your terminal (`java -jar “ConnectS.jar”`)
         <br><br>
@@ -576,7 +576,7 @@ testers are expected to do more *exploratory* testing.
         <br><br>
 
 2. Dealing with missing data file
-   1. Delete addressbook.json
+   1. Delete `ConnectS.json`
    
    2. Launch ConnectS from your terminal (`java -jar “ConnectS.jar”`)
         <br><br>
