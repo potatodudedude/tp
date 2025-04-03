@@ -50,10 +50,10 @@ public class ResultDisplay extends UiPart<Popup> {
     /**
      * Shows the result of the command.
      */
-    public void show(Stage stage) {
+    public void show(Stage stage, boolean isHelp) {
         logger.fine("Showing result display panel...");
         popup.show(stage);
-        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+        PauseTransition delay = new PauseTransition(isHelp ? Duration.seconds(10) : Duration.seconds(5));
         delay.setOnFinished(event -> popup.hide());
         delay.play();
     }

@@ -49,7 +49,8 @@ public class DeleteModTutCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.deleteModTut(this.modTutGroup);
-        return new CommandResult(String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroup.toString()), false, false);
+        return new CommandResult(String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroup.toString()),
+                false, false, false);
     }
 
     @Override
