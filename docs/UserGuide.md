@@ -181,7 +181,7 @@ the tutee will be automatically deleted.
 Format: `deleteMod MODULE_CODE`
 
 * Deletes the module as specified.
-* If nobody takes the module, deleteMod will return seccessful message without changing any information.
+* If nobody takes the module, deleteMod will return successful message without changing any information.
 
 Examples:
 * `deleteMod CS2103T` deletes the module CS2103T in ConnectS.
@@ -196,7 +196,7 @@ the tutee will be automatically deleted.
 Format: `deleteTut MODULE-TUTORIAL_GROUP`
 
 * Deletes the tutorial group as specified.
-* If nobody takes the tutorial group, deleteTut will return seccessful message without changing any information.
+* If nobody takes the tutorial group, deleteTut will return successful message without changing any information.
 
 Examples:
 * `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
