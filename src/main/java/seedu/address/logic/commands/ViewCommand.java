@@ -25,11 +25,11 @@ public class ViewCommand extends Command {
 
     private static final Map<String, Map<String, Integer>> moduleMap = ModTutGroup.getModuleMap();
 
-    private final boolean isAll;
-
     public final String moduleName;
     public final String tutorialName;
     public final String modTutGroup;
+
+    private final boolean isAll;
 
     /**
      * Creates a ViewCommand to view the specified {@code ModTutGroup} tab
@@ -73,7 +73,8 @@ public class ViewCommand extends Command {
                 throw new CommandException(String.format(Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroup));
             } else {
                 if (!moduleMap.get(moduleName).containsKey(tutorialName)) {
-                    throw new CommandException(String.format(Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroup));
+                    throw new CommandException(String.format(Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP,
+                            modTutGroup));
                 }
             }
 
