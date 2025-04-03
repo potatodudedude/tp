@@ -172,6 +172,35 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in ConnectS.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Deleting a module : `deleteMod`
+
+This deletes the module you specify. The module will be deleted from every tutee's module-tutorial
+list. If after the deletion, a tutee does not have any item in his/her module-tutorial list,
+the tutee will be automatically deleted.
+
+Format: `deleteMod MODULE_CODE`
+
+* Deletes the module as specified.
+* If nobody takes the module, deleteMod will return successful message without changing any information.
+
+Examples:
+* `deleteMod CS2103T` deletes the module CS2103T in ConnectS.
+
+### Deleting a tutorial (of a specific module) : `deleteTut`
+
+This deletes the tutorial group (of a module) you specify. The tutorial group must be of the form 
+MODULE-TUTORIAL_GROUP. The tutorial group will be deleted from every tutee's module-tutorial
+list. If after the tutorial group is deleted, a tutee does not have any item in his/her module-tutorial list,
+the tutee will be automatically deleted.
+
+Format: `deleteTut MODULE-TUTORIAL_GROUP`
+
+* Deletes the tutorial group as specified.
+* If nobody takes the tutorial group, deleteTut will return successful message without changing any information.
+
+Examples:
+* `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
+
 ### Sorting entries: `sort`
 
 This sorts your contacts in lexicographical order.
