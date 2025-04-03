@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":DeleteModTutCommandParser" as DeleteModTutCommandParser LOGIC_COLOR
+participant "d:DeleteModTutCommand" as DeleteModTutCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("deleteModTut CS2103T-T12")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("deleteModTut CS2103T-T12")
+activate AddressBookParser
+
+create DeleteModTutCommandParser
+AddressBookParser -> DeleteModTutCommandParser
+activate DeleteModTutCommandParser
+
+DeleteModTutCommandParser --> AddressBookParser
+deactivate DeleteModTutCommandParser
+
+AddressBookParser -> DeleteModTutCommandParser : parse("CS2103T-T12")
+activate DeleteModTutCommandParser
+
+create DeleteModTutCommand
+DeleteModTutCommandParser -> DeleteModTutCommand
+activate DeleteModTutCommand
+
+DeleteModTutCommand --> DeleteModTutCommandParser :
+deactivate DeleteModTutCommand
+
+DeleteModTutCommandParser --> AddressBookParser : d
+deactivate DeleteModTutCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+DeleteModTutCommandParser -[hidden]-> AddressBookParser
+destroy DeleteModTutCommandParser
+
+AddressBookParser --> LogicManager : d
+deactivate AddressBookParser
+
+LogicManager -> DeleteModTutCommand : execute(m)
+activate DeleteModTutCommand
+
+DeleteModTutCommand -> Model : deleteModTut(CS2103T-T12)
+activate Model
+
+Model --> DeleteModTutCommand
+deactivate Model
+
+create CommandResult
+DeleteModTutCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> DeleteModTutCommand
+deactivate CommandResult
+
+DeleteModTutCommand --> LogicManager : r
+deactivate DeleteModTutCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
