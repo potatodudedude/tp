@@ -319,7 +319,7 @@ Example:
   
 This confirmation message will appear:
 
-<img alt="Delete Module Result" src="images/deleteModResult.png.png" width="500" />
+<img alt="Delete Module Result" src="images/deleteModResult.png" width="500" />
 
 <br>
 
@@ -339,7 +339,7 @@ Example:
   
 This confirmation message will appear:
 
-<img alt="Delete Tutorial Result" src="images/deleteTutResult.png.png" width="500" />
+<img alt="Delete Tutorial Result" src="images/deleteTutResult.png" width="500" />
 
 <br>
 
@@ -379,13 +379,13 @@ You can swap the tabs to view a specific module and tutorial, or switch to a vie
   
 Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
   
-**View all tab:**
+**View all:**
 
 <img alt="View All" src="images/viewAll.png" width="500" />
   
-**View a specific module and tutorial:**
+**View a specific module and tutorial tab:**
 
-<img alt="View Tab" src="images/viewTab.png.png" width="500" />
+<img alt="View Tab" src="images/viewTab.png" width="500" />
   
 * You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
 
