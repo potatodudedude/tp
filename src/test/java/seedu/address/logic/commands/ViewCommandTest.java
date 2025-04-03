@@ -6,8 +6,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.ViewCommand.MESSAGE_SUCCESS_VIEW_TAB;
 import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;
 
-import javax.swing.text.View;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
