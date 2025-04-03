@@ -15,9 +15,6 @@ like telegram handles and emails. You can enjoy the many commands available to h
 If you are fast at typing, ConnectS' command line interface(CLI) specialisation can help you manage your tutee's 
 contacts faster than other contact apps, whilst still allowing you the convenience of a graphic user interface(GUI).
 
-<!-- * Table of Contents -->
-<page-nav-print />
-
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -67,6 +64,7 @@ Confused by what certain terms mean? Visit the [glossary](#glossary).
 Visit the [table](#table-of-contents) above to quickly access parts of the guide via hyperlink.
 
 <br>
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -113,6 +111,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 7.  Refer to the [features](#features) below for details of each command.
 
 <br>
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -186,6 +185,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 </box>
 
 <br>
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 ### Viewing help : `help`
@@ -211,12 +211,9 @@ Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TA
 
 Example:
 * `add n/John Doe t/@johndoe123 e/johnd@example.com m/CS2103T-T21 m/CS2109S-T05 tag/struggling tag/exchangestudent` adds a tutee with the provided details.
-
-<details>   
-<summary>This confirmation message will appear:</summary>
-
+This confirmation message will appear:
 ![addResult](images/addResult.png)
-</details>
+
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -249,11 +246,9 @@ Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP...
 
 Example:
 *  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johndoe@example.com` respectively.
-<details>   
-<summary>This confirmation message will appear:</summary>
+This confirmation message will appear:
 
 ![addResult](images/editResult.png)
-</details>
 
 <br>
 
@@ -274,11 +269,9 @@ Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...
 
 Example:
 * `find n/Amy Bob` returns tutees with names `Amy Cheng` and `Bob Ross`.<br>
-<details>   
-<summary>This confirmation message will appear:</summary>
+This confirmation message will appear:
 
 ![addResult](images/findResult.png)
-</details>
 
 <br>
 
@@ -302,11 +295,9 @@ Format: `delete INDEX`
 
 Example:
 * `find n/John` followed by `delete 1` deletes the 1st tutee in the results of the `find` command.
-<details>   
-<summary>This confirmation message will appear:</summary>
+This confirmation message will appear:
 
 ![addResult](images/deleteResult.png)
-</details>
 
 <br>
 
@@ -323,11 +314,9 @@ Format: `deleteMod MODULE_CODE`
 
 Example:
 * `deleteMod CS2109S` deletes the module CS2109S in ConnectS.
-<details>   
-<summary>This confirmation message will appear:</summary>
+This confirmation message will appear:
 
 ![addResult](images/deleteModResult.png)
-</details>
 
 <br>
 
@@ -344,11 +333,9 @@ Format: `deleteTut MODULE-TUTORIAL_GROUP`
 
 Example:
 * `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
-<details>   
-<summary>This confirmation message will appear:</summary>
+This confirmation message will appear:
 
 ![addResult](images/deleteTutResult.png)
-</details>
 
 <br>
 
@@ -374,11 +361,10 @@ Format:` pin INDEX`, `unpin INDEX`
 
 Example:
 * `pin 7` pins the 7th tutee in the list.
-<details>   
-<summary>How a pinned tutee looks:</summary>
+
+* How a pinned tutee looks:
 
 ![addResult](images/pinnedTutee.png)
-</details>
 
 <br>
 
@@ -389,17 +375,13 @@ You can swap the tabs to view a specific module and tutorial, or switch to a vie
 
 Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
 
-<details>   
-<summary>View all tab:</summary>
+**View all tab:**
 
 ![addResult](images/viewAll.png)
-</details>
 
-<details>   
-<summary>View a specific module and tutorial:</summary>
+**View a specific module and tutorial:**
 
 ![addResult](images/viewTab.png)
-</details>
 
 * You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
 
