@@ -25,17 +25,16 @@ public class AddCommand extends Command {
             + PREFIX_NAME + "NAME "
             + PREFIX_TELEGRAM + "TELEGRAM HANDLE "
             + PREFIX_EMAIL + "EMAIL "
-            + "[" + PREFIX_MOD + "MOD-TUT GROUP]...\n"
+            + "[" + PREFIX_MOD + "MOD-TUT GROUP]... "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_TELEGRAM + "@johndoe123 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_MOD + "CS2103T-T21 "
-            + PREFIX_MOD + "CS2109S-T05"
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + PREFIX_MOD + "CS2109S-T05 "
             + PREFIX_TAG + "need more help "
-            + PREFIX_TAG + "bad at programming";;
+            + PREFIX_TAG + "bad at programming";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in ConnectS";
