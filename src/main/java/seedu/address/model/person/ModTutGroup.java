@@ -59,10 +59,18 @@ public class ModTutGroup {
         moduleMap.put(moduleString, tutorialMap);
     }
 
+    /**
+     * Deletes {@code module} from the {@code moduleMap}.
+     * @param moduleName name of the module to be removed
+     */
     public static void deleteModule(String moduleName) {
         moduleMap.remove(moduleName);
     }
 
+    /**
+     * Deletes {@code tutorial} from the {@code moduleMap}.
+     * @param modTutGroup name of the tutorial to be removed
+     */
     public static void deleteTutorial(String modTutGroup) {
         requireNonNull(modTutGroup);
         checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
@@ -76,6 +84,12 @@ public class ModTutGroup {
         }
     }
 
+    /**
+     * Decrements the count or removes the {@code tutorial} from the {@code moduleMap}. If the {@code tutorial} removed
+     * is the last {@code tutorial} in the {@code module}, the {@code module} will be removed from the {@code moduleMap}
+     * as well.
+     * @param modTutGroup name of the tutorial to be decremented/removed
+     */
     public static void decreaseTutorialCount(String modTutGroup) {
         requireNonNull(modTutGroup);
         checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
