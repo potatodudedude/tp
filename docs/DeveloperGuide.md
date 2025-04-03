@@ -160,11 +160,11 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Change View Mode
 
-The behaviour of the view all button can be seen below.
+The "View All" button changes the view mode to "View All", if it is not already in "View All" 
 
 <puml src="diagrams/ViewAllSequenceDiagram.puml" alt="View All Sequence Diagram" />
 
-The behaviour of the view tabs button can also be seen here.
+The "View Tabs" button works similarly, changing the view mode to "View Tabs", if it is not already in "View Tabs"
 
 <puml src="diagrams/ViewTabsSequenceDiagram.puml" alt="View Tabs Sequence Diagram" />
 
