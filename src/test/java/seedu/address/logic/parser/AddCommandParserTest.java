@@ -56,7 +56,8 @@ public class AddCommandParserTest {
                 + MODTUT_DESC_AMY + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
 
         // multiple mods - all accepted
-        Person expectedPersonMultipleModTuts = new PersonBuilder(BOB).withModTuts(VALID_MODTUT_FRIEND, VALID_MODTUT_AMY).build();
+        Person expectedPersonMultipleModTuts = new PersonBuilder(BOB)
+                .withModTuts(VALID_MODTUT_FRIEND, VALID_MODTUT_AMY).build();
         assertParseSuccess(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_AMY
                         + MODTUT_DESC_FRIEND + TAG_DESC_FRIEND + TAG_DESC_HUSBAND,
                 new AddCommand(expectedPersonMultipleModTuts));
