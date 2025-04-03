@@ -65,7 +65,7 @@ public class ViewCommand extends Command {
 
         if (this.isAll) {
             model.setViewAll(true);
-            return new CommandResult(MESSAGE_SUCCESS_VIEW_ALL);
+            return new CommandResult(MESSAGE_SUCCESS_VIEW_ALL, true, false);
         } else {
             model.setViewAll(false);
 
