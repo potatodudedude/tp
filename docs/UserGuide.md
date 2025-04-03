@@ -211,7 +211,7 @@ Example:
   
 This confirmation message will appear:
   
-![addResult](images/addResult.png)
+<img alt="Add Result" src="images/addResult.png" width="550" />
 
 <br>
 
