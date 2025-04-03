@@ -27,7 +27,7 @@ public class DeleteModTutCommandParser implements Parser<DeleteModTutCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModTutCommand.MESSAGE_USAGE));
         }
         try {
-            ModTutGroup modTutGroup = new ModTutGroup(keyword); // assumes constructor parses "CS2103T-T01"
+            ModTutGroup modTutGroup = new ModTutGroup(keyword.toUpperCase()); // assumes constructor parses "CS2103T-T01"
             return new DeleteModTutCommand(modTutGroup);
         } catch (IllegalArgumentException e) {
             throw new ParseException("Invalid ModTutGroup format. Expected format: MODULE-TUTORIAL", e);
