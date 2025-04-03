@@ -16,16 +16,20 @@ public class CommandResult {
     /** View tab should be changed for the user. */
     private final boolean isView;
 
+    /** Help popup should be longer */
+    private final boolean isHelp;
+
     /** The application should exit. */
     private final boolean exit;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean isView, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean isView, boolean exit, boolean isHelp) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.isView = isView;
         this.exit = exit;
+        this.isHelp = isHelp;
     }
 
     /**
@@ -33,7 +37,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -42,6 +46,10 @@ public class CommandResult {
 
     public boolean isView() {
         return isView;
+    }
+
+    public boolean isHelp() {
+        return isHelp;
     }
 
     public boolean isExit() {
