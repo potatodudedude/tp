@@ -6,22 +6,58 @@
 
 # ConnectS User Guide
 
-**Welcome the ConnectS user guide! ConnectS is any computing teaching assistants(TAs) best friend in helping them
-manage their tutees' contact information.**
+**Welcome to ConnectS' user guide! As computing teaching assistants(TAs), ConnectS is your best friend in helping you
+manage your tutees' contact information.**
+
+ConnectS separates your tutee contacts into their different modules and tutorial groups, and records information you will use the most,
+like telegram handles and emails.
 
 If you are fast at typing, ConnectS' command line interface(CLI) specialisation can help you manage your tutee's 
 contacts faster than other contact apps, whilst still allowing you the convenience of a graphic user interface(GUI).
 
 <!-- * Table of Contents -->
 <page-nav-print />
+--------------------------------------------------------------------------------------------------------------------
+
+## Table of contents
+
+* [How to use this Guide](#how-to-use-this-guide)
+* [Features](#features)
+  * [Command Formatting](command-formatting)
+  * [Parameter Formatting](parameter-formatting)
+  * Commands
+    * [Getting Help](#viewing-help-help)
+    * [Adding a tutee](#adding-a-tutee-add)
+    * [Listing all tutees](#listing-all-tutees-list)
+    * [Editing a tutee](#editing-a-tutee-edit)
+    * [Finding a tutee](#finding-a-tutee-find)
+    * [Deleting a tutee](#deleting-a-tutee-delete)
+    * [Sorting a tutee](#sorting-tutees-sort)
+    * [Pinning a tutee](#pinning-a-tutee-pin-unpin)
+    * [Viewing a specific module and tutorial](#viewing-a-tab-view)
+    * [Clearing all tutees](#clearing-all-tutees-clear)
+    * [Exiting ConnectS](#exiting-connects)
+  * [Saving data](#saving-the-data)
+  * [Editing save files](#editing-the-data-file)
+* [FAQ](#faq)
+* [Known issues](#known-issues)
+* [Command Summary](#command-summary)
+* [Glossary](#glossary)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## How to use this Guide
 
-You can  navigate the guide using the table on the right side of the website. If you're looking to get started, visit the
-[Quick Start](#quick-start) section just below. You can also find a [short summary of the commands](#command-summary)
-at the end of the guide.
+If you are a beginner looking to get started: Visit the [Quick Start](#quick-start) section just below.
+
+If you've already set up ConnectS, visit the [features](#features) section to see what commands are available in ConnectS.
+
+If you are a returning user looking to refresh yourself on command formatting, visit if [command summary](#command-summary) for
+a quick overview.
+
+Confused by what certain terms mean? Visit the [glossary](#glossary).
+
+Visit the [table](#table-of-contents) above to quickly access parts of the guide via hyperlink.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -29,24 +65,27 @@ at the end of the guide.
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
 
-   [Setup Guide](https://www3.cs.stonybrook.edu/~amione/CSE114_Course/materials/resources/InstallingJava17.pdf)
+   * **For Window, Linux and Mac**: [Setup Guide](https://www3.cs.stonybrook.edu/~amione/CSE114_Course/materials/resources/InstallingJava17.pdf)
 
+   <box type="info" seamless>
+   
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-
+   </box>
+   
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F10-4/tp/releases/tag/v1.3).
 
 3. Create a new folder where you want to store ConnectS, and place the `.jar` file inside.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in.
    
-   Guide to open command terminal in the `.jar` folder: 
+   * Guide to open command terminal in the `.jar` folder: 
 
-   Windows and Linux: Navigate to the folder, then right-click in the folder and select "open in terminal" or "Open PowerShell window here"
+     * **For Windows and Linux**: Navigate to the folder, then right-click in the folder and select "open in terminal" or "Open PowerShell window here"
 
-   [For Mac users](https://support.apple.com/en-sg/guide/terminal/trmlb20c7888/mac#:~:text=On%20your%20Mac%2C%20open%20a,window%3A%20Choose%20Open%20in%20Terminal.)
+     * **For Mac users**: [terminal guide](https://support.apple.com/en-sg/guide/terminal/trmlb20c7888/mac#:~:text=On%20your%20Mac%2C%20open%20a,window%3A%20Choose%20Open%20in%20Terminal.)
  
 5. Use the `java -jar ConnectS.jar` command to run ConnectS.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI like the image below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
 6. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all commands.<br>
@@ -58,18 +97,20 @@ at the end of the guide.
 
    * `delete 3` : Deletes the 3rd tutee shown in the current list.
 
-   * `clear` : Deletes all tutee.
+   * `view m/CS2103T-T02` : Switches the viewing tab to tutorial group T02 under module CS2103T, if it exists.
 
    * `exit` : Exits the app.
 
-7.  Refer to the [Features](#features) below for details of each command.
+7.  Refer to the [features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
 
+
 <box type="info" seamless>
 
+### Command formatting
 **Notes about the command format:**<br>
 
 * When you see a word in `UPPER_CASE`, that word is a parameter that you enter.<br>
@@ -103,13 +144,35 @@ at the end of the guide.
 * If you are using a PDF version of this document, be careful when copying and pasting commands as some spaces may be omitted.
 </box>
 
+<box type="info" seamless>
+
+### Parameter formatting
+**Notes about the parameter restrictions:**<br>
+
+* `NAME` parameters only allow alphanumeric characters, and can have multiple words.<br>
+   e.g. `John`, `John Doe` or `John @123` are allowed, but `John (Doe)` is not.
+
+* `TELEGRAM_HANDLE` parameters only allow one word which must start with `@`, followed by 5 alphanumeric characters.
+  `_` is allowed, but not at the start or end of the handle.<br> 
+   e.g. `@johnny` and `@john_doe` are allowed, but `johnny`, `@john` and `@_john` are not.
+
+* `EMAIL` parameters only allow for the format `LOCAL_PART@DOMAIN`
+   * `LOCAL_PART` consists of alphanumeric characters. It can also include `+` `-` `_` `.` characters, but cannot start or end with them.
+   * `DOMAIN` consists of
+
+
+</box>
+
+
 ### Viewing help : `help`
 
 This shows you a list of commands you can use.
 
 Format: `help`
 
-### Adding a person: `add`
+
+
+### Adding a tutee: `add`
 
 This allows you to add a tutee to ConnectS.
 
@@ -124,13 +187,17 @@ Examples:
 * `add n/John Doe t/@johndoey e/johnd@example.com m/CS2100-T07`
 * `add n/Betsy Crowe m/CS2105-T02 t/@betsymetsy m/CS1231S-T03 e/betsycrowe@example.com`
 
-### Listing all persons : `list`
+
+
+### Listing all tutees : `list`
 
 This shows you a list of all your tutees in ConnectS.
 
 Format: `list`
 
-### Editing a person : `edit`
+
+
+### Editing a tutee : `edit`
 
 This edits a contact you specify.
 
@@ -145,7 +212,9 @@ Examples:
 *  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower` Edits the name of the 2nd tutee to be `Betsy Crower`.
 
-### Locating persons by name: `find`
+
+
+### Finding a tutee: `find`
 
 Finds tutee whose names contain any of the given keywords.
 
@@ -164,7 +233,9 @@ Examples:
 * `find n/Amy Bob` returns tutees with names `Amy Cheng` and `Bob Ross`.<br>
   ![findResult](images/findResult.png)
 
-### Deleting a person : `delete`
+
+
+### Deleting a tutee : `delete`
 
 This deletes the tutee you specify.
 
@@ -178,13 +249,17 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd tutee in ConnectS.
 * `find Betsy` followed by `delete 1` deletes the 1st tutee in the results of the `find` command.
 
-### Sorting entries: `sort`
+
+
+### Sorting tutees: `sort`
 
 This sorts your tutees in lexicographical order.
 
 Format: `sort`
 
-### Pinning a person: `pin`, `unpin`
+
+
+### Pinning a tutee: `pin`, `unpin`
 
 This pins one tutee to always show up at the top of the list, or unpins a tutee.
 
@@ -192,6 +267,8 @@ Format:` pin INDEX`, `unpin INDEX`
 
 * The index refers to the index number shown in the displayed tutee list.
 * The index **must be a positive integer** 1, 2, 3, ...
+
+
 
 ### Viewing a tab: `view`
 
@@ -205,7 +282,9 @@ Format: `view m/MODULE-TUTORIAL_GROUP`
 * Viewing a specific module and tutorial tab:
   ![viewTab](images/viewTab.png)
 
-### Clearing all entries : `clear`
+
+
+### Clearing all tutees : `clear`
 
 <box type="warning" seamless>
 
@@ -215,15 +294,21 @@ This deletes all your tutees from ConnectS.<br>
 
 Format: `clear`
 
-### Exiting the program : `exit`
+
+
+### Exiting ConnectS: `exit`
 
 Bye bye :).
 
 Format: `exit`
 
+
+
 ### Saving the data
 
 ConnectS data are saved in the hard disk automatically after any command you give that changes the data. There is no need to save manually.
+
+
 
 ### Editing the data file
 
