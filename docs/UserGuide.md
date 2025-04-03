@@ -385,6 +385,8 @@ Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
   
 **View a specific module and tutorial tab:**
 
+<br>
+
 <img alt="View Tab" src="images/viewTab.png" width="500" />
   
 * You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
