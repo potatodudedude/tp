@@ -94,7 +94,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
-<box type="info" seamless>
+<b type="info" seamless>
 
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
 </box>
@@ -381,41 +381,179 @@ testers are expected to do more *exploratory* testing.
 ### Launch and shutdown
 
 1. Initial launch
+   1. Download the jar file ConnectS.jar and copy into an empty folder
+   2. Launch the jar file from terminal by running this command:`java -jar "ConnectS.jar`
+        <br><br>
+        Expected: Shows the GUI with some sample tutees. The window size may not be optimum
+        <br><br>
 
-   1. Download the jar file and copy into an empty folder
-
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
-
-1. Saving window preferences
-
+2. Saving window preferences
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   2. Re-launch the app from your terminal.
+      <br><br>
+      Expected: The most recent window size and location is retained.
+      <br><br>
+   
+3. Viewing All and Viewing Tabs
+   1. Click on the View button at the top of the application window, select either View All or View Tabs to toggle between the two different views.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+4. Exiting Application
+   1. Enter `exit` into the command box.
+        <br><br>
+        Expected: The application will close
+        <br>
 
-### Deleting a person
 
-1. Deleting a person while all persons are being shown
+### Viewing Help
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+1. While in ConnectS, enter `help` into the command box.
+    <br><br>
+    Expected: A pop-up message showing all commands appears for about 5 seconds
+    <br><br>
+2. To visit the user guide, click on the help button at the top of the application window. A small window will appear, click on Copy URL and paste into your preferred browser to visit the user guide.
+<br>
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+### Adding a tutee
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+1. Add a tutee to connectS
+   1. Sample: `add n/Peter Parker t/@iamnotspidey e/peter@example.com m/CS2103T-T01`
+        <br><br>
+        Expected: A new person with name Peter Parker, telegram handle @iamnotspidey, email peter@example.com and a module CS2103T-T01 is added to the correct module and tutorial tab.
+        <br><br>
+   2. Sample: `add n/Tony Stark t/@iamnotironman e/stark@example.com m/CS2103T-T01 tag/Rich`
+        <br><br>
+        Expected: A new person with name Tony Stark, telegram handle @iamnotironman, email stark@example.com, a module CS2103T-T01 and a tag of Rich is added
+        <br><br>
+   3. Sample: `add n/Steve Rogers e/cap@example.com t/@iamnotold m/CS2103T-T01 m/CS2106-T01 tag/Young tag/Captain`
+        <br><br>
+        Expected: A new person with name steve rogers, telegram handle @iamnotold, email cap@example.com, 2 module CS2103T-T01 and CS2106-T01 and 2 tags of Young and Captain is added
+        <br><br>
+   4. Invalid Sample: `add [Duplicate name, email, or telegram handle]`
+        <br><br>
+        Expected: Error message indicating person already exists in ConnectS
+        <br>
 
-1. _{ more test cases …​ }_
 
-### Saving data
+### Finding a Tutee
+1. Finds a tutee
+   1. Finding by name: `find n/Pete Rogers`
+        <br><br>
+        Expected: All found tutees with name matching “Pete” or “Rogers” are listed
+        <br><br>
+   2. Finding by telegram handle: `find t/@iamnot`
+        <br><br>
+        Expected: All found tutees with telegram handle matching “@iamnot” are listed
+        <br><br>
+   3. Finding by email: `find e/pete cap`
+        <br><br>
+        Expected: All found tutees with email matching “pete” or “cap” are listed
+        <br><br>
+   4. Invalid format
+        
+        No prefix given: `find`, `find pete`, `find @iamnot`
 
-1. Dealing with missing/corrupted data files
+        More than one prefix given: `find n/pete t/@iamnot`
+        <br><br>
+        Expected: Error message showing that only one field can be found at a time
+        <br>
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+### Listing all tutees
+1. Enter `list` into command box
+    <br><br>
+    Expected: All tutees will be listed in View All
+    <br>
+
+
+### Pinning/ Unpinning a tutee
+1. Pins a person to the top of the list
+    Prerequisite: There must be at least one tutee in the current list 
+   1. Pinning a tutee: `pin 1`
+        <br><br>
+        Expected: The first tutee in the current list will be pinned with a light blue outline.
+        <br><br>
+   2. Unpinning a tutee: `unpin 1`
+		<br><br>
+		Expected: The first pinned tutee in the current list will be unpinned
+        <br><br>
+   3. Invalid format
+        No INDEX given: `pin` or `unpin`
+        <br><br>
+        Expected: Error message showing the correct format of pin/ unpin
+        <br>
+
+### Sorting the list
+1. Sorts the entire list in lexicographical order
+    1. Enter `sort`
+        <br><br>
+        Expected: The entire list will be sorted except for pinned tutees
+        <br>
+
+
+### Editing a tutee
+1. Edits a tutee in the list
+    Prerequisite: There must be at least one person in the current list
+    1. Sample: `edit 1 n/Michael Jackson`
+        <br><br>
+        Expected: The name of the first person in the current list is changed to Michael Jackson
+       <br><br>
+    2. Sample: `edit 1 t/@iamMJ e/Michael@example.com`
+       <br><br>
+        Expected: The email and telegram of the first person in the current list is changed to “Michael@example.com” and “@iamMJ” respectively
+       <br><br>
+    3. Sample: `edit 1 m/CS2100-T05`
+       <br><br>
+        Expected: All modules of the first person in the current list is overwritten to CS2100-T05 only
+       <br><br>
+    4. Sample: `edit 1 tag/`
+       <br><br>
+        Expected: All tags of the first person in the current list is cleared
+       <br><br>
+    5. Invalid sample: `edit or edit 1`
+       <br><br>
+        Expected: The corresponding error message will be shown for both samples
+       <br>
+
+
+### Deleting a Module from ConnectS
+1. Deletes the module from ConnectS
+    1. Sample: `deleteMod CS2105`
+        <br><br>
+        Expected: Module CS2105 is deleted, tutees with CS2105 as their sole module are deleted and tutees that have CS2105 as one of their modules will have it be deleted.
+       <br><br>
+    2. Invalid Sample: `deleteMod`
+       <br><br>
+        Expected: Error message showing invalid usage of deleteMod
+       <br>
+
+### Deleting a Tutorial from ConnectS
+1. Deletes the tutorial which is part of a module-tutorial group from ConnectS
+   1. Sample: `deleteTut CS2103T-T11`
+        <br><br>
+        Expected: Tutorial T11 of CS2103T is deleted
+        <br><br>
+   2. Invalid Sample: `deleteTut`, `deleteTut CS2103T`
+        <br><br>
+        Expected: Error message showing invalid usage of deleteTut
+        <br>
+
+
+### Saving Data
+1. Dealing with corrupted data file
+   1. Edit addressbook.json such that the data do not make sense for ConnectS. For example, removing the name field of any person.
+   
+   2. Launch ConnectS from your terminal (`java -jar “ConnectS.jar”`)
+        <br><br>
+        Expected: All tutees are cleared from ConnectS
+        <br><br>
+
+2. Dealing with missing data file
+   1. Delete addressbook.json
+   
+   2. Launch ConnectS from your terminal (`java -jar “ConnectS.jar”`)
+        <br><br>
+        Expected: ConnectS is repopulated with sample tutees
+        <br>
+   
