@@ -200,6 +200,10 @@ This switches your view tab to a specified module and tutorial.
 Format: `view m/MODULE-TUTORIAL_GROUP`
 
 * You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
+* View all tab:
+  ![viewAll](images/viewAll.png)
+* Viewing a specific module and tutorial tab:
+  ![viewTab](images/viewTab.png)
 
 ### Clearing all entries : `clear`
 
