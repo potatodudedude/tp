@@ -190,7 +190,7 @@ Examples:
 
 This deletes the tutorial group (of a module) you specify. The tutorial group must be of the form 
 MODULE-TUTORIAL_GROUP. The tutorial group will be deleted from every tutee's module-tutorial
-list. If after the tutorial group, a tutee does not have any item in his/her module-tutorial list,
+list. If after the tutorial group is deleted, a tutee does not have any item in his/her module-tutorial list,
 the tutee will be automatically deleted.
 
 Format: `deleteTut MODULE-TUTORIAL_GROUP`
