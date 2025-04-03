@@ -55,6 +55,11 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB
                 + MODTUT_DESC_AMY + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
 
+        // multiple mods - all accepted
+        Person expectedPersonMultipleModTuts = new PersonBuilder(BOB).withModTuts(VALID_MODTUT_FRIEND, VALID_MODTUT_AMY).build();
+        assertParseSuccess(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_AMY
+                        + MODTUT_DESC_FRIEND + TAG_DESC_FRIEND + TAG_DESC_HUSBAND,
+                new AddCommand(expectedPersonMultipleModTuts));
 
         // multiple tags - all accepted
         Person expectedPersonMultipleTags = new PersonBuilder(BOB).withModTuts(VALID_MODTUT_FRIEND, VALID_MODTUT_AMY)
@@ -62,12 +67,14 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_AMY
                         + MODTUT_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 new AddCommand(expectedPersonMultipleTags));
+
     }
+
 
     @Test
     public void parse_repeatedNonTagValue_failure() {
         String validExpectedPersonString = NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB
-                + MODTUT_DESC_AMY;
+                + MODTUT_DESC_AMY + TAG_DESC_FRIEND;
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY + validExpectedPersonString,
@@ -114,6 +121,7 @@ public class AddCommandParserTest {
         // invalid email
         assertParseFailure(parser, validExpectedPersonString + INVALID_EMAIL_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_EMAIL));
+
     }
 
     @Test
@@ -121,23 +129,23 @@ public class AddCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
 
         // missing name prefix
-        assertParseFailure(parser, VALID_NAME_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB,
+        assertParseFailure(parser, VALID_NAME_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_BOB,
                 expectedMessage);
 
         // missing phone prefix
-        assertParseFailure(parser, NAME_DESC_BOB + VALID_TELE_BOB + EMAIL_DESC_BOB,
+        assertParseFailure(parser, NAME_DESC_BOB + VALID_TELE_BOB + EMAIL_DESC_BOB + MODTUT_DESC_BOB,
                 expectedMessage);
 
         // missing email prefix
-        assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + VALID_EMAIL_BOB,
+        assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + VALID_EMAIL_BOB + MODTUT_DESC_BOB,
                 expectedMessage);
 
-        // missing address prefix
-        assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB,
+        // missing module prefix
+        assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + VALID_MODTUT_BOB,
                 expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, VALID_NAME_BOB + VALID_TELE_BOB + VALID_EMAIL_BOB,
+        assertParseFailure(parser, VALID_NAME_BOB + VALID_TELE_BOB + VALID_EMAIL_BOB + VALID_MODTUT_BOB,
                 expectedMessage);
     }
 
@@ -158,6 +166,11 @@ public class AddCommandParserTest {
         // invalid modtut
         assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + INVALID_MODTUT_DESC
                 + VALID_MODTUT_BOB, ModTutGroup.MESSAGE_CONSTRAINTS);
+
+
+        // invalid tag
+        assertParseFailure(parser, NAME_DESC_BOB + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_BOB
+                + INVALID_MODTUT_DESC, ModTutGroup.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + TELE_DESC_BOB + EMAIL_DESC_BOB + INVALID_MODTUT_DESC,
