@@ -25,7 +25,7 @@ class JsonAdaptedModTutGroup {
      * Converts a given {@code ModTutGroup} into this class for Jackson use.
      */
     public JsonAdaptedModTutGroup(ModTutGroup source) {
-        modTutGroupName = source.value;
+        modTutGroupName = source.modTutGroupString;
     }
 
     @JsonValue
