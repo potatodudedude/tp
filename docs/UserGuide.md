@@ -9,8 +9,8 @@
 **Welcome the ConnectS user guide! ConnectS is any computing teaching assistants(TAs) best friend in helping them
 manage their tutees' contact information.**
 
-If you are fast at typing, ConnectS' command line interface(CLI) specialisation can help you manage your contacts faster 
-than other contact apps, whilst still allowing you the convenience of a graphic user interface(GUI).
+If you are fast at typing, ConnectS' command line interface(CLI) specialisation can help you manage your tutee's 
+contacts faster than other contact apps, whilst still allowing you the convenience of a graphic user interface(GUI).
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -52,13 +52,13 @@ at the end of the guide.
 6. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all commands.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all tutee.
 
-   * `add n/John Doe t/@johndoe e/johnd@example.com m/CS2103T-F10` : Adds a contact named `John Doe` to ConnectS.
+   * `add n/John Doe t/@johndoe e/johnd@example.com m/CS2103T-F10` : Adds a tutee named `John Doe` to ConnectS.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the 3rd tutee shown in the current list.
 
-   * `clear` : Deletes all contacts.
+   * `clear` : Deletes all tutee.
 
    * `exit` : Exits the app.
 
@@ -75,15 +75,18 @@ at the end of the guide.
 * When you see a word in `UPPER_CASE`, that word is a parameter that you enter.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
-* If you see parameters in square brackets, you can use any combination of the parameters, but you
-  must have at least one.<br>
-  e.g. `edit INDEX [n/NAME t/TELEGRAM_HANDLE e/EMAIL]` can be used as `edit 1 n/Doe` or as `edit 2 n/Doe t/@JohnDoe` or as `edit 1 e/john@example.com`, but not `edit 1` alone.
+* If you see parameters in square brackets, they are optional.<br>
+  e.g. `add [tag/TAG...]` allows for the tag parameter to be omitted.
 
-* If you see parameters in triangle brackets, you can use any of them, but you must have only one.
+* If you see parameters in curly brackets, you can use any combination of the parameters, but you
+  must have at least one.<br>
+  e.g. `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL}` can be used as `edit 1 n/Doe` or as `edit 2 n/Doe t/@JohnDoe` or as `edit 1 e/john@example.com`, but not `edit 1` alone.
+
+* If you see parameters in triangle brackets, you can use any of them, but you must have only one.<br>
   e.g. `find <n/NAME... t/TELEGRAM_HANDLE... e/EMAIL...>` can be used as `find n/Doe` or `find t/@johndoe`, but not as `find n/Doe t/@johndoe`.
 
-* If you see parameters with `…`​ after them, it means they can be used multiple times excluding zero times.<br>
-  e.g. `m/MODULE-TUTORIAL_GROUP…​` can be used as `m/CS2101-T06`, `m/CS1101S-T55 m/CS2030S-T08` etc.
+* If you see parameters with `...` after them, it means they can be used multiple times excluding zero times.<br>
+  e.g. `m/MODULE-TUTORIAL_GROUP...` can be used as `m/CS2101-T06`, `m/CS1101S-T55 m/CS2030S-T08` etc.
 
 * You can give parameters in any order.<br>
   e.g. if the command specifies `n/NAME t/TELEGRAM_HANDLE`, `t/TELEGRAM_HANDLE n/NAME` is also acceptable.
@@ -91,8 +94,11 @@ at the end of the guide.
 * If you type in extra lines behind commands that don't require parameters (such as `help`, `list`, `exit` and `clear`), it will be ignored.<br>
   e.g. if you type `help 123`, it will be interpreted as `help`.
 
-* When you see the `MODULE-TUTORIAL_GROUP` parameter, you will need to specify both module and tutorial group of the contact, separated by a hyphen.
-  e.g. `CS2101-T01` is valid, but `CS2101 T01` is not
+* When you see the `MODULE-TUTORIAL_GROUP` parameter, you will need to specify both module and tutorial group of the contact, separated by a hyphen.<br>
+  e.g. `CS2101-T01` is valid, but `CS2101 T01` is not.
+
+* When you see a command that requires you to input the `INDEX` of a tutee, it refers to the numbering of that tutee in the
+  current view you are in.<br>
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands as some spaces may be omitted.
 </box>
@@ -105,13 +111,13 @@ Format: `help`
 
 ### Adding a person: `add`
 
-This allows you to add a contact to ConnectS.
+This allows you to add a tutee to ConnectS.
 
-Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP…​`
+Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TAG...]`
 
 <box type="tip" seamless>
 
-**Tip:** You may add multiple module-tutorial groups to a single person!
+**Tip:** You may add multiple module-tutorial groups to a single tutee!
 </box>
 
 Examples:
@@ -120,7 +126,7 @@ Examples:
 
 ### Listing all persons : `list`
 
-This shows you a list of all your contacts in ConnectS.
+This shows you a list of all your tutees in ConnectS.
 
 Format: `list`
 
@@ -128,20 +134,20 @@ Format: `list`
 
 This edits a contact you specify.
 
-Format: `edit INDEX [n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP…​]`
+Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... tag/TAG...}`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the tutee at the specified `INDEX`. The index refers to the index number shown in the currently displayed tutee list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing module-tutorial groups, the existing module-tutorial groups of the person will be overwritten.
+* When editing module-tutorial groups, the existing module-tutorial groups of the tutee will be overwritten.
 
 Examples:
-*  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st person to be `@johndoey` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
+*  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower` Edits the name of the 2nd tutee to be `Betsy Crower`.
 
 ### Locating persons by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds tutee whose names contain any of the given keywords.
 
 Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...>`
 
@@ -154,46 +160,53 @@ Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...
   e.g. `Hans Bo` or `an` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
-* `find n/John` returns contacts with names `john` and `John Doe`
-* `find t/@alex @david` returns contacts with telegram handles `@alexyeoh`, `@david`<br>
-  ![result for 'find t/@alex @david'](images/findAlexDavidResult.png)
+* `find t/@joh` returns tutees with telegram handles `@johnny` and `@johseph`.
+* `find n/Amy Bob` returns tutees with names `Amy Cheng` and `Bob Ross`.<br>
+  ![findResult](images/findResult.png)
 
 ### Deleting a person : `delete`
 
-This deletes the contact you specify.
+This deletes the tutee you specify.
 
 Format: `delete INDEX`
 
 * Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index refers to the index number shown in the displayed tutee list.
+* The index **must be a positive integer** 1, 2, 3, ...
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in ConnectS.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd tutee in ConnectS.
+* `find Betsy` followed by `delete 1` deletes the 1st tutee in the results of the `find` command.
 
 ### Sorting entries: `sort`
 
-This sorts your contacts in lexicographical order.
+This sorts your tutees in lexicographical order.
 
 Format: `sort`
 
 ### Pinning a person: `pin`, `unpin`
 
-This pins one person to always show up at the top of the list, or unpins a person.
+This pins one tutee to always show up at the top of the list, or unpins a tutee.
 
-Format:`pin INDEX`, `unpin INDEX`
+Format:` pin INDEX`, `unpin INDEX`
 
+* The index refers to the index number shown in the displayed tutee list.
+* The index **must be a positive integer** 1, 2, 3, ...
 
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+### Viewing a tab: `view`
+
+This switches your view tab to a specified module and tutorial.
+
+Format: `view m/MODULE-TUTORIAL_GROUP`
+
+* You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
 
 ### Clearing all entries : `clear`
 
 <box type="warning" seamless>
 
 **Caution:**
-This deletes all your contacts from ConnectS.<br>
+This deletes all your tutees from ConnectS.<br>
 </box>
 
 Format: `clear`
@@ -240,14 +253,15 @@ Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP…​` <br> e.g., `add n/James Ho t/@jameshoho e/jamesho@example.com m/CS2030S-T08`
+**Add**    | `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TAG]...` <br> e.g., `add n/James Ho t/@jameshoho e/jamesho@example.com m/CS2030S-T08`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [t/TELEGRAM_HANDLE] [e/EMAIL] [m/MODULE-TUTORIAL_GROUP]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... tag/TAG}`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find <n/NAME... t/TELEGRAM_HANDLE... e/EMAIL...>`<br> e.g., `find n/James Jake`
 **List**   | `list`
 **Sort**   | `sort`
 **Pin**    | `pin INDEX`
+**View**   | `view m/MODULE-TUTORIAL_GROUP`
 **Help**   | `help`
 
 --------------------------------------------------------------------------------------------------------------------
