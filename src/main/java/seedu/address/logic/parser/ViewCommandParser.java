@@ -35,7 +35,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
 
-        String modTutGroup = argMultimap.getValue(PREFIX_MOD).get();
+        String modTutGroup = argMultimap.getValue(PREFIX_MOD).get().toUpperCase();
 
         // If getting view for all
         if (modTutGroup.equalsIgnoreCase("ALL")) {
