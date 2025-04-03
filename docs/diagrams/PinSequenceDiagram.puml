@@ -1,0 +1,77 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":PinCommandParser" as PinCommandParser LOGIC_COLOR
+participant "p:PinCommand" as PinCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("pin 1")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("pin 1")
+activate AddressBookParser
+
+create PinCommandParser
+AddressBookParser -> PinCommandParser :
+activate PinCommandParser
+
+PinCommandParser --> AddressBookParser:
+deactivate PinCommandParser
+
+AddressBookParser -> PinCommandParser: parse("1")
+activate PinCommandParser
+
+create PinCommand
+PinCommandParser -> PinCommand
+activate PinCommand
+
+PinCommand --> PinCommandParser: p
+deactivate PinCommand
+
+PinCommandParser --> AddressBookParser: p
+deactivate PinCommandParser
+
+AddressBookParser --> LogicManager : p
+deactivate AddressBookParser
+destroy PinCommandParser
+
+LogicManager -> PinCommand : execute(m)
+activate PinCommand
+
+PinCommand -> Model : get(0)
+activate Model
+
+Model --> PinCommand : personToPin
+deactivate Model
+
+PinCommand -> PinCommand : createPinnedPerson(personToPin)
+activate PinCommand
+PinCommand --> PinCommand : pinnedPerson
+deactivate PinCommand
+
+PinCommand -> Model : pinPerson(personToPin, pinnedPerson)
+activate Model
+Model --> PinCommand :
+deactivate Model
+
+create CommandResult
+PinCommand -> CommandResult :
+activate CommandResult
+CommandResult --> PinCommand : r
+deactivate CommandResult
+
+PinCommand --> LogicManager : r
+deactivate PinCommand
+
+[<--LogicManager :
+deactivate LogicManager
+@enduml

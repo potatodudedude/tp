@@ -170,6 +170,14 @@ The behaviour of the view tabs button can also be seen here.
 
 In order to maintain a similar architecture to the original AB3, new methods such as `setViewAll()` have been implemented.
 
+### Pin a Tutee feature
+
+The pinning feature allows the user to pin a tutee to the top of the list.
+
+The behaviour of the pinning feature can be seen below.
+
+<puml src="diagrams/PinSequenceDiagram.puml" alt="Pin Sequence Diagram" />
+
 #### Design considerations:
 
 **Aspect: How undo & redo executes:**
