@@ -19,6 +19,11 @@ Class TelegramHandle
 Class Email
 Class ModTutGroup
 Class Tag
+Class Module
+Class Tutorial
+Class UniqueTagList
+Class UniqueModList
+Class UniqueTutList
 
 Class I #FFFFFF
 }
@@ -27,7 +32,6 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
 AddressBook .up.|> ReadOnlyAddressBook
-
 ModelManager .up.|> Model
 Model .right.> ReadOnlyUserPrefs
 Model .left.> ReadOnlyAddressBook
@@ -35,20 +39,31 @@ ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
+
 AddressBook *--> "1" UniquePersonList
-UniquePersonList --> "~* all" Person
-Person *--> Name
+AddressBook *--> "1" UniqueTagList
+AddressBook *--> "1" UniqueModList
+AddressBook *--> "1" UniqueTutList
+UniquePersonList ---> "~* all" Person
+UniqueTagList --> "*" Tag
+UniqueTutList --> "*" ModTutGroup
+
+Person *--> "*" Tag
+Person *--> "1..*" ModTutGroup
 Person *--> Email
 Person *--> TelegramHandle
-Person *--> "1..*" ModTutGroup
-Person *--> "*" Tag
+Person *--> Name
 
-Person -[hidden]up--> I
-UniquePersonList -[hidden]right-> I
+UniqueModList --> "*" Module
+ModTutGroup *--> "1" Module
+ModTutGroup *--> "1" Tutorial
 
-Name -[hidden]right-> TelegramHandle
-TelegramHandle -[hidden]right-> Email
-Email -[hidden]right-> ModTutGroup
+
+UniqueModList -[hidden]right-> UniqueTutList
+UniqueTutList -[hidden]right-> UniqueTagList
+UniqueTagList -[hidden]right-> UniquePersonList
+UniquePersonList -[hidden]right-> UniqueModList
+
 
 ModelManager --> "~* filtered" Person
 @enduml

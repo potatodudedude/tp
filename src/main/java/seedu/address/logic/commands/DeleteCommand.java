@@ -3,18 +3,13 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.ModTutGroup;
-import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Tutorial;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.
@@ -44,22 +39,7 @@ public class DeleteCommand extends Command {
         if (model.isViewAll()) {
             filteredList = model.getFilteredPersonList();
         } else {
-            List<String> selectedTabs = model.getSelectedTabs();
-            String moduleName = selectedTabs.get(0);
-            String tutorialName = selectedTabs.get(1);
-
-            List<Person> personList = model.getAddressBook().getPersonList();
-            filteredList = personList.stream()
-                    .filter(p -> {
-                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                        Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
-                        return moduleStream.anyMatch(m -> m.getName().equals(moduleName));
-                    })
-                    .filter(p -> {
-                        Set<ModTutGroup> modTutGroups = p.getModTutGroups();
-                        Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
-                        return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
-                    }).toList();
+            filteredList = model.getCurrentTabPersonList();
         }
 
         if (targetIndex.getZeroBased() >= filteredList.size()) {

@@ -6,6 +6,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.util.HashMap;
 import java.util.Map;
 
+import seedu.address.commons.util.StringUtil;
+
 
 /**
  * Represents a Person's module - tutorial group in ConnectS.
@@ -25,13 +27,14 @@ public class ModTutGroup {
     private final Tutorial tutorialGroup;
 
     /**
-     * Constructs a module - tutorial group.
+     * Constructs a module - tutorial group with given {@code modTutGroup} transformed into uppercase.
      *
      * @param modTutGroup valid module - tutorial group.
      */
     public ModTutGroup(String modTutGroup) {
         requireNonNull(modTutGroup);
         checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
+        assert StringUtil.isUpperCase(modTutGroup) : "Module - Tutorial Group should be in uppercase";
         value = modTutGroup;
 
         String moduleString = modTutGroup.split("-")[0];

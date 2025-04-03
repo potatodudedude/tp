@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.commons.util.StringUtil;
+
 /**
  * Represents a Person's tutorial in ConnectS.
  * Guarantees: immutable; is valid as declared in {@link ModTutGroup#isValidModTutGroup(String)}
@@ -17,6 +19,7 @@ public class Tutorial {
     public Tutorial(String name) {
         requireNonNull(name);
         assert isValidTutorial(name) : "Tutorial name should be alphanumeric";
+        assert StringUtil.isUpperCase(name) : "Tutorial name should be in uppercase";
         this.name = name;
     }
 

@@ -19,6 +19,11 @@ public class ModuleTest {
     }
 
     @Test
+    public void constructor_lowercaseModule_throwsAssertion() {
+        assertThrows(AssertionError.class, () -> new Module("cs2103t")); // contains lowercase character
+    }
+
+    @Test
     public void getName_success() {
         Module cs2103t = new Module("CS2103T");
         assertEquals("CS2103T", cs2103t.getName());

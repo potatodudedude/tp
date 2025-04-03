@@ -140,4 +140,25 @@ public class StringUtilTest {
         assertThrows(NullPointerException.class, () -> StringUtil.getDetails(null));
     }
 
+    //---------------- Tests for isUpperCase --------------------------------------
+
+    @Test
+    public void isUpperCase_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> StringUtil.isUpperCase(null));
+    }
+
+    @Test
+    public void isUpperCase_invalidInputs_returnsFalse() {
+        assertFalse(StringUtil.isUpperCase("aBc1")); // mixed case letters with number
+        assertFalse(StringUtil.isUpperCase("abc")); // all lower case letters
+        assertFalse(StringUtil.isUpperCase("mod-tut")); // all lower case letters with special character
+    }
+
+    @Test
+    public void isUpperCase_validInputs_returnTrue() {
+        assertTrue(StringUtil.isUpperCase("ABC")); // all upper case letters
+        assertTrue(StringUtil.isUpperCase("MOD-TUT")); // all upper case letters with number and special character
+        assertTrue(StringUtil.isUpperCase("123")); // no letters in the string
+    }
+
 }

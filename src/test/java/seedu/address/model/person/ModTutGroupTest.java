@@ -20,6 +20,12 @@ public class ModTutGroupTest {
     }
 
     @Test
+    public void constructor_lowercaseModTutGroup_throwsAssertion() {
+        String invalidModTutGroup = "cs2103t-t01";
+        assertThrows(AssertionError.class, () -> new ModTutGroup(invalidModTutGroup));
+    }
+
+    @Test
     public void isValidModTutGroup() {
         // null modTutGroup
         assertThrows(NullPointerException.class, () -> ModTutGroup.isValidModTutGroup(null));

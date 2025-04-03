@@ -7,8 +7,6 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
 
@@ -18,7 +16,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/jordon0802)]
 
-* Role:
+* Role: Developer
 
 ### Fan Yueh-Ching
 
@@ -34,7 +32,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/potatodudedude)]
 
-* Role:
+* Role: Developer
 
 ### Teo Kim Han
 
@@ -42,5 +40,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/KimHan01)]
 
-* Role:
-* Responsibilites:
+* Role: Developer

@@ -65,4 +65,12 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Returns true if {@code s} is entirely in upper case.
+     */
+    public static boolean isUpperCase(String s) {
+        requireNonNull(s);
+        return s.equals(s.toUpperCase());
+    }
 }
