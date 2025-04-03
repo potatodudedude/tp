@@ -21,7 +21,7 @@ public class ModTutGroup {
 
     private static final Map<String, Map<String, Integer>> moduleMap = new HashMap<>();
 
-    public final String value;
+    public final String modTutGroupString;
 
     private final Module module;
     private final Tutorial tutorialGroup;
@@ -35,7 +35,7 @@ public class ModTutGroup {
         requireNonNull(modTutGroup);
         checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
         assert StringUtil.isUpperCase(modTutGroup) : "Module - Tutorial Group should be in uppercase";
-        value = modTutGroup;
+        modTutGroupString = modTutGroup;
 
         String moduleString = modTutGroup.split("-")[0];
         String tutorialString = modTutGroup.split("-")[1];
@@ -59,6 +59,61 @@ public class ModTutGroup {
         moduleMap.put(moduleString, tutorialMap);
     }
 
+    /**
+     * Deletes {@code module} from the {@code moduleMap}.
+     * @param moduleName name of the module to be removed
+     */
+    public static void deleteModule(String moduleName) {
+        moduleMap.remove(moduleName);
+    }
+
+    /**
+     * Deletes {@code tutorial} from the {@code moduleMap}.
+     * @param modTutGroup name of the tutorial to be removed
+     */
+    public static void deleteTutorial(String modTutGroup) {
+        requireNonNull(modTutGroup);
+        checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
+        assert StringUtil.isUpperCase(modTutGroup) : "Module - Tutorial Group should be in uppercase";
+
+        String moduleString = modTutGroup.split("-")[0];
+        String tutorialString = modTutGroup.split("-")[1];
+
+        if (moduleMap.containsKey(moduleString)) {
+            moduleMap.get(moduleString).remove(tutorialString);
+        }
+    }
+
+    /**
+     * Decrements the count or removes the {@code tutorial} from the {@code moduleMap}. If the {@code tutorial} removed
+     * is the last {@code tutorial} in the {@code module}, the {@code module} will be removed from the {@code moduleMap}
+     * as well.
+     * @param modTutGroup name of the tutorial to be decremented/removed
+     */
+    public static void decreaseTutorialCount(String modTutGroup) {
+        requireNonNull(modTutGroup);
+        checkArgument(isValidModTutGroup(modTutGroup), MESSAGE_CONSTRAINTS);
+        assert StringUtil.isUpperCase(modTutGroup) : "Module - Tutorial Group should be in uppercase";
+
+        String moduleString = modTutGroup.split("-")[0];
+        String tutorialString = modTutGroup.split("-")[1];
+
+        if (moduleMap.containsKey(moduleString)) {
+            Map<String, Integer> tutorialMap = moduleMap.get(moduleString);
+            if (moduleMap.get(moduleString).containsKey(tutorialString)) {
+                int count = moduleMap.get(moduleString).get(tutorialString);
+                if (count <= 1) {
+                    tutorialMap.remove(tutorialString);
+                    if (tutorialMap.isEmpty()) {
+                        moduleMap.remove(moduleString);
+                    }
+                } else {
+                    tutorialMap.put(tutorialString, count - 1);
+                }
+            }
+        }
+    }
+
     public static Map<String, Map<String, Integer>> getModuleMap() {
         return moduleMap;
     }
@@ -80,7 +135,7 @@ public class ModTutGroup {
 
     @Override
     public String toString() {
-        return value;
+        return modTutGroupString;
     }
 
     @Override
@@ -101,7 +156,7 @@ public class ModTutGroup {
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return modTutGroupString.hashCode();
     }
 
 }

@@ -18,9 +18,10 @@ public class ViewCommand extends Command {
     public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": View a specific tab.\n" + "Parameters: "
-            + PREFIX_MOD + "MOD-TUT_GROUP";
+            + PREFIX_MOD + "MODULE-TUTORIAL_GROUP" + " or " + PREFIX_MOD + "all (Case-insensitive)";
 
-    public static final String MESSAGE_SUCCESS = "Viewing Tab: %1$s";
+    public static final String MESSAGE_SUCCESS_VIEW_TAB = "Viewing Tab: %1$s";
+    public static final String MESSAGE_SUCCESS_VIEW_ALL = "Viewing all Tabs";
 
     private static final Map<String, Map<String, Integer>> moduleMap = ModTutGroup.getModuleMap();
 
@@ -28,13 +29,26 @@ public class ViewCommand extends Command {
     public final String tutorialName;
     public final String modTutGroup;
 
+    private final boolean isAll;
+
     /**
-     * Creates an ViewCommand to view the specified {@code ModTutGroup} tab
+     * Creates a ViewCommand to view the specified {@code ModTutGroup} tab
      */
     public ViewCommand(String modTutGroup, String moduleName, String tutorialName) {
         this.moduleName = moduleName;
         this.tutorialName = tutorialName;
         this.modTutGroup = modTutGroup;
+        this.isAll = false;
+    }
+
+    /**
+     * Creates a ViewCommand to view all
+     */
+    public ViewCommand() {
+        this.moduleName = "";
+        this.tutorialName = "";
+        this.modTutGroup = "";
+        this.isAll = true;
     }
 
 
@@ -48,19 +62,26 @@ public class ViewCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.setViewAll(false);
 
-        if (!moduleMap.containsKey(moduleName)) {
-            throw new CommandException(String.format(Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroup));
+        if (this.isAll) {
+            model.setViewAll(true);
+            return new CommandResult(MESSAGE_SUCCESS_VIEW_ALL, true, false);
         } else {
-            if (!moduleMap.get(moduleName).containsKey(tutorialName)) {
-                throw new CommandException(String.format(Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroup));
-            }
-        }
+            model.setViewAll(false);
 
-        model.setSelectedTabs(moduleName, tutorialName);
-        return new CommandResult(
-                String.format(MESSAGE_SUCCESS, modTutGroup),
-                true, false);
+            if (!moduleMap.containsKey(moduleName)) {
+                throw new CommandException(String.format(Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroup));
+            } else {
+                if (!moduleMap.get(moduleName).containsKey(tutorialName)) {
+                    throw new CommandException(String.format(Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP,
+                            modTutGroup));
+                }
+            }
+
+            model.setSelectedTabs(moduleName, tutorialName);
+            return new CommandResult(
+                    String.format(MESSAGE_SUCCESS_VIEW_TAB, modTutGroup),
+                    true, false);
+        }
     }
 }

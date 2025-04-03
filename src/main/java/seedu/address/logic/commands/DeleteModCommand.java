@@ -17,12 +17,12 @@ public class DeleteModCommand extends Command {
 
     /** Usage instructions for this command. */
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the module as specified, as well as contacts who only take that course.\n"
-            + "Parameters: Module Code\n"
+            + ": Deletes the module as specified, as well as contacts who only take that module.\n"
+            + "Parameters: MODULE_CODE (Case-insensitive)\n"
             + "Example: " + COMMAND_WORD + " CS2103T";
 
     /** Success message displayed after module is deleted. */
-    public static final String MESSAGE_DELETE_MOD_SUCCESS = "Course Deleted";
+    public static final String MESSAGE_DELETE_MOD_SUCCESS = "Course Deleted: %1$s";
 
     /** The module to be deleted from the address book. */
     private final Module module;
@@ -48,7 +48,7 @@ public class DeleteModCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.deleteMod(this.module);
-        return new CommandResult(MESSAGE_DELETE_MOD_SUCCESS + module.toString(), false, false);
+        return new CommandResult(String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString()), false, false);
     }
 
     @Override

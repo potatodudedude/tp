@@ -15,11 +15,13 @@ public class HelpCommand extends Command {
     public static final String SHOWING_HELP_MESSAGE = HelpCommand.showHelpMessage();
 
     private static String showHelpMessage() {
-        return AddCommand.MESSAGE_USAGE + "\n\n" + ClearCommand.MESSAGE_USAGE + "\n\n" + DeleteCommand.MESSAGE_USAGE
-                + "\n\n" + EditCommand.MESSAGE_USAGE + "\n\n" + ExitCommand.MESSAGE_USAGE + "\n\n"
-                + FindCommand.MESSAGE_USAGE + "\n\n" + SortCommand.MESSAGE_USAGE + "\n\n"
-                + HelpCommand.MESSAGE_USAGE + "\n\n" + ListCommand.MESSAGE_USAGE + "\n\n"
-                + PinCommand.MESSAGE_USAGE + "\n\n" + UnpinCommand.MESSAGE_USAGE;
+        return AddCommand.MESSAGE_USAGE + "\n\n" + ListCommand.MESSAGE_USAGE + "\n\n"
+                + EditCommand.MESSAGE_USAGE + "\n\n" + FindCommand.MESSAGE_USAGE + "\n\n"
+                + DeleteCommand.MESSAGE_USAGE + "\n\n" + DeleteModCommand.MESSAGE_USAGE + "\n\n"
+                + DeleteModTutCommand.MESSAGE_USAGE + "\n\n" + SortCommand.MESSAGE_USAGE + "\n\n"
+                + PinCommand.MESSAGE_USAGE + "\n\n" + UnpinCommand.MESSAGE_USAGE + "\n\n"
+                + ViewCommand.MESSAGE_USAGE + "\n\n" + ClearCommand.MESSAGE_USAGE + "\n\n"
+                + ExitCommand.MESSAGE_USAGE + "\n\n";
     }
 
     @Override

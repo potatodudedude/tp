@@ -24,7 +24,7 @@ public class DeleteModCommandTest {
         Module module = new Module(VALID_MOD_AMY);
         DeleteModCommand deleteModCommand = new DeleteModCommand(module);
 
-        String expectedMessage = MESSAGE_DELETE_MOD_SUCCESS + module.toString();
+        String expectedMessage = String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString());
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
         expectedModel.deleteMod(module);
