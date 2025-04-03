@@ -193,9 +193,7 @@ public class MainWindow extends UiPart<Stage> {
                 mainViewPlaceholder.getChildren().add(personListPanel.getRoot());
             } else {
                 List<String> currentSelectedTabs = List.copyOf(logic.getSelectedTabs());
-                if (!commandResult.isView()) {
-                    moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList(), logic);
-                }
+                moduleTabPane = new ModuleTabPane(logic.getFilteredPersonList(), logic);
                 moduleTabPane.setSelectedTab(null, currentSelectedTabs, 0);
                 mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
             }
