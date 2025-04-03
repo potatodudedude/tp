@@ -18,6 +18,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
+import static seedu.address.logic.commands.EditCommand.MESSAGE_MOD_CANNOT_BE_EMPTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -196,5 +197,15 @@ public class EditCommandParserTest {
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_resetMods_failure() {
+        Index targetIndex = INDEX_THIRD_PERSON;
+        String userInput = targetIndex.getOneBased() + MODTUTGROUP_EMPTY;
+
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withModTutGroups().build();
+
+        assertParseFailure(parser, userInput, MESSAGE_MOD_CANNOT_BE_EMPTY);
     }
 }
