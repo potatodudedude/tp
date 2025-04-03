@@ -97,7 +97,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 <b type="info" seamless>
 
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
-</box>
+</b>
 
 How the `Logic` component works:
 
