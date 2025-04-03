@@ -170,25 +170,13 @@ The behaviour of the view tabs button can also be seen here.
 
 In order to maintain a similar architecture to the original AB3, new methods such as `setViewAll()` have been implemented.
 
-#### Design considerations:
+### Find Command
 
-**Aspect: How undo & redo executes:**
+The find command only allows for one field of information to be used as a query keyword at a time. The `FindCommandParser` 
+parses the keyword and creates an appropriate subclass of the abstract class `FieldContainsKeywordPredicate`. This predicate subclass
+is then passed on to the `ModelManager` class which uses it to filter the list which the user then sees.
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
+<puml src="diagrams/FindActivityDiagram.puml" alt="View Tabs Sequence Diagram" />
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -364,6 +352,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Human editable text file**: A file format that can be read and modified with a standard text editor (e.g., `.txt` and `.json`)
 * **Remote Server**: Any server hosted over the network to store and access data.
 * **Screen scales**: The scaling factor that determines how much the screen content on the GUI should be enlarged
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+
+### Achievements
+
+* Compared to AB3, ConnectS has a new UI feature in its module and tutorial tabs, allowing for automatic sorting of
+  contacts into groups upon adding. There are also new view commands to allow switching between these UI tabs using the CLI.
+* Unlike AB3, ConnectS allows for deleting contacts en masse by deleting entire modules and tutorials at a time.
+* ConnectS has an expanded find feature which allows for searching for a contact using telegram handle and email
+  in addition to name. The find feature also finds based on incomplete keywords unlike AB3, which needed a complete match.
+* ConnectS has a new sorting feature that orders contacts in lexicographical order, unlike AB3 where they were just ordered
+  on when the contact was added.
+* ConnectS has a new pinning feature which allows for the pinning of a specified contact at the top of the list. The
+  pinned contact is also visually distinct, and not affected by sorting.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enchancements**
 
 --------------------------------------------------------------------------------------------------------------------
 
