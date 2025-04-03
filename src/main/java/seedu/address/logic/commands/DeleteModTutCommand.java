@@ -17,8 +17,8 @@ public class DeleteModTutCommand extends Command {
 
     /** Usage instructions for this command. */
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the tutorial as specified as well as contacts who only take the tutorial.\n"
-            + "Parameters: Module-Tutorial\n"
+            + ": Deletes the tutorial as specified as well as contacts who only take that tutorial.\n"
+            + "Parameters: MODULE-TUTORIAL_GROUP (Case-insensitive)\n"
             + "Example: " + COMMAND_WORD + " CS2103T-T12";
 
     /** Success message displayed after the tutorial is deleted. */

@@ -24,9 +24,9 @@ public class FindCommand extends Command {
             + "contain any of the specified keywords (case-insensitive) "
             + "and filters them out.\n"
             + "Parameters: "
-            + "[" + PREFIX_NAME + "NAME KEYWORD(S)...] \nOR "
-            + "[" + PREFIX_TELEGRAM + "TELEGRAM HANDLE KEYWORD(S)...] \nOR "
-            + "[" + PREFIX_EMAIL + "EMAIL KEYWORD(S)...]\n"
+            + "[" + PREFIX_NAME + "NAME_KEYWORD(S)...] \nOR "
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM_HANDLE_KEYWORD(S)...] \nOR "
+            + "[" + PREFIX_EMAIL + "EMAIL_KEYWORD(S)...]\n"
             + "Example: " + COMMAND_WORD + " n/alice bob" + "\nOR " + COMMAND_WORD + " t/dav koh";
     public static final String MESSAGE_EMPTY_NAME = "The name that you gave was empty.";
     public static final String MESSAGE_EMPTY_TELEGRAMHANDLE = "The telegram handle that you gave was empty.";
