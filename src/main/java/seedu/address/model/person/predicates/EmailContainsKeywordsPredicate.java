@@ -1,5 +1,7 @@
 package seedu.address.model.person.predicates;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.List;
 
 import seedu.address.commons.util.StringUtil;
@@ -16,6 +18,7 @@ public class EmailContainsKeywordsPredicate extends FieldContainsKeywordsPredica
 
     @Override
     public boolean test(Person person) {
+        requireNonNull(person);
         return super.keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getEmail().value, keyword));
     }

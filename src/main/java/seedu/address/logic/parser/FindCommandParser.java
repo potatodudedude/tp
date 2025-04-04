@@ -70,6 +70,8 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         }
 
+        assert !(predicate instanceof AlwaysTrueKeywordsPredicate) : "Predicate should be of a valid type ";
+
         return new FindCommand(predicate);
     }
 
