@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MOD_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MOD_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -10,27 +11,56 @@ import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Module;
+
+import java.lang.reflect.Field;
+import java.util.Map;
 
 
 public class DeleteModCommandTest {
     private Model model = new ModelManager(getSortedTypicalAddressBook(), new UserPrefs());
 
-    @Test
-    public void execute_validMod_success() {
-        Module module = new Module(VALID_MOD_AMY);
-        DeleteModCommand deleteModCommand = new DeleteModCommand(module);
+    public void setUp() throws Exception {
+        // Set up a clean AddressBook and reset moduleMap before each test
+        model = new ModelManager(new AddressBook(), new UserPrefs());
+        resetModuleMap();
+    }
 
-        String expectedMessage = String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString());
+    private void resetModuleMap() throws Exception {
+        Field mapField = ModTutGroup.class.getDeclaredField("moduleMap");
+        mapField.setAccessible(true);
+
+        @SuppressWarnings("unchecked")
+        Map<String, Module> moduleMap = (Map<String, Module>) mapField.get(null);
+        moduleMap.clear();
+
+        // Re-register modules deleted
+        new ModTutGroup(VALID_MODTUT_AMY);
+    }
+
+
+
+
+    @Test
+    public void execute_validMod_success() throws Exception {
+        Module moduleToDelete = new Module("CS1234");
+        DeleteModCommand deleteModCommand = new DeleteModCommand(moduleToDelete);
+
+        String expectedMessage = String.format(MESSAGE_DELETE_MOD_SUCCESS, moduleToDelete.toString());
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
-        expectedModel.deleteMod(module);
+        expectedModel.deleteMod(moduleToDelete);
+        resetModuleMap();
 
         assertCommandSuccess(deleteModCommand, model, expectedMessage, expectedModel);
     }
+
+
 
     @Test
     public void equals() {

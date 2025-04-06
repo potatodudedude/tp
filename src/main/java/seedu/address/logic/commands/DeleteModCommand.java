@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Module;
 
 /**
@@ -21,8 +22,8 @@ public class DeleteModCommand extends Command {
             + "Parameters: MODULE_CODE (Case-insensitive)\n"
             + "Example: " + COMMAND_WORD + " CS2103T";
 
-    /** Success message displayed after module is deleted. */
     public static final String MESSAGE_DELETE_MOD_SUCCESS = "Course Deleted: %1$s";
+    public static final String MESSAGE_MOD_NOT_EXIST = "Course Does Not Exist: ";
 
     /** The module to be deleted from the address book. */
     private final Module module;
@@ -47,6 +48,9 @@ public class DeleteModCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (!ModTutGroup.getModuleMap().containsKey(this.module.getName())) {
+            throw new CommandException(MESSAGE_MOD_NOT_EXIST + module.toString());
+        }
         model.deleteMod(this.module);
         return new CommandResult(String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString()), false, false, false);
     }
