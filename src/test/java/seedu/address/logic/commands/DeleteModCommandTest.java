@@ -1,8 +1,5 @@
 package seedu.address.logic.commands;
 
-import java.lang.reflect.Field;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
@@ -11,6 +8,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MOD_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.DeleteModCommand.MESSAGE_DELETE_MOD_SUCCESS;
 import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;
+
+import java.lang.reflect.Field;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
