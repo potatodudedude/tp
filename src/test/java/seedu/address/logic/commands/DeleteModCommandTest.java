@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import java.lang.reflect.Field;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
@@ -18,8 +21,6 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Module;
 
-import java.lang.reflect.Field;
-import java.util.Map;
 
 
 public class DeleteModCommandTest {
