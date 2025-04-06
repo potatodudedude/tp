@@ -23,19 +23,4 @@ public class ViewCommandTest {
         assertCommandSuccess(viewCommand, model, expectedCommandResult, model);
         assertTrue(model.isViewAll());
     }
-
-    /*@Test
-    public void execute_viewTabsFromViewAll_success() {
-        model.setViewAll(true);
-        Person person = model.getAddressBook().getPersonList().get(0);
-        ModTutGroup modTutGroup = person.getModTutGroups().iterator().next();
-        String moduleName = modTutGroup.getModule().getName();
-        String tutorialName = modTutGroup.getTutorial().getName();
-        CommandResult expectedCommandResult = new CommandResult(String.format(MESSAGE_SUCCESS_VIEW_TAB, modTutGroup),
-                true, false);
-
-        ViewCommand viewCommand = new ViewCommand(modTutGroup.toString(), moduleName, tutorialName);
-        assertCommandSuccess(viewCommand, model, expectedCommandResult, model);
-        assertFalse(model.isViewAll());
-    }*/
 }

@@ -26,7 +26,6 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.predicates.EmailContainsKeywordsPredicate;
@@ -72,7 +71,7 @@ public class AddressBookParserTest {
     public void parseCommand_deleteModTut() throws Exception {
         DeleteModTutCommand command = (DeleteModTutCommand) parser.parseCommand(
                 DeleteModTutCommand.COMMAND_WORD + " " + "CS2103T-T12");
-        assertEquals(new DeleteModTutCommand(new ModTutGroup("CS2103T-T12")), command);
+        assertEquals(new DeleteModTutCommand("CS2103T-T12"), command);
     }
 
     @Test
@@ -140,7 +139,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-            HelpCommand.MESSAGE_USAGE), () -> parser.parseCommand(""));
+                HelpCommand.MESSAGE_USAGE), () -> parser.parseCommand(""));
     }
 
     @Test

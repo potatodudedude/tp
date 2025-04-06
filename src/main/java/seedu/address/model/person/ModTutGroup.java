@@ -81,6 +81,9 @@ public class ModTutGroup {
 
         if (moduleMap.containsKey(moduleString)) {
             moduleMap.get(moduleString).remove(tutorialString);
+            if (moduleMap.get(moduleString).isEmpty()) {
+                moduleMap.remove(moduleString);
+            }
         }
     }
 
