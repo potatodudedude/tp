@@ -179,9 +179,19 @@ is then passed on to the `ModelManager` class which uses it to filter the list w
 
 <puml src="diagrams/FindActivityDiagram.puml" alt="Find Activity Diagram" />
 
+### Delete module feature
+
+The delete module feature allows the user to delete the specified module from every tutee's module-tutorial 
+module-tutorial list. In addition, if after the deletion, a tutee does not belong to any module-tutorial group, 
+that tutee will be automatically deleted.
+
+The behaviour of the sort feature can be seen below.
+
+<puml src="diagrams/DeleteModSequenceDiagram.puml alt="DeleteMod Sequence Diagram" />
+
 ### Sort tutees feature
 
-The sort tutees feature allow the user to sort the entire list of tutees by their names in lexicographical order.
+The sort tutees feature allows the user to sort the entire list of tutees by their names in lexicographical order.
 
 The behaviour of the sort feature can be seen below.
 
@@ -535,7 +545,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * Upon AB3, we updated some fields of contacts and created several new functions. This is relatively 
   challenging given the complexity of some specific functions created.
-* In addition, A new GUI is created. It was difficult given the difference between 
+* In addition, a new GUI is created. It was difficult given the difference between 
   the new-added GUI and the original AB3 GUI.
 
 ### Challenges
@@ -647,8 +657,7 @@ testers are expected to do more *exploratory* testing.
 
 
 ### Adding a tutee
-
-1. Add a tutee to connectS
+1. Adds a tutee to ConnectS
    1. Sample: `add n/Peter Parker t/@iamnotspidey e/peter@example.com m/CS2103T-T01`
         <br><br>
         Expected: A new person with name Peter Parker, telegram handle @iamnotspidey, email peter@example.com and a module CS2103T-T01 is added to the correct module and tutorial tab.
@@ -659,7 +668,7 @@ testers are expected to do more *exploratory* testing.
         <br><br>
    3. Sample: `add n/Steve Rogers e/cap@example.com t/@iamnotold m/CS2103T-T01 m/CS2106-T01 tag/Young tag/Captain`
         <br><br>
-        Expected: A new person with name steve rogers, telegram handle @iamnotold, email cap@example.com, 2 module CS2103T-T01 and CS2106-T01 and 2 tags of Young and Captain is added
+        Expected: A new person with name Steve Rogers, telegram handle @iamnotold, email cap@example.com, 2 module CS2103T-T01 and CS2106-T01 and 2 tags of Young and Captain is added
         <br><br>
    4. Invalid Sample: `add [Duplicate name, email, or telegram handle]`
         <br><br>
@@ -732,15 +741,15 @@ testers are expected to do more *exploratory* testing.
        <br><br>
     2. Sample: `edit 1 t/@iamMJ e/Michael@example.com`
        <br><br>
-        Expected: The email and telegram of the first person in the current list is changed to “Michael@example.com” and “@iamMJ” respectively
+        Expected: The email and telegram handle of the first person in the current list is changed to “Michael@example.com” and “@iamMJ” respectively
        <br><br>
     3. Sample: `edit 1 m/CS2100-T05`
        <br><br>
-        Expected: All modules of the first person in the current list is overwritten to CS2100-T05 only
+        Expected: All modules of the first person in the current list are overwritten to CS2100-T05 only
        <br><br>
     4. Sample: `edit 1 tag/`
        <br><br>
-        Expected: All tags of the first person in the current list is cleared
+        Expected: All tags of the first person in the current list are cleared
        <br><br>
     5. Invalid sample: `edit or edit 1`
        <br><br>
@@ -765,7 +774,7 @@ testers are expected to do more *exploratory* testing.
         <br><br>
         Expected: Tutorial T11 of CS2103T is deleted
         <br><br>
-   2. Invalid Sample: `deleteTut`, `deleteTut CS2103T`
+   2. Invalid Sample: `deleteTut`
         <br><br>
         Expected: Error message showing invalid usage of deleteTut
         <br>
