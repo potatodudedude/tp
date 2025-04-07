@@ -23,11 +23,11 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
 
 * [How to use this Guide](#how-to-use-this-guide)
 * [Features](#features)
-  * [Command Formatting](#command-formatting)
-  * [Parameter Formatting](#parameter-formatting)
+  * [Command formatting](#command-formatting)
+  * [Parameter formatting](#parameter-formatting)
   * [Popups](#popups)
   * Commands
-    * [Getting Help](#viewing-help-help)
+    * [Getting help](#viewing-help-help)
     * [Adding a tutee](#adding-a-tutee-add)
     * [Listing all tutees](#listing-all-tutees-list)
     * [Editing a tutee](#editing-a-tutee-edit)
@@ -35,8 +35,8 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
     * [Deleting a tutee](#deleting-a-tutee-delete)
     * [Deleting a module](#deleting-a-module-deletemod)
     * [Deleting a tutorial](#deleting-a-tutorial-of-a-specific-module-deletetut)
-    * [Sorting a tutee](#sorting-tutees-sort)
-    * [Pinning a tutee](#pinning-tutees-pin-unpin)
+    * [Sorting tutees](#sorting-tutees-sort)
+    * [Pinning/unpinning a tutee](#pinning-tutees-pin-unpin)
     * [Viewing a specific module and tutorial](#viewing-a-tab-view)
     * [Clearing all tutees](#clearing-all-tutees-clear)
     * [Exiting ConnectS](#exiting-connects-exit)
@@ -44,7 +44,7 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
   * [Editing save files](#editing-the-data-file)
 * [FAQ](#faq)
 * [Known issues](#known-issues)
-* [Command Summary](#command-summary)
+* [Command summary](#command-summary)
 * [Glossary](#glossary)
 
 <br>
@@ -80,7 +80,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
    **Mac users:** Ensure you have the exact JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
    </box>
    
-2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F10-4/tp/releases/tag/v1.3).
+2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F10-4/tp/releases).
 
 3. Create a new folder where you want to store ConnectS, and place the `.jar` file inside.
 
@@ -187,7 +187,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 * `INDEX` parameters refer to the index numbers of the currently displayed tutee list. 
    * Only positive integers are allowed. e.g. `1`, `2`, `3`...
    * Only values that exist within the currently displayed tutee list are allowed. e.g. in the following
-     list, `1` and `2` are valid indexes, but `3` and above are not.
+     list, `1` and `2` are valid indexes, but `3` and above are not.<br>
      <img alt="Ui" src="images/Ui.png" width="500" />
 
 </box>
@@ -198,11 +198,13 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 **Notes about popups:**<br>
 
 * After you input a command, ConnectS will show a popup that gives you an overview of the command's effect.<br>
-  e.g. `add` command's success popup: <img alt="Add Success Popup" src="images/addSuccessPopup.png" width="500" />
+  e.g. `add` command's success popup:<br>
+  <img alt="Add Success Popup" src="images/addSuccessPopup.png" width="500" />
 
 * If you make a mistake in command formatting or provide an invalid parameter, ConnectS will show a popup telling you
   of the mistake.<br>
-  e.g. `add` command's formatting error popup: <img alt="Add Error Popup" src="images/addErrorPopup.png" width="500" />
+  e.g. `add` command's formatting error popup:<br>
+  <img alt="Add Error Popup" src="images/addErrorPopup.png" width="500" />
 
 * Popups will be automatically closed whenever you press a key, or click outside of the popup window. Popups don't expire.
 </box>
@@ -496,7 +498,7 @@ ConnectS data is saved automatically as a JSON file `[JAR file location]/data/Co
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, ConnectS will discard all data and start with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
+If your changes to the data file make its format invalid, ConnectS will discard all data and start with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause ConnectS to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 </box>
@@ -556,4 +558,4 @@ Furthermore, certain edits can cause ConnectS to behave in unexpected ways (e.g.
 | **Index**                    | Ordering of the tutees, starting from 1.                                                                                                                                                                                                                                                                    |
 | **Module-Tutorial Group**    | An input parameter that combines the module and tutorial group numbers of a tutee e.g. `CS2101-T02`.                                                                                                                                                                                                        |
 | **Lexicographical**          | A sorting order that sorts according to the unicode of the name, i.e. numbers 0-9 come first, sorted by ascending order, then capital letters by alphabetical order, then lower case letters in alphabetical order. e.g. `Alex123`, `alex456`, `123alex` will be sorted as `123alex`, `Alex123`, `alex456`. |
-| **Alphanumeric Characters**  | A group of characters that includes all english alphabet letters (uppercase and lowercase) and numbers 0-9.                                                                                                                                                                                                 |
+| **Alphanumeric Characters**  | A group of characters that includes all English alphabet letters (uppercase and lowercase) and numbers 0-9.                                                                                                                                                                                                 |

@@ -296,7 +296,7 @@ public class ModelManager implements Model {
         String moduleName = selectedTabs.get(0);
         String tutorialName = selectedTabs.get(1);
 
-        return personList.stream()
+        Stream<Person> personStream = personList.stream()
                 .filter(p -> {
                     Set<ModTutGroup> modTutGroups = p.getModTutGroups();
                     Stream<Module> moduleStream = modTutGroups.stream().map(ModTutGroup::getModule);
@@ -306,8 +306,11 @@ public class ModelManager implements Model {
                     Set<ModTutGroup> modTutGroups = p.getModTutGroups();
                     Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
                     return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
-                })
-                .filter(filteredPersons.getPredicate())
+                });
+
+        return filteredPersons.getPredicate() == null
+                ? personStream.collect(Collectors.toCollection(FXCollections::observableArrayList))
+                : personStream.filter(filteredPersons.getPredicate())
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
