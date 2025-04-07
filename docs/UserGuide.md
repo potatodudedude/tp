@@ -6,14 +6,14 @@
 
 # ConnectS User Guide
 
-**Welcome to ConnectS's user guide! As computing teaching assistants(TAs), ConnectS is your best friend in helping you centralise all
+**Welcome to ConnectS's user guide! As computing teaching assistants (TAs), ConnectS is your best friend in helping you centralise all
 your tutees' contact information into one management app.**
 
 ConnectS separates your tutee contacts into their different modules and tutorial groups, and records information you will use the most,
 like telegram handles and emails. You can enjoy the many commands available to help you navigate, edit, delete, find and sort through your tutees' information.
 
-If you are fast at typing, ConnectS' command line interface(CLI) specialisation can help you manage your tutee's 
-contacts faster than other contact apps, whilst still allowing you to enjoy the convenience of a graphic user interface(GUI).
+If you are fast at typing, ConnectS's command line interface (CLI) specialisation can help you manage your tutee's 
+contacts faster than other contact apps, whilst still allowing you to enjoy the convenience of a graphic user interface (GUI).
 
 <br>
 
@@ -88,9 +88,9 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
    
    * Guide to open command terminal in the `.jar` folder: 
 
-     * **For Windows and Linux**: Navigate to the folder, then right-click in the folder and select "open in terminal" or "Open PowerShell window here"
+     * **For Windows and Linux**: Navigate to the folder, then right-click in the folder and select "Open in Terminal" or "Open PowerShell window here".
 
-     * **For Mac users**: [Terminal Guide](https://support.apple.com/en-sg/guide/terminal/trmlb20c7888/mac#:~:text=On%20your%20Mac%2C%20open%20a,window%3A%20Choose%20Open%20in%20Terminal.)
+     * **For Mac users**: You may use this guide [here](https://support.apple.com/en-sg/guide/terminal/trmlb20c7888/mac#:~:text=On%20your%20Mac%2C%20open%20a,window%3A%20Choose%20Open%20in%20Terminal.).
  
 5. Use the `java -jar ConnectS.jar` command to run ConnectS.<br>
    A GUI like the image below should appear in a few seconds. Note how the app contains some sample data.<br>
@@ -222,7 +222,7 @@ Format: `help`
 
 ### Adding a tutee: `add`
   
-You can add a tutee and their name, telegram handle, email, module-tutorial group and custom tags with this command.
+You can add a tutee with their name, telegram handle, email, module-tutorial group and custom tags using this command.
   
 Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TAG...]`
 
@@ -232,7 +232,7 @@ Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TA
 
 <box type="tip" seamless>
 
-**Tip:** You may add multiple module-tutorial groups to a single tutee!
+**Tip:** You may add multiple module-tutorial groups and tags to a single tutee!
 </box>
   
 Example:
@@ -256,11 +256,11 @@ e.g. `John Doe 1` and `John Doe 2` for two tutees named `John Doe`.
 
 ### Listing all tutees : `list`
   
-You can see all the tutees you added with this command.
+You can see all the tutees you've added using this command.
   
 Format: `list`
 
-* List command will switch the view to the view all tab which displays a list of all tutees.
+* List command will switch the view to the "View All" mode which displays a list of all tutees.
   
 <box type="tip" seamless>
 
@@ -273,7 +273,7 @@ Format: `list`
 
 ### Editing a tutee : `edit`
   
-You can edit a tutee's information with this command.
+You can edit a tutee's information using this command.
   
 Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... tag/TAG...}`
   
@@ -292,11 +292,18 @@ This confirmation message will appear:
 <img alt="Edit Result" src="images/editResult.png" width="500" />
 
 <br>
+<br>
+<box type="tip" seamless>
+
+**Note:** Editing a tutee's information will remove all filters to the list.
+</box>
+
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 ### Finding a tutee: `find`
   
-Finds tutee whose names contain any of the given keywords.
+You can find tutees whose name, telegram handle or email matches the given keyword using this command.
   
 Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...>`
   
@@ -329,7 +336,7 @@ This confirmation message will appear:
 --------------------------------------------------------------------------------------------------------------------  
 ### Deleting a tutee : `delete`
   
-This deletes the tutee you specify.
+You can delete a tutee using this command.
   
 Format: `delete INDEX`
 
@@ -347,12 +354,12 @@ This confirmation message will appear:
 --------------------------------------------------------------------------------------------------------------------
 ### Deleting a module : `deleteMod`
   
-You can delete a module with this command. 
+You can delete a module using this command. 
   
 Format: `deleteMod MODULE_CODE`
   
 * The module and all its associated tutorials will be deleted from every tutee's module-tutorial list.
-* After the deletion, if a tutee does not belong to any module-tutorial group, they will be automatically deleted.
+* After the deletion, if a tutee does not belong to any module-tutorial group, that tutee will be automatically deleted.
   
 Example:
 * `deleteMod CS2109S` deletes the module CS2109S in ConnectS.
@@ -366,12 +373,12 @@ This confirmation message will appear:
 --------------------------------------------------------------------------------------------------------------------
 ### Deleting a tutorial (of a specific module) : `deleteTut`
   
-You can delete a tutorial(of a specific module) with this command.   
+You can delete a tutorial (of a specific module) with this command.   
   
 Format: `deleteTut MODULE-TUTORIAL_GROUP`
   
-* The tutorial group will be deleted from every tutee's module-tutorial list.
-* After the deletion, if a tutee does not belong to any module-tutorial group, they will be automatically deleted.
+* The module-tutorial group will be deleted from every tutee's module-tutorial list.
+* After the deletion, if a tutee does not belong to any module-tutorial group, that tutee will be automatically deleted.
   
 Example:
 * `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
@@ -385,7 +392,7 @@ This confirmation message will appear:
 --------------------------------------------------------------------------------------------------------------------
 ### Sorting tutees: `sort`
   
-You can sort your tutees in lexicographical order with this command.
+You can sort your tutees in lexicographical order using this command.
   
 Format: `sort`
 
@@ -394,7 +401,7 @@ Format: `sort`
 --------------------------------------------------------------------------------------------------------------------
 ### Pinning tutees: `pin`, `unpin`
   
-You can pin tutees to always show up at the top of the list, or unpin an already pinned tutee.
+You can pin tutees to always show up at the top of the list, or unpin an already pinned tutee using these commands.
   
 Format:<br>
 Pin a tutee: `pin INDEX`<br>
@@ -425,18 +432,18 @@ How a pinned tutee looks:
 --------------------------------------------------------------------------------------------------------------------
 ### Viewing a tab: `view`
   
-You can swap the tabs to view a specific module and tutorial, or switch to a view all tab which displays a list of all tutees.
+You can switch the view mode to "View Tabs" to view a specific module and tutorial, or switch to "View All", which displays the entire list of tutees.
   
 Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
   
-**View all:**
+**"View All" mode:**
 
 <img alt="View All" src="images/viewAll.png" width="500" />
 
 <br>
 <br>
 
-**View a specific module and tutorial tab:**
+**"View Tabs" mode:**
 
 <img alt="View Tab" src="images/viewTab.png" width="500" />
   
@@ -445,7 +452,7 @@ Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
 
 <box type="tip" seamless>
 
-**Tip:** You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
+**Tip:** You can also switch view modes using the "View" menu button.
 </box>
 
 <br>
@@ -453,12 +460,12 @@ Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
 --------------------------------------------------------------------------------------------------------------------
 ### Clearing all tutees : `clear`
   
-You can delete all tutees from ConnectS with this command.
+You can delete all tutees from ConnectS using this command.
   
 <box type="warning" seamless>
 
 **Caution:**
-**This is not reversible!**<br>
+**This command is irreversible!**<br>
 </box>
   
 Format: `clear`
@@ -468,7 +475,7 @@ Format: `clear`
 --------------------------------------------------------------------------------------------------------------------
 ### Exiting ConnectS: `exit`
   
-Bye bye :).
+Bye bye :)
   
 Format: `exit`
 
@@ -477,7 +484,7 @@ Format: `exit`
 --------------------------------------------------------------------------------------------------------------------
 ### Saving the data
   
-ConnectS data are saved in the hard disk automatically after any command you give that changes the data. There is no need to save manually.
+ConnectS data is saved in the hard disk automatically after you give any command that changes the data. There is no need to save the data manually.
 
 <br>
 
@@ -489,8 +496,8 @@ ConnectS data is saved automatically as a JSON file `[JAR file location]/data/Co
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, ConnectS will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, ConnectS will discard all data and start with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
+Furthermore, certain edits can cause ConnectS to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 </box>
 
@@ -510,7 +517,9 @@ Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+
+2. **If you minimize the Help Window** and then use the `Help` menu button, or the keyboard shortcut `F1`, again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -542,9 +551,9 @@ Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (
 |------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Command Line Interface**   | A texted-based user interface where the user executes functions by typing in commands.                                                                                                                                                                                                                      |
 | **Graphical User Interface** | A graphics-based user interface where the user executes functions by using mouse and menus.                                                                                                                                                                                                                 |
-| **cd**                       | A terminal command to allows for switching of the current directory.                                                                                                                                                                                                                                        |
+| **cd**                       | A terminal command that allows you to switch the current directory.                                                                                                                                                                                                                                         |
 | **Parameter**                | Information that you give to a command.                                                                                                                                                                                                                                                                     |
 | **Index**                    | Ordering of the tutees, starting from 1.                                                                                                                                                                                                                                                                    |
 | **Module-Tutorial Group**    | An input parameter that combines the module and tutorial group numbers of a tutee e.g. `CS2101-T02`.                                                                                                                                                                                                        |
 | **Lexicographical**          | A sorting order that sorts according to the unicode of the name, i.e. numbers 0-9 come first, sorted by ascending order, then capital letters by alphabetical order, then lower case letters in alphabetical order. e.g. `Alex123`, `alex456`, `123alex` will be sorted as `123alex`, `Alex123`, `alex456`. |
-| **Alphanumeric Characters**  | A group of characters that includes all english alphabet letters(capitalised and not) and numbers 0-9.                                                                                                                                                                                                      |
+| **Alphanumeric Characters**  | A group of characters that includes all english alphabet letters (uppercase and lowercase) and numbers 0-9.                                                                                                                                                                                                 |
