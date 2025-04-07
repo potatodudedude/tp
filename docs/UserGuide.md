@@ -145,9 +145,6 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 * If you type in extra lines behind commands that don't require parameters (such as `help`, `list`, `exit` and `clear`), it will be ignored.<br>
   e.g. if you type `help 123`, it will be interpreted as `help`.
 
-* When you see a command that requires you to input the `INDEX` of a tutee, it refers to the numbering of that tutee in the
-  current view you are in.<br>
-
 * Command words are case-insensitive.<br>
   e.g. `ADD`, `deLETEMoD` are the same as `add` and `deleteMod` respectively.
 
@@ -229,7 +226,8 @@ You can add a tutee with their name, telegram handle, email, module-tutorial gro
   
 Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TAG...]`
 
-* You cannot add tutees with the same name, telegram handle or email as an existing tutee.
+* You cannot add tutees with the same name, telegram handle or email as an existing tutee. 
+* Case is not taken into account when checking for duplicate names/telegram handles/emails. (e.g. `john` and `John` are considered the same name.)
 
 
 <box type="tip" seamless>
@@ -282,7 +280,9 @@ Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP...
 * Edits the tutee at the specified `INDEX` of the currently displayed list.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing module-tutorial groups or tags, the existing module-tutorial groups or tags of the tutee will be overwritten.
+* When editing module-tutorial groups or tags, the existing module-tutorial groups or tags of the tutee will be overwritten. 
+* You cannot edit a tutee to have the same name, telegram handle or email as an existing tutee.
+* Case is not taken into account when checking for duplicate names/telegram handles/emails. (e.g. `john` and `John` are considered the same name.)
   
 Example:
 *  `edit 1 t/@johndoey e/johnd@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johnd@example.com` respectively.
@@ -517,6 +517,7 @@ Furthermore, certain edits can cause ConnectS to behave in unexpected ways (e.g.
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
 2. **If you minimize the Help Window** and then use the `Help` menu button, or the keyboard shortcut `F1`, again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
 <br>
