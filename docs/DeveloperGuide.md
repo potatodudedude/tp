@@ -160,7 +160,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Change View Mode
 
-The "View All" button changes the view mode to "View All", if it is not already in "View All" 
+The "View All" button changes the view mode to "View All", if it is not already in "View All"
 
 <puml src="diagrams/ViewAllSequenceDiagram.puml" alt="View All Sequence Diagram" />
 
@@ -181,8 +181,8 @@ is then passed on to the `ModelManager` class which uses it to filter the list w
 
 ### Delete module feature
 
-The delete module feature allows the user to delete the specified module from every tutee's module-tutorial 
-module-tutorial list. In addition, if after the deletion, a tutee does not belong to any module-tutorial group, 
+The delete module feature allows the user to delete the specified module from every tutee's module-tutorial
+module-tutorial list. In addition, if after the deletion, a tutee does not belong to any module-tutorial group,
 that tutee will be automatically deleted.
 
 The behaviour of the sort feature can be seen below.
