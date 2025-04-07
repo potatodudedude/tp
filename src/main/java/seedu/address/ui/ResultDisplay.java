@@ -4,14 +4,12 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.logging.Logger;
 
-import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import seedu.address.commons.core.LogsCenter;
 
 /**
