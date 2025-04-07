@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.logic.commands.DeleteModCommand;
@@ -22,20 +21,12 @@ public class DeleteModCommandParser implements Parser<DeleteModCommand> {
      */
     @Override
     public DeleteModCommand parse(String args) throws ParseException {
-        requireNonNull(args);
-        String keyword = args.trim();
-
-        if (keyword.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModCommand.MESSAGE_USAGE));
-        }
-
         try {
-            Module module = new Module(keyword.toUpperCase());
+            Module module = ParserUtil.parseModule(args);
             return new DeleteModCommand(module);
-        } catch (Exception e) {
+        } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModCommand.MESSAGE_USAGE), e);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModCommand.MESSAGE_USAGE), pe);
         }
     }
 }
