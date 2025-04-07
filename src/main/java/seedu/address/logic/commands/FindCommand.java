@@ -23,10 +23,11 @@ public class FindCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names/telegram handle/email "
             + "contain any of the specified keywords (case-insensitive) "
             + "and filters them out.\n"
+            + "Only one field can be searched at a time.\n"
             + "Parameters: "
-            + "[" + PREFIX_NAME + "NAME_KEYWORD(S)...] \nOR "
-            + "[" + PREFIX_TELEGRAM + "TELEGRAM_HANDLE_KEYWORD(S)...] \nOR "
-            + "[" + PREFIX_EMAIL + "EMAIL_KEYWORD(S)...]\n"
+            + "<" + PREFIX_NAME + "NAME_KEYWORD(S)... "
+            + PREFIX_TELEGRAM + "TELEGRAM_HANDLE_KEYWORD(S)... "
+            + PREFIX_EMAIL + "EMAIL_KEYWORD(S)...>\n"
             + "Example: " + COMMAND_WORD + " n/alice bob" + "\nOR " + COMMAND_WORD + " t/dav koh";
     public static final String MESSAGE_EMPTY_NAME = "The name that you gave was empty.";
     public static final String MESSAGE_EMPTY_TELEGRAMHANDLE = "The telegram handle that you gave was empty.";
