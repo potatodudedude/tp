@@ -106,7 +106,7 @@ public class ParserUtil {
         requireNonNull(module);
         String trimmedModule = module.trim();
         if (!Module.isValidModule(trimmedModule)) {
-            throw new ParseException(ModTutGroup.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Module.MESSAGE_CONSTRAINTS);
         }
         return new Module(trimmedModule.toUpperCase());
     }
