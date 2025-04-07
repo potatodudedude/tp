@@ -17,7 +17,7 @@ public class ViewCommandTest {
     public void execute_viewAllFromViewTabs_success() {
         model.setViewAll(false);
         CommandResult expectedCommandResult = new CommandResult(ViewCommand.MESSAGE_SUCCESS_VIEW_ALL,
-                true, false, false);
+                true, false);
 
         ViewCommand viewCommand = new ViewCommand();
         assertCommandSuccess(viewCommand, model, expectedCommandResult, model);
