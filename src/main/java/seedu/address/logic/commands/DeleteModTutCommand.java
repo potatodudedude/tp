@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_MODULE_TUTORIAL_GROUP;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -24,16 +25,15 @@ public class DeleteModTutCommand extends Command {
     /** Success message displayed after the tutorial is deleted. */
     public static final String MESSAGE_DELETE_TUT_SUCCESS = "Tutorial Deleted: %1$s";
 
-    /** The ModTutGroup to be deleted from persons and the address book. */
-    private final ModTutGroup modTutGroup;
+    private final String modTutGroupName;
 
     /**
      * Constructs a DeleteModTutCommand with the specified ModTutGroup.
      *
-     * @param modTutGroup The tutorial group to delete from persons.
+     * @param modTutGroupName The tutorial group to delete from persons.
      */
-    public DeleteModTutCommand(ModTutGroup modTutGroup) {
-        this.modTutGroup = modTutGroup;
+    public DeleteModTutCommand(String modTutGroupName) {
+        this.modTutGroupName = modTutGroupName;
     }
 
     /**
@@ -48,8 +48,18 @@ public class DeleteModTutCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.deleteModTut(this.modTutGroup);
-        return new CommandResult(String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroup.toString()),
+        String moduleName = modTutGroupName.split("-")[0];
+        String tutorialName = modTutGroupName.split("-")[1];
+
+        if (!ModTutGroup.getModuleMap().containsKey(moduleName)) {
+            throw new CommandException(String.format(MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroupName));
+        }
+
+        if (!ModTutGroup.getModuleMap().get(moduleName).containsKey(tutorialName)) {
+            throw new CommandException(String.format(MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroupName));
+        }
+        model.deleteModTut(new ModTutGroup(modTutGroupName));
+        return new CommandResult(String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroupName),
                 false, false, false);
     }
 
@@ -65,6 +75,6 @@ public class DeleteModTutCommand extends Command {
         }
 
         DeleteModTutCommand otherDeleteModCommand = (DeleteModTutCommand) other;
-        return modTutGroup.equals(otherDeleteModCommand.modTutGroup);
+        return modTutGroupName.equals(otherDeleteModCommand.modTutGroupName);
     }
 }
