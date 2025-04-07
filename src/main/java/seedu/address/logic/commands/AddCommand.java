@@ -37,7 +37,8 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "exchangestudent";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in ConnectS";
+    public static final String MESSAGE_DUPLICATE_PERSON = "A person with the same name, email or telegram handle "
+            + "already exists in ConnectS";
 
     private final Person toAdd;
 
