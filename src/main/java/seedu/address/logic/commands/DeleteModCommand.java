@@ -48,7 +48,7 @@ public class DeleteModCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.deleteMod(this.module);
-        return new CommandResult(String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString()), false, false, false);
+        return new CommandResult(String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString()));
     }
 
     @Override

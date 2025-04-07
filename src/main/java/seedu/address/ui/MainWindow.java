@@ -198,7 +198,7 @@ public class MainWindow extends UiPart<Stage> {
                 mainViewPlaceholder.getChildren().add(moduleTabPane.getRoot());
             }
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-            resultDisplay.show(primaryStage, commandResult.isHelp());
+            resultDisplay.show(primaryStage);
 
             if (commandResult.isExit()) {
                 handleExit();
@@ -208,7 +208,7 @@ public class MainWindow extends UiPart<Stage> {
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
-            resultDisplay.show(primaryStage, false);
+            resultDisplay.show(primaryStage);
             throw e;
         }
     }

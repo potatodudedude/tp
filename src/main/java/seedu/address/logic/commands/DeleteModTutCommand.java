@@ -59,8 +59,7 @@ public class DeleteModTutCommand extends Command {
             throw new CommandException(String.format(MESSAGE_INVALID_MODULE_TUTORIAL_GROUP, modTutGroupName));
         }
         model.deleteModTut(new ModTutGroup(modTutGroupName));
-        return new CommandResult(String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroupName),
-                false, false, false);
+        return new CommandResult(String.format(MESSAGE_DELETE_TUT_SUCCESS, modTutGroupName));
     }
 
     @Override

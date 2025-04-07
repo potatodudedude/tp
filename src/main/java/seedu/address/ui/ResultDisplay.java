@@ -51,7 +51,7 @@ public class ResultDisplay extends UiPart<Popup> {
     /**
      * Shows the result of the command.
      */
-    public void show(Stage stage, boolean isHelp) {
+    public void show(Stage stage) {
         logger.fine("Showing result display panel...");
         popup.show(stage);
         popup.addEventFilter(KeyEvent.KEY_PRESSED, event -> {

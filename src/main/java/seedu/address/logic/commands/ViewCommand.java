@@ -65,7 +65,7 @@ public class ViewCommand extends Command {
 
         if (this.isAll) {
             model.setViewAll(true);
-            return new CommandResult(MESSAGE_SUCCESS_VIEW_ALL, true, false, false);
+            return new CommandResult(MESSAGE_SUCCESS_VIEW_ALL, true, false);
         } else {
             model.setViewAll(false);
 
@@ -81,7 +81,7 @@ public class ViewCommand extends Command {
             model.setSelectedTabs(moduleName, tutorialName);
             return new CommandResult(
                     String.format(MESSAGE_SUCCESS_VIEW_TAB, modTutGroup),
-                    true, false, false);
+                    true, false);
         }
     }
 }
