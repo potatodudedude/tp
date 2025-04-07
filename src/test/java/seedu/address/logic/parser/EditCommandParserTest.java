@@ -8,16 +8,21 @@ import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_MODTUT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TELE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.MODTUT_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.TELE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TELE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELE_BOB;
 import static seedu.address.logic.commands.EditCommand.MESSAGE_MOD_CANNOT_BE_EMPTY;
@@ -41,12 +46,13 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.ModTutGroup;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class EditCommandParserTest {
 
     private static final String MODTUTGROUP_EMPTY = " " + PREFIX_MOD;
-    private static final String TAGS_EMPTY = " " + PREFIX_TAG;
+    private static final String TAG_EMPTY = " " + PREFIX_TAG;
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
@@ -85,19 +91,26 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
         assertParseFailure(parser, "1" + INVALID_TELE_DESC, TelegramHandle.MESSAGE_CONSTRAINTS); // invalid phone
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
-        assertParseFailure(parser, "1" + INVALID_MODTUT_DESC, ModTutGroup.MESSAGE_CONSTRAINTS); // invalid tag
+        assertParseFailure(parser, "1" + INVALID_MODTUT_DESC, ModTutGroup.MESSAGE_CONSTRAINTS); // invalid modTutGroup
+        assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid telegramHandle followed by valid email
         assertParseFailure(parser, "1" + INVALID_TELE_DESC + EMAIL_DESC_AMY, TelegramHandle.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_MOD} alone will reset the tags of the {@code Person} being edited,
-        // parsing it together with a valid tag results in error
+        // parsing it together with a valid modTutGroup results in error
         assertParseFailure(parser, "1" + MODTUT_DESC_AMY + MODTUT_DESC_BOB + MODTUTGROUP_EMPTY,
                 ModTutGroup.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, "1" + MODTUT_DESC_AMY + MODTUTGROUP_EMPTY + MODTUT_DESC_BOB,
                 ModTutGroup.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, "1" + MODTUTGROUP_EMPTY + MODTUT_DESC_AMY + MODTUT_DESC_BOB,
                 ModTutGroup.MESSAGE_CONSTRAINTS);
+
+        // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
+        // parsing it together with a valid tag results in error
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_MODTUT_AMY
@@ -107,14 +120,14 @@ public class EditCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
-        String userInput = targetIndex.getOneBased() + TELE_DESC_BOB + MODTUT_DESC_BOB
-                + EMAIL_DESC_AMY + NAME_DESC_AMY + MODTUT_DESC_AMY;
+        String userInput = targetIndex.getOneBased() + TELE_DESC_BOB + MODTUT_DESC_BOB + TAG_DESC_HUSBAND
+                + EMAIL_DESC_AMY + NAME_DESC_AMY + MODTUT_DESC_AMY + TAG_DESC_FRIEND;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withTelegramHandle(VALID_TELE_BOB).withEmail(VALID_EMAIL_AMY)
-                .withModTutGroups(VALID_MODTUT_AMY, VALID_MODTUT_BOB).build();
+                .withModTutGroups(VALID_MODTUT_AMY, VALID_MODTUT_BOB)
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -156,12 +169,18 @@ public class EditCommandParserTest {
         descriptor = new EditPersonDescriptorBuilder().withModTutGroups(VALID_MODTUT_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
+
+        // tags
+        userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
+        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
     public void parse_multipleRepeatedFields_failure() {
         // More extensive testing of duplicate parameter detections is done in
-        // AddCommandParserTest#parse_repeatedNonTagValue_failure()
+        // AddCommandParserTest#parse_repeatedNonModTutGroupValue_repeatedNonTagValue_failure()
 
         // valid followed by invalid
         Index targetIndex = INDEX_FIRST_PERSON;
@@ -175,9 +194,9 @@ public class EditCommandParserTest {
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
         // mulltiple valid fields repeated
-        userInput = targetIndex.getOneBased() + TELE_DESC_AMY + EMAIL_DESC_AMY
-                + MODTUT_DESC_AMY + TELE_DESC_AMY + EMAIL_DESC_AMY + MODTUT_DESC_AMY
-                + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_BOB;
+        userInput = targetIndex.getOneBased() + TELE_DESC_AMY + EMAIL_DESC_AMY + TAG_DESC_FRIEND
+                + MODTUT_DESC_AMY + TELE_DESC_AMY + EMAIL_DESC_AMY + MODTUT_DESC_AMY + TAG_DESC_HUSBAND
+                + TELE_DESC_BOB + EMAIL_DESC_BOB + MODTUT_DESC_BOB + TAG_DESC_FRIEND;
 
         assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM, PREFIX_EMAIL));
@@ -193,7 +212,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_resetTags_success() {
         Index targetIndex = INDEX_THIRD_PERSON;
-        String userInput = targetIndex.getOneBased() + TAGS_EMPTY;
+        String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
