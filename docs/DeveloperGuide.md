@@ -591,7 +591,7 @@ testers are expected to do more *exploratory* testing.
 
 1. While in ConnectS, enter `help` into the command box.
     <br><br>
-    Expected: A pop-up message showing all commands appears for about 10 seconds
+    Expected: A pop-up message showing proper usage of all commands appears
     <br><br>
 2. To visit the user guide, click on the help button at the top of the application window. A small window will appear, click on Copy URL and paste into your preferred browser to visit the user guide.
 <br>
