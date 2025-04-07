@@ -17,7 +17,7 @@ public class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": View a specific tab.\n" + "Parameters: "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views a specific tab.\n" + "Parameters: "
             + PREFIX_MOD + "MODULE-TUTORIAL_GROUP" + " or " + PREFIX_MOD + "all (Case-insensitive)";
 
     public static final String MESSAGE_SUCCESS_VIEW_TAB = "Viewing Tab: %1$s";
