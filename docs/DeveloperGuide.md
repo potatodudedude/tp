@@ -589,6 +589,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6. **Improve duplicate person error message:** Currently, if a duplicate person is added or edited in, the thrown error message simply mentions
    that a person with the same name/telegram handle/email already exists. This is limited in usefulness as the user doesn't know which field(s) are the same.
    We plan to make the message more specific in identifying which field(s) are duplicated.
+7. **Improve find command validation:** Currently, find command does not use the field regex to validate inputs in order to allow for partial searching. This causes
+   a potential issue where a command such as `find n/Ada tt/@ada` would be valid and interpreted as finding a name of `n/Ada tt/@ada`, instead of recognising
+   the typo and attempted invalid use of two keyword fields. We plan to change the prefix ` PREFIX/` to have spaces on both sides to prevent this situation.
 
 
 --------------------------------------------------------------------------------------------------------------------
