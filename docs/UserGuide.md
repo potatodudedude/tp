@@ -6,7 +6,7 @@
 
 # ConnectS User Guide
 
-**Welcome to ConnectS' user guide! As computing teaching assistants(TAs), ConnectS is your best friend in helping you centralise all
+**Welcome to ConnectS's user guide! As computing teaching assistants(TAs), ConnectS is your best friend in helping you centralise all
 your tutees' contact information into one management app.**
 
 ConnectS separates your tutee contacts into their different modules and tutorial groups, and records information you will use the most,
@@ -73,11 +73,11 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
 
-   * **For Window, Linux and Mac**: [Setup Guide](https://www3.cs.stonybrook.edu/~amione/CSE114_Course/materials/resources/InstallingJava17.pdf)
+   * **For Windows, Linux and Mac**: [Setup Guide](https://www3.cs.stonybrook.edu/~amione/CSE114_Course/materials/resources/InstallingJava17.pdf)
 
    <box type="info" seamless>
    
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+   **Mac users:** Ensure you have the exact JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
    </box>
    
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F10-4/tp/releases/tag/v1.3).
@@ -178,7 +178,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 
    e.g. `john+doe@example.com` is allowed, but `+johndoe@example.com` and `john+doe@example` are not.
 
-* `MODULE-TUTORIAL_GROUP` parameters only allow for the format `MODULE`-`TUTORIAL`.
+* `MODULE-TUTORIAL_GROUP` parameters only allow the format `MODULE`-`TUTORIAL`.
    * `MODULE` and `TUTORIAl` both consist of only alphanumeric characters, and are case-insensitive.
    * `MODULE` and `TUTORIAL` are separated by a hyphen.
 
@@ -484,7 +484,7 @@ ConnectS data are saved in the hard disk automatically after any command you giv
 --------------------------------------------------------------------------------------------------------------------
 ### Editing the data file
   
-ConnectS data are saved automatically as a JSON file `[JAR file location]/data/ConnectS.json`. You are welcome to update data directly by editing that data file if you're an advanced user.
+ConnectS data is saved automatically as a JSON file `[JAR file location]/data/ConnectS.json`. You are welcome to update data directly by editing that data file if you're an advanced user.
 
 <box type="warning" seamless>
 
