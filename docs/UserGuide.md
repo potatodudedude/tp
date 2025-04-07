@@ -119,7 +119,8 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 
 <box type="info" seamless>
 
-### Command formatting
+### Command Formatting
+
 **Notes about the command format:**<br>
 
 * When you see a word in `UPPER_CASE`, that word is a parameter that you enter.<br>
@@ -157,7 +158,8 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 
 <box type="info" seamless>
 
-### Parameter formatting
+### Parameter Formatting
+
 **Notes about the parameter restrictions:**<br>
 
 * `NAME` parameters only allow alphanumeric characters, and can have multiple words.<br>
