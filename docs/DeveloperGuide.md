@@ -592,6 +592,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 7. **Improve find command validation:** Currently, find command does not use the field regex to validate inputs in order to allow for partial searching. This causes
    a potential issue where a command such as `find n/Ada tt/@ada` would be valid and interpreted as finding a name of `n/Ada tt/@ada`, instead of recognising
    the typo and attempted invalid use of two keyword fields. We plan to change the prefix ` PREFIX/` to have spaces on both sides to prevent this situation.
+8. **Improve edit command error messaging:** Currently, if you input something like `edit 1 aaaaa`, ConnectS will give an invalid index error. However, an
+   invalid field/prefix error would be more appropriate. We plan to make these cases have a separate field error message.
 
 
 --------------------------------------------------------------------------------------------------------------------
