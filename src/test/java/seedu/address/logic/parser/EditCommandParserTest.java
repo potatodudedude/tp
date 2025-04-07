@@ -125,7 +125,6 @@ public class EditCommandParserTest {
                 .withTelegramHandle(VALID_TELE_BOB).withEmail(VALID_EMAIL_AMY)
                 .withModTutGroups(VALID_MODTUT_AMY, VALID_MODTUT_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 

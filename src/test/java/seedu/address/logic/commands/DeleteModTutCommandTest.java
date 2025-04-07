@@ -7,7 +7,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MODTUT_BOB;
 import static seedu.address.testutil.TypicalPersons.getSortedTypicalAddressBook;
 
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.exceptions.CommandException;
