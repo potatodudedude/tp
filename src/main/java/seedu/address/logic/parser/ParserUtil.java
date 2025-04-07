@@ -8,6 +8,7 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.parser.exceptions.EmptyIndexException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.ModTutGroup;
@@ -33,6 +34,9 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
+        if (trimmedIndex.isBlank()) {
+            throw new EmptyIndexException("Index is empty");
+        }
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
