@@ -121,6 +121,10 @@ public class ModTutGroup {
         return moduleMap;
     }
 
+    public static void resetModuleMap() {
+        moduleMap.clear();
+    }
+
     public Module getModule() {
         return module;
     }
