@@ -544,10 +544,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   as the existing UI implementation.
 * Ensuring that the view tabs UI mode is well integrated with existing features that work based on indexes of
   the current list. <br>These features include the `pin`, `unpin`, `delete` and `edit` commands.
-    * An example is that `delete 1` would delete the first person in View All mode rather than the first person in the
-      current Module-Tutorial tab (in View Tabs mode).
-    * This caused us many bugs and required much time to fix in making sure that the features works with the
-      individual Module-Tutorial tab that user is currently in.
+    * An example of an integration bug we faced is that `delete 1` would delete the first person in View All mode rather 
+        than the first person in the current Module-Tutorial tab (in View Tabs mode).
+    * We faced a number of bugs from the integration and required much time to fix by making sure that features can
+      work with the individual Module-Tutorial tab that user is currently in.
 
 ### Effort Required
 
@@ -570,7 +570,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Planned Enchancements**
+## **Appendix: Planned Enhancements**
 
 --------------------------------------------------------------------------------------------------------------------
 
