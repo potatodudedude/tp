@@ -52,7 +52,7 @@ public class DeleteModCommand extends Command {
             throw new CommandException(MESSAGE_MOD_NOT_EXIST + module.toString());
         }
         model.deleteMod(this.module);
-        return new CommandResult(String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString()), false, false, false);
+        return new CommandResult(String.format(MESSAGE_DELETE_MOD_SUCCESS, module.toString()));
     }
 
     @Override
