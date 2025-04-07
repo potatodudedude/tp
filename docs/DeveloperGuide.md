@@ -531,6 +531,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## **Appendix: Effort**
 
+### Effort Required
+
+* One of the more time-consuming areas was in implementing the GUI and logic to include viewing contacts in a dual-tab view
+  for modules and tutorials. This was especially so as the tabs had to be layered, and the indexing logic was affected.
+* Additionally, since we wanted to adhere to the same architecture as AB3, a substantial amount of time and effort was spent
+  on studying the behaviour of the code.
+
 ### Achievements
 
 * Compared to AB3, ConnectS has a new UI feature in its module and tutorial tabs, allowing for automatic sorting of
