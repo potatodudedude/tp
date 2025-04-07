@@ -360,7 +360,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. ConnectS detects invalid ordering of parameter.
 
-    * 1a1. ConnectS prompts user to enter parameters in a given order.
+    * 1b1. ConnectS prompts user to enter parameters in a given order.
 
       Use case resumes from step 1.
 
@@ -598,7 +598,7 @@ testers are expected to do more *exploratory* testing.
 
 1. While in ConnectS, enter `help` into the command box.
     <br><br>
-    Expected: A pop-up message showing all commands appears for about 10 seconds
+    Expected: A pop-up message showing proper usage of all commands appears
     <br><br>
 2. To visit the user guide, click on the help button at the top of the application window. A small window will appear, click on Copy URL and paste into your preferred browser to visit the user guide.
 <br>
