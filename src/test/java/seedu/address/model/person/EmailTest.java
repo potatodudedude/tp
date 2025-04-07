@@ -48,7 +48,9 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("peter..jack@example.com")); // local part has two consecutive periods
         assertFalse(Email.isValidEmail("peterjack@example@com")); // '@' symbol in domain name
         assertFalse(Email.isValidEmail("peterjack@.example.com")); // domain name starts with a period
+        assertFalse(Email.isValidEmail("peterjack@example.com.")); // domain name ends with a period
         assertFalse(Email.isValidEmail("peterjack@-example.com")); // domain name starts with a hyphen
+        assertFalse(Email.isValidEmail("peterjack@example.com-")); // domain name ends with a hyphen
         assertFalse(Email.isValidEmail("peterjack@example.c")); // top level domain has less than two chars
 
         // valid email
@@ -62,7 +64,7 @@ public class EmailTest {
         assertTrue(Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
         assertTrue(Email.isValidEmail("e1234567@u.nus.edu")); // more than one period in domain
         assertTrue(Email.isValidEmail("12345@example.com")); // numeric local part
-        assertTrue(Email.isValidEmail("12345@123.12")); // numeric local part and domain name
+        assertTrue(Email.isValidEmail("12345@123.12"));
     }
 
     @Test
