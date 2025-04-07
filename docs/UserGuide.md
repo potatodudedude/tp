@@ -23,11 +23,11 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
 
 * [How to use this Guide](#how-to-use-this-guide)
 * [Features](#features)
-  * [Command Formatting](#command-formatting)
-  * [Parameter Formatting](#parameter-formatting)
+  * [Command formatting](#command-formatting)
+  * [Parameter formatting](#parameter-formatting)
   * [Popups](#popups)
   * Commands
-    * [Getting Help](#viewing-help-help)
+    * [Getting help](#viewing-help-help)
     * [Adding a tutee](#adding-a-tutee-add)
     * [Listing all tutees](#listing-all-tutees-list)
     * [Editing a tutee](#editing-a-tutee-edit)
@@ -35,8 +35,8 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
     * [Deleting a tutee](#deleting-a-tutee-delete)
     * [Deleting a module](#deleting-a-module-deletemod)
     * [Deleting a tutorial](#deleting-a-tutorial-of-a-specific-module-deletetut)
-    * [Sorting a tutee](#sorting-tutees-sort)
-    * [Pinning a tutee](#pinning-tutees-pin-unpin)
+    * [Sorting tutees](#sorting-tutees-sort)
+    * [Pinning/unpinning a tutee](#pinning-tutees-pin-unpin)
     * [Viewing a specific module and tutorial](#viewing-a-tab-view)
     * [Clearing all tutees](#clearing-all-tutees-clear)
     * [Exiting ConnectS](#exiting-connects-exit)
@@ -44,7 +44,7 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
   * [Editing save files](#editing-the-data-file)
 * [FAQ](#faq)
 * [Known issues](#known-issues)
-* [Command Summary](#command-summary)
+* [Command summary](#command-summary)
 * [Glossary](#glossary)
 
 <br>
@@ -80,7 +80,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
    **Mac users:** Ensure you have the exact JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
    </box>
    
-2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F10-4/tp/releases/tag/v1.3).
+2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F10-4/tp/releases).
 
 3. Create a new folder where you want to store ConnectS, and place the `.jar` file inside.
 
