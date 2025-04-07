@@ -360,7 +360,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. ConnectS detects invalid ordering of parameter.
 
-    * 1a1. ConnectS prompts user to enter parameters in a given order.
+    * 1b1. ConnectS prompts user to enter parameters in a given order.
 
       Use case resumes from step 1.
 
