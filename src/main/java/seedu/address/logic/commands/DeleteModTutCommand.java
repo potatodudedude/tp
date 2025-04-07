@@ -14,7 +14,7 @@ import seedu.address.model.person.ModTutGroup;
 public class DeleteModTutCommand extends Command {
 
     /** Command word to trigger this command. */
-    public static final String COMMAND_WORD = "deleteTut";
+    public static final String COMMAND_WORD = "deletetut";
 
     /** Usage instructions for this command. */
     public static final String MESSAGE_USAGE = COMMAND_WORD
