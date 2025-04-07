@@ -16,7 +16,7 @@ import seedu.address.commons.util.StringUtil;
 public class ModTutGroup {
 
     public static final String MESSAGE_CONSTRAINTS = "Module - Tutorial Group should only contain "
-            + "alphanumeric characters with a dash in between";
+            + "alphanumeric characters with a dash in between, and it should not be blank.";
     private static final String VALIDATION_REGEX = "^[A-Za-z0-9]+-[A-Za-z0-9]+$";
 
     private static final Map<String, Map<String, Integer>> moduleMap = new HashMap<>();

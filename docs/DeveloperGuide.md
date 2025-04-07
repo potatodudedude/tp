@@ -239,22 +239,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | forgetful user                            | add tutorial groups to a contact                                                                              | I can see which group a student belongs to when I forget                                                    |
 | `* * *`  | forgetful user                            | add modules to a contact                                                                                      | I can see which module a student belongs to when I forget                                                   |
 | `* * *`  | clumsy user                               | delete a contact                                                                                              | I can remove contacts I accidentally added/don't need                                                       |
-| `* * *`  | user that prefers typing                  | perform all commands by typing instead of using a mouse to click                                              | I can execute commands faster because i type faster than i use a mouse to click                             |
-| `* *`    | busy user                                 | type a quick command to paste information to a contact                                                        | I can speed up transferring a contact's information                                                         |
-| `* *`    | busy user                                 | type a quick command to copy a contact's specific details                                                     | I can speed up transferring a contact's information                                                         |
+| `* * *`  | user that prefers typing                  | perform all commands by typing instead of using a mouse to click                                              | I can execute commands faster because i type faster than i use a mouse to click                             | 
 | `* *`    | busy user                                 | find contacts quickly with some of his incomplete information key in to the search bar                        | I do not waste time on the nitty-gritty                                                                     |
 | `* *`    | frequent user                             | pin important contacts on the top                                                                             | I can easily find them                                                                                      |
-| `* *`    | frequent user                             | schedule deletion of contacts at a specific date                                                              | My contacts are not cluttered with contacts I don't need in case i forget to delete                         |
 | `* *`    | impatient user                            | see my contacts by name                                                                                       | I can read more contacts simultaneously                                                                     |
-| `* *`    | long-time user                            | delete a specific tag                                                                                         | I can delete some tags that no longer matter to me                                                          |
 | `* *`    | new user                                  | have a guided tour of the basic commands                                                                      | I can start using the app without needing to look up the commands                                           |
 | `* *`    | TA of multiple courses                    | easily group contacts based on tutorial group                                                                 | I can find my students' contacts easily                                                                     |
 | `* *`    | TA of multiple courses                    | easily group contacts based on module                                                                         | I can find my students' contacts easily                                                                     |
 | `* *`    | user that values efficiency               | edit an existing contact's information                                                                        | I can save time not needing to delete and make a new contact                                                |
-| `* *`    | user that values efficiency               | easily find the commands i need by typing in a command to list all commands                                   | I don't have to navigate to an external guide                                                               |
-| `* *`    | user that values efficiency               | easily delete multiple contacts at once by giving a common trait                                              | I don't waste time deleting contacts one by one                                                             |
-| `* *`    | user that values efficiency               | press a button to reinput the last executed command into the CLI                                              | I can save time if I'm inputting multiple similar commands                                                  |
-| `* *`    | user that values efficiency               | select many users at a time then add a tag to all of them                                                     | I don't have to do the same thing again and again                                                           |
+| `* *`    | user that values efficiency               | easily find the commands I need by typing in a command to list all commands                                   | I don't have to navigate to an external guide                                                               |
+| `* *`    | TA that values efficiency                 | easily delete multiple contacts at once by giving a common module/tutorial                                    | I don't waste time deleting contacts one by one                                                             |
 | `* *`    | user who likes to keep things ordered     | sort my contacts by alphabetical order (or any specific order)                                                | everything is clear at a glance                                                                             |
 | `* *`    | user who's switching phone                | be able to load all my contacts easily                                                                        | I don't have to add them in again                                                                           |
 | `* *`    | user with many contacts                   | find contacts by email                                                                                        | I know who emailed me or forgot who the email belongs to                                                    |
@@ -271,10 +265,60 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user that values efficiency               | see my commonly searched contacts at the top of the list                                                      | I don't waste time searching for contacts                                                                   |
 | `*`      | user who has many friends in the contacts | store their birthday and get a notification on that day                                                       | I can send them a message or make a phone call, and don't have to remember so many different birthday dates |
 | `*`      | user with a lot of contacts               | hide certain types of contact information when looking at the overall list                                    | the list view is smaller and not clogged with information I don't use often                                 |
+| `*`      | busy user                                 | type a quick command to paste information to a contact                                                        | I can speed up transferring a contact's information                                                         |
+| `*`      | busy user                                 | type a quick command to copy a contact's specific details                                                     | I can speed up transferring a contact's information                                                         |
+| `*`      | frequent user                             | schedule deletion of contacts at a specific date                                                              | My contacts are not cluttered with contacts I don't need in case i forget to delete                         |
+| `*`      | long-time user                            | delete a specific tag                                                                                         | I can delete some tags that no longer matter to me                                                          |
+| `*`      | user that values efficiency               | press a button to reinput the last executed command into the CLI                                              | I can save time if I'm inputting multiple similar commands                                                  |
+| `*`      | user that values efficiency               | select many users at a time then add a tag to all of them                                                     | I don't have to do the same thing again and again                                                           |
 
 *{More to be added}*
 
 ### Use cases
+
+#### Use case: F1 - Find contact by keyword
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1. User requests a list of contacts matching given keyword(s).
+2. ConnectS shows a list of filtered contacts.
+
+   Use case ends.
+
+#### Use case: F2 - Filter contacts using view tabs
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1. User requests to change the view tab to a specified module-tutorial group.
+2. ConnectS changes the view tab to the specified group.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The module-tutorial group provided does not exist.
+
+    * 1a1. ConnectS prompts the user that they are looking for a non-existent view tab.
+
+        Use case resumes from step 1.
+
+#### Use case: F3 - See all contacts using view all tab
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1. User requests to change the view tab to a view all contacts.
+2. ConnectS changes the view tab to all contacts.
+
+   Use case ends.
 
 #### Use case: UC1 - Show list of contacts
 **System: ConnectS**
@@ -320,14 +364,51 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from step 1.
 
-#### Use case: UC3 - Delete a contact
+#### Use case: UC3 - Edit a contact
 **System: ConnectS**
 
 **Actor: User**
 
 **MSS:**
 
-1.  User requests to <ins> list contacts (UC1)</ins>.
+1.  User chooses a list of contacts to view ([F1](#use-case-f1---find-contact-by-keyword), [F2](#use-case-f2---filter-contacts-using-view-tabs) or [F3](#use-case-f3---see-all-contacts-using-view-all-tab)).
+2.  User requests to edit a specific contact in the list.
+3.  ConnectS edits the contact.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+    * 2a1. ConnectS prompts user to enter a valid index.
+
+      Use case resumes at step 2.
+
+* 2b. The edits requested are invalid.
+
+    * 2b1. ConnectS prompts user to enter a valid edit request.
+
+      Use case resumes at step 2.
+
+* 2c. The edits result in the edited contact becoming the same as an already existing contact.
+
+    * 2c1. ConnectS prompts user that such a contact already exists.
+
+      Use case resumes at step 2.
+
+#### Use case: UC4 - Delete a contact
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1.  User chooses a list of contacts to view ([F1](#use-case-f1---find-contact-by-keyword), [F2](#use-case-f2---filter-contacts-using-view-tabs) or [F3](#use-case-f3---see-all-contacts-using-view-all-tab)).
 2.  User requests to delete a specific contact in the list.
 3.  ConnectS deletes the contact.
 
@@ -344,6 +425,81 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. ConnectS prompts user to enter a valid index.
 
       Use case resumes at step 2.
+
+#### Use case: UC5 - Delete a module/tutorial
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1.  User requests to delete an entire module or tutorial from all contacts.
+2.  ConnectS deletes the module/tutorial from all contacts and deletes contacts left without any module-tutorial group.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given module/tutorial does not exist.
+
+    * 1a1. ConnectS prompts user that the module/tutorial they requested does not exist.
+
+    Use case resumes from step 1.
+
+#### Use case: UC6 - Sort contacts
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1.  User requests to sort contacts by lexicographical order.
+2.  ConnectS sorts contacts by lexicographical order.
+
+    Use case ends.
+
+#### Use case: UC7 - Pin/unpin a contact
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1.  User chooses a list of contacts to view ([F1](#use-case-f1---find-contact-by-keyword), [F2](#use-case-f2---filter-contacts-using-view-tabs) or [F3](#use-case-f3---see-all-contacts-using-view-all-tab)).
+2.  User requests to pin/unpin a specific contact in the list.
+3.  ConnectS pins/unpins the contact.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+    * 2a1. ConnectS prompts user to enter a valid index.
+
+      Use case resumes at step 2.
+
+#### Use case: UC8 - Clear all contacts
+**System: ConnectS**
+
+**Actor: User**
+
+**MSS:**
+
+1.  User requests to delete all contacts.
+2.  ConnectS deletes all contacts.
+    
+    Use case ends.
+
+**Extensions**
+
+* 1a. There are no contacts in ConnectS.
+
+  Use case ends.
 
 ### Non-Functional Requirements
 
