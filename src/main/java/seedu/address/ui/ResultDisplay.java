@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -53,8 +54,8 @@ public class ResultDisplay extends UiPart<Popup> {
     public void show(Stage stage, boolean isHelp) {
         logger.fine("Showing result display panel...");
         popup.show(stage);
-        PauseTransition delay = new PauseTransition(isHelp ? Duration.seconds(10) : Duration.seconds(5));
-        delay.setOnFinished(event -> popup.hide());
-        delay.play();
+        popup.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            popup.hide();
+        });
     }
 }
