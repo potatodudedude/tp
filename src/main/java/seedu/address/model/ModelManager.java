@@ -306,7 +306,9 @@ public class ModelManager implements Model {
                     Set<ModTutGroup> modTutGroups = p.getModTutGroups();
                     Stream<Tutorial> tutorialStream = modTutGroups.stream().map(ModTutGroup::getTutorial);
                     return tutorialStream.anyMatch(m -> m.getName().equals(tutorialName));
-                }).collect(Collectors.toCollection(FXCollections::observableArrayList));
+                })
+                .filter(filteredPersons.getPredicate())
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
     @Override

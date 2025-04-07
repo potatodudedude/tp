@@ -11,6 +11,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.ModTutGroup;
+import seedu.address.model.person.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.TelegramHandle;
 import seedu.address.model.tag.Tag;
@@ -87,6 +88,23 @@ public class ParserUtil {
             throw new ParseException(TelegramHandle.MESSAGE_CONSTRAINTS);
         }
         return new TelegramHandle(trimmedTelegramHandle);
+    }
+
+    /**
+     * Parses a {@code String module} into a {@code Module} in UpperCase.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param module the Module as a string
+     * @return the parsed {@code Module}
+     * @throws ParseException if the given {@code module} is invalid.
+     */
+    public static Module parseModule(String module) throws ParseException {
+        requireNonNull(module);
+        String trimmedModule = module.trim();
+        if (!Module.isValidModule(trimmedModule)) {
+            throw new ParseException(ModTutGroup.MESSAGE_CONSTRAINTS);
+        }
+        return new Module(trimmedModule.toUpperCase());
     }
 
     /**
