@@ -360,7 +360,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. ConnectS detects invalid ordering of parameter.
 
-    * 1a1. ConnectS prompts user to enter parameters in a given order.
+    * 1b1. ConnectS prompts user to enter parameters in a given order.
 
       Use case resumes from step 1.
 
@@ -538,6 +538,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * In addition, A new GUI is created. It was difficult given the difference between 
   the new-added GUI and the original AB3 GUI.
 
+### Challenges
+* Extending the GUI to support View Tabs mode where contacts can be viewed in a dual-tab view for modules and tutorials
+  was challenging as we were new to JavaFX and had to spend much time acquiring a deeper understanding of JavaFX as well
+  as the existing UI implementation.
+* Ensuring that the view tabs UI mode is well integrated with existing features that work based on indexes of
+  the current list. <br>These features include the `pin`, `unpin`, `delete` and `edit` commands.
+    * An example is that `delete 1` would delete the first person in View All mode rather than the first person in the
+      current Module-Tutorial tab (in View Tabs mode).
+    * This caused us many bugs and required much time to fix in making sure that the features works with the
+      individual Module-Tutorial tab that user is currently in.
+
 ### Effort Required
 
 * One of the more time-consuming areas was in implementing the GUI and logic to include viewing contacts in a dual-tab view
@@ -605,7 +616,7 @@ testers are expected to do more *exploratory* testing.
 
 1. While in ConnectS, enter `help` into the command box.
     <br><br>
-    Expected: A pop-up message showing all commands appears for about 10 seconds
+    Expected: A pop-up message showing proper usage of all commands appears
     <br><br>
 2. To visit the user guide, click on the help button at the top of the application window. A small window will appear, click on Copy URL and paste into your preferred browser to visit the user guide.
 <br>
