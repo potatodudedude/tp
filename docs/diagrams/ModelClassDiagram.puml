@@ -21,9 +21,6 @@ Class ModTutGroup
 Class Tag
 Class Module
 Class Tutorial
-Class UniqueTagList
-Class UniqueModList
-Class UniqueTutList
 
 Class I #FFFFFF
 }
@@ -41,12 +38,7 @@ UserPrefs .up.|> ReadOnlyUserPrefs
 
 
 AddressBook *--> "1" UniquePersonList
-AddressBook *--> "1" UniqueTagList
-AddressBook *--> "1" UniqueModList
-AddressBook *--> "1" UniqueTutList
 UniquePersonList ---> "~* all" Person
-UniqueTagList --> "*" Tag
-UniqueTutList --> "*" ModTutGroup
 
 Person *--> "*" Tag
 Person *--> "1..*" ModTutGroup
@@ -54,16 +46,11 @@ Person *--> Email
 Person *--> TelegramHandle
 Person *--> Name
 
-UniqueModList --> "*" Module
 ModTutGroup *--> "1" Module
 ModTutGroup *--> "1" Tutorial
 
-
-UniqueModList -[hidden]right-> UniqueTutList
-UniqueTutList -[hidden]right-> UniqueTagList
-UniqueTagList -[hidden]right-> UniquePersonList
-UniquePersonList -[hidden]right-> UniqueModList
-
+Person -[hidden]up--> I
+UniquePersonList -[hidden]right-> I
 
 ModelManager --> "~* filtered" Person
 @enduml

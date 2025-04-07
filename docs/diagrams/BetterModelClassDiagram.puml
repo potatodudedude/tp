@@ -6,15 +6,13 @@ skinparam classBackgroundColor MODEL_COLOR
 
 AddressBook *-right-> "1" UniquePersonList
 AddressBook *-right-> "1" UniqueTagList
-AddressBook *-right-> "1" UniqueModList
-AddressBook *-right-> "1" UniqueTutList
+AddressBook *-right-> "1" UniqueModTutGroupList
 UniqueTagList -[hidden]down- UniquePersonList
 UniqueTagList -[hidden]down- UniquePersonList
 
 UniqueTagList -right-> "*" Tag
 UniquePersonList -right-> Person
-UniqueModList -right-> "*" Module
-UniqueTutList -right-> "*" ModTutGroup
+UniqueModTutGroupList -right-> "*" ModTutGroup
 
 Person -up-> "*" Tag
 
