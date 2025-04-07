@@ -24,9 +24,9 @@ public class DeleteModCommandParser implements Parser<DeleteModCommand> {
         try {
             Module module = ParserUtil.parseModule(args);
             return new DeleteModCommand(module);
-        } catch (Exception e) {
+        } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModCommand.MESSAGE_USAGE), e);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModCommand.MESSAGE_USAGE), pe);
         }
     }
 }
