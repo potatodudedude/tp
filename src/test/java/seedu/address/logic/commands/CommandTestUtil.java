@@ -27,6 +27,7 @@ import seedu.address.testutil.EditPersonDescriptorBuilder;
 public class CommandTestUtil {
 
     public static final String INVALID_MODTUT_AMY = "CS1234 A10";
+    public static final String INVALID_MOD_AMY = "CS123!";
 
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";

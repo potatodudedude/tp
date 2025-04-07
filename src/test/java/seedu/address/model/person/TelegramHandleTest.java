@@ -27,6 +27,7 @@ public class TelegramHandleTest {
         // invalid telegram handle
         assertFalse(TelegramHandle.isValidTelegramHandle("")); // empty string
         assertFalse(TelegramHandle.isValidTelegramHandle(" ")); // spaces only
+        assertFalse(TelegramHandle.isValidTelegramHandle("a")); // one char only
         assertFalse(TelegramHandle.isValidTelegramHandle("peter*")); // contains non-alphanumeric characters
         assertFalse(TelegramHandle.isValidTelegramHandle("peter")); // does not start with @
         assertFalse(TelegramHandle.isValidTelegramHandle("@pete")); // less than 5 characters

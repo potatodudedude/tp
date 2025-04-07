@@ -203,17 +203,17 @@ public class EditCommand extends Command {
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * Returns an unmodifiable modTutGroup set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
+         * Returns {@code Optional#empty()} if {@code modTutGroups} is null.
          */
         public Optional<Set<ModTutGroup>> getModTutGroup() {
             return (modTutGroup != null) ? Optional.of(Collections.unmodifiableSet(modTutGroup)) : Optional.empty();
         }
 
         /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
+         * Sets {@code modTutGroups} to this object's {@code modTutGroups}.
+         * A defensive copy of {@code modTutGroups} is used internally.
          */
         public void setModTutGroup(Set<ModTutGroup> modTutGroup) {
             this.modTutGroup = (modTutGroup != null) ? new HashSet<>(modTutGroup) : null;
@@ -251,7 +251,8 @@ public class EditCommand extends Command {
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(telegramHandle, otherEditPersonDescriptor.telegramHandle)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(modTutGroup, otherEditPersonDescriptor.modTutGroup);
+                    && Objects.equals(modTutGroup, otherEditPersonDescriptor.modTutGroup)
+                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
 
         @Override
@@ -264,6 +265,5 @@ public class EditCommand extends Command {
                     .add("tags", tags)
                     .toString();
         }
-
     }
 }
