@@ -23,8 +23,9 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
 
 * [How to use this Guide](#how-to-use-this-guide)
 * [Features](#features)
-  * [Command Formatting](command-formatting)
-  * [Parameter Formatting](parameter-formatting)
+  * [Command Formatting](#command-formatting)
+  * [Parameter Formatting](#parameter-formatting)
+  * [Popups](#popups)
   * Commands
     * [Getting Help](#viewing-help-help)
     * [Adding a tutee](#adding-a-tutee-add)
@@ -33,12 +34,12 @@ contacts faster than other contact apps, whilst still allowing you to enjoy the 
     * [Finding a tutee](#finding-a-tutee-find)
     * [Deleting a tutee](#deleting-a-tutee-delete)
     * [Deleting a module](#deleting-a-module-deletemod)
-    * [Deleting a tutorial](#deleting-a-tutorial-of-a-specific-module--deletetut)
+    * [Deleting a tutorial](#deleting-a-tutorial-of-a-specific-module-deletetut)
     * [Sorting a tutee](#sorting-tutees-sort)
-    * [Pinning a tutee](#pinning-a-tutee-pin-unpin)
+    * [Pinning a tutee](#pinning-tutees-pin-unpin)
     * [Viewing a specific module and tutorial](#viewing-a-tab-view)
     * [Clearing all tutees](#clearing-all-tutees-clear)
-    * [Exiting ConnectS](#exiting-connects)
+    * [Exiting ConnectS](#exiting-connects-exit)
   * [Saving data](#saving-the-data)
   * [Editing save files](#editing-the-data-file)
 * [FAQ](#faq)
@@ -56,7 +57,7 @@ If you are a beginner looking to get started: Visit the [Quick Start](#quick-sta
 
 If you've already set up ConnectS, visit the [features](#features) section to see what commands are available in ConnectS.
 
-If you are a returning user looking to refresh yourself on command formatting, visit if [command summary](#command-summary) for
+If you are a returning user looking to refresh yourself on command formatting, visit the [command summary](#command-summary) for
 a quick overview.
 
 Confused by what certain terms mean? Visit the [glossary](#glossary).
@@ -93,7 +94,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
  
 5. Use the `java -jar ConnectS.jar` command to run ConnectS.<br>
    A GUI like the image below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   <img alt="Ui" src="images/Ui.png" width="500" />
 
 6. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all commands.<br>
    Some example commands you can try:
@@ -134,7 +135,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 * If you see parameters in triangle brackets, you can use any of them, but you must have only one.<br>
   e.g. `find <n/NAME... t/TELEGRAM_HANDLE... e/EMAIL...>` can be used as `find n/Doe` or `find t/@johndoe`, but not as `find n/Doe t/@johndoe`.
 
-* If you see parameters with `...` after them, it means they can be used multiple times excluding zero times.<br>
+* If you see parameters with `...` after them, it means they can be used multiple times.<br>
   e.g. `m/MODULE-TUTORIAL_GROUP...` can be used as `m/CS2101-T06`, `m/CS1101S-T55 m/CS2030S-T08` etc.
 
 * You can give parameters in any order.<br>
@@ -145,6 +146,9 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 
 * When you see a command that requires you to input the `INDEX` of a tutee, it refers to the numbering of that tutee in the
   current view you are in.<br>
+
+* Command words are case-insensitive.<br>
+  e.g. `ADD`, `deLETEMoD` are the same as `add` and `deleteMod` respectively.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands as some spaces may be omitted.
 </box>
@@ -159,7 +163,7 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 * `NAME` parameters only allow alphanumeric characters, and can have multiple words.<br>
    e.g. `John`, `John Doe` or `John @123` are allowed, but `John (Doe)` is not.
 
-* `TELEGRAM_HANDLE` parameters only allow one word which must start with `@`, followed by 5 alphanumeric characters.
+* `TELEGRAM_HANDLE` parameters only allow one word which must start with `@`, followed by at least 5 alphanumeric characters.
   `_` is allowed, but not at the start or end of the handle.<br> 
    e.g. `@johnny` and `@john_doe` are allowed, but `johnny`, `@john` and `@_john` are not.
 
@@ -172,14 +176,36 @@ Visit the [table](#table-of-contents) above to quickly access parts of the guide
 
    e.g. `john+doe@example.com` is allowed, but `+johndoe@example.com` and `john+doe@example` are not.
 
-* `MODULE-TUTORIAL_GROUP` parameters only allow for the format `MODULE`-`TUTORIAl`.
+* `MODULE-TUTORIAL_GROUP` parameters only allow for the format `MODULE`-`TUTORIAL`.
    * `MODULE` and `TUTORIAl` both consist of only alphanumeric characters, and are case-insensitive.
    * `MODULE` and `TUTORIAL` are separated by a hyphen.
 
-  e.g. `cs2103T-t02` id allowed, but `HSI1000 W01` is not.
+  e.g. `cs2103T-t02` is allowed, but `HSI1000 W01` is not.
 
 * `TAG` parameters only allow alphanumeric characters, and can have only one word.<br>
    e.g. `latecomer` is allowed, but `needs more help` is not.
+
+* `INDEX` parameters refer to the index numbers of the currently displayed tutee list. 
+   * Only positive integers are allowed. e.g. `1`, `2`, `3`...
+   * Only values that exist within the currently displayed tutee list are allowed. e.g. in the following
+     list, `1` and `2` are valid indexes, but `3` and above are not.
+     <img alt="Ui" src="images/Ui.png" width="500" />
+
+</box>
+
+<box type="info" seamless>
+
+### Popups
+**Notes about popups:**<br>
+
+* After you input a command, ConnectS will show a popup that gives you an overview of the command's effect.<br>
+  e.g. `add` command's success popup: <img alt="Add Success Popup" src="images/addSuccessPopup.png" width="500" />
+
+* If you make a mistake in command formatting or provide an invalid parameter, ConnectS will show a popup telling you
+  of the mistake.<br>
+  e.g. `add` command's formatting error popup: <img alt="Add Error Popup" src="images/addErrorPopup.png" width="500" />
+
+* Popups will be automatically closed whenever you press a key, or click outside of the popup window. Popups don't expire.
 </box>
 
 <br>
@@ -200,7 +226,10 @@ Format: `help`
 You can add a tutee and their name, telegram handle, email, module-tutorial group and custom tags with this command.
   
 Format: `add n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... [tag/TAG...]`
-  
+
+* You cannot add tutees with the same name, telegram handle or email as an existing tutee.
+
+
 <box type="tip" seamless>
 
 **Tip:** You may add multiple module-tutorial groups to a single tutee!
@@ -214,6 +243,14 @@ This confirmation message will appear:
 <img alt="Add Result" src="images/addResult.png" width="500" />
 
 <br>
+<br>
+<box type="tip" seamless>
+
+**Tip:** If you need to add two tutees with the same name, you can use their full names or add numbers to differentiate between them.<br>
+e.g. `John Doe 1` and `John Doe 2` for two tutees named `John Doe`.
+</box>
+
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -222,10 +259,12 @@ This confirmation message will appear:
 You can see all the tutees you added with this command.
   
 Format: `list`
+
+* List command will switch the view to the view all tab which displays a list of all tutees.
   
 <box type="tip" seamless>
 
-**Tip:** After a [find command](#finding-a-tutee-find), use this to be able to see all the tutees again.
+**Tip:** After using this command, use the [view command](#viewing-a-tab-view) to view a specific module's tutorial.
 </box>
 
 <br>
@@ -238,13 +277,13 @@ You can edit a tutee's information with this command.
   
 Format: `edit INDEX {n/NAME t/TELEGRAM_HANDLE e/EMAIL m/MODULE-TUTORIAL_GROUP... tag/TAG...}`
   
-* Edits the tutee at the specified `INDEX`. The index refers to the index number shown in the currently displayed tutee list. The index **must be a positive integer** 1, 2, 3, ...
+* Edits the tutee at the specified `INDEX` of the currently displayed list.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing module-tutorial groups or tags, the existing module-tutorial groups or tags of the tutee will be overwritten.
   
 Example:
-*  `edit 1 t/@johndoey e/johndoe@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johndoe@example.com` respectively.
+*  `edit 1 t/@johndoey e/johnd@example.com` Edits the telegram handle and email address of the 1st tutee to be `@johndoey` and `johnd@example.com` respectively.
   
 This confirmation message will appear:
   
@@ -261,24 +300,26 @@ Format: `find <n/NAME_KEYWORD... t/TELEGRAM_HANDLE_KEYWORD... e/EMAIL_KEYWORD...
   
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name, telegram handle, or email can be searched.
-* Only one field can be searched at a time.
+* Only the name, telegram handle, or email can be searched, and only one at a time.
 * Partial words can also be matched e.g. `Han` will match `Hans`
+* To search with multiple keywords, only use the corresponding prefix once. e.g. `find n/Alex Bob` is correct, but `find n/Alex n/Bob` is not.
 * Tutees matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` or `an` will return `Hans Gruber`, `Bo Yang`
   
 Example:
-* `find n/Amy Bob` returns tutees with names `Amy Cheng` and `Bob Ross`.<br>
+* `find n/Alex Bernice` returns tutees with names `Alex Yeoh` and `Bernice Yu`.<br>
   
 This confirmation message will appear:
 
 <img alt="Find Result" src="images/findResult.png" width="500" />
 
 <br>
+<br>
+
 
 <box type="tip" seamless>
 
-**Tip:** After using this command, use a [list command](#listing-all-tutees--list) to be able to see all the tutees again.
+**Tip:** After using this command, use a [list command](#listing-all-tutees-list) to be able to see all the tutees again.
 </box>
 
 <br>
@@ -289,10 +330,8 @@ This confirmation message will appear:
 This deletes the tutee you specify.
   
 Format: `delete INDEX`
-  
-* Deletes the tutee at the specified `INDEX`.
-* The index refers to the index number shown in the currently displayed tutee list.
-* The index **must be a positive integer** 1, 2, 3, ...
+
+* Deletes the tutee at the specified `INDEX` of the currently displayed list.
   
 Example:
 * `find n/John` followed by `delete 1` deletes the 1st tutee in the results of the `find` command.
@@ -311,8 +350,7 @@ You can delete a module with this command.
 Format: `deleteMod MODULE_CODE`
   
 * The module and all its associated tutorials will be deleted from every tutee's module-tutorial list.
-* After the deletion, if a tutee does not have belong to any module-tutorial group, they will be automatically deleted.
-* If nobody takes the module, deleteMod will return successful message without changing any information.
+* After the deletion, if a tutee does not belong to any module-tutorial group, they will be automatically deleted.
   
 Example:
 * `deleteMod CS2109S` deletes the module CS2109S in ConnectS.
@@ -331,8 +369,7 @@ You can delete a tutorial(of a specific module) with this command.
 Format: `deleteTut MODULE-TUTORIAL_GROUP`
   
 * The tutorial group will be deleted from every tutee's module-tutorial list.
-* After the deletion, if a tutee does not have belong to any module-tutorial group, they will be automatically deleted.
-* If nobody takes the tutorial group, deleteTut will return successful message without changing any information.
+* After the deletion, if a tutee does not belong to any module-tutorial group, they will be automatically deleted.
   
 Example:
 * `deleteTut CS2103T-T12` deletes the tutorial CS2103T-T12 in ConnectS.
@@ -353,22 +390,33 @@ Format: `sort`
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
-### Pinning a tutee: `pin`, `unpin`
+### Pinning tutees: `pin`, `unpin`
   
-You can pin one tutee to always show up at the top of the list, or unpin a already pinned tutee.
+You can pin tutees to always show up at the top of the list, or unpin an already pinned tutee.
   
-Format:` pin INDEX`, `unpin INDEX`
-  
-* The index refers to the index number shown in the currently displayed tutee list.
-* The index **must be a positive integer** 1, 2, 3, ...
+Format:<br>
+Pin a tutee: `pin INDEX`<br>
+Unpin a tutee: `unpin INDEX`
+
+* Pins/unpins the tutee at the specified `INDEX` of the currently displayed list.
 * The pinned tutee(s) will have a blue outline.
+* Unpinned tutees will be sent to the bottom of the list.
   
 Example:
 * `pin 7` pins the 7th tutee in the list.
+* `unpin 1` unpins the 1st tutee in the list.
   
 How a pinned tutee looks:
 
 <img alt="Pinned Tutee" src="images/pinnedTutee.png" width="500" />
+
+<br>
+<br>
+
+<box type="tip" seamless>
+
+**Tip:** After unpinning a tutee, use the [sort command](#sorting-tutees-sort) to reorder the tutee that was sent to the bottom of the list.
+</box>
 
 <br>
 
@@ -382,14 +430,21 @@ Format: `view m/MODULE-TUTORIAL_GROUP`, `view m/all`
 **View all:**
 
 <img alt="View All" src="images/viewAll.png" width="500" />
-  
-**View a specific module and tutorial tab:**
 
 <br>
+<br>
+
+**View a specific module and tutorial tab:**
 
 <img alt="View Tab" src="images/viewTab.png" width="500" />
   
-* You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
+<br>
+<br>
+
+<box type="tip" seamless>
+
+**Tip:** You can also switch to a specific module and tutorial group or a view all tab using the menu buttons.
+</box>
 
 <br>
 
@@ -401,7 +456,7 @@ You can delete all tutees from ConnectS with this command.
 <box type="warning" seamless>
 
 **Caution:**
-This is not reversible!<br>
+**This is not reversible!**<br>
 </box>
   
 Format: `clear`
@@ -486,8 +541,9 @@ Furthermore, certain edits can cause the ConnectS to behave in unexpected ways (
 |------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Command Line Interface**   | A texted-based user interface where the user executes functions by typing in commands.                                                                                                                                                                                                                      |
 | **Graphical User Interface** | A graphics-based user interface where the user executes functions by using mouse and menus.                                                                                                                                                                                                                 |
+| **cd**                       | A terminal command to allows for switching of the current directory.                                                                                                                                                                                                                                        |
 | **Parameter**                | Information that you give to a command.                                                                                                                                                                                                                                                                     |
 | **Index**                    | Ordering of the tutees, starting from 1.                                                                                                                                                                                                                                                                    |
-| **Module-Tutorial Group**    | A input parameter that combines the module and tutorial group numbers of a tutee e.g. `CS2101-T02`.                                                                                                                                                                                                         |
+| **Module-Tutorial Group**    | An input parameter that combines the module and tutorial group numbers of a tutee e.g. `CS2101-T02`.                                                                                                                                                                                                        |
 | **Lexicographical**          | A sorting order that sorts according to the unicode of the name, i.e. numbers 0-9 come first, sorted by ascending order, then capital letters by alphabetical order, then lower case letters in alphabetical order. e.g. `Alex123`, `alex456`, `123alex` will be sorted as `123alex`, `Alex123`, `alex456`. |
 | **Alphanumeric Characters**  | A group of characters that includes all english alphabet letters(capitalised and not) and numbers 0-9.                                                                                                                                                                                                      |
