@@ -64,7 +64,7 @@ public class EmailTest {
         assertTrue(Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
         assertTrue(Email.isValidEmail("e1234567@u.nus.edu")); // more than one period in domain
         assertTrue(Email.isValidEmail("12345@example.com")); // numeric local part
-        assertTrue(Email.isValidEmail("12345@123.12"));
+        assertTrue(Email.isValidEmail("12345@123.12")); // numeric local part and domain name
     }
 
     @Test
