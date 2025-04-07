@@ -574,7 +574,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **ConnectS is made by a team of 4.**
 
-1. 
+1. **Allow for more flexible name restrictions:** Currently, ConnectS only supports alphanumeric characters in names. This could be 
+   problematic as there are names that don't fit these restrictions. We plan to expand the restrictions to allow for foreign characters, or other characters such as `-` and `.`.
+2. **Improve on the collapsing contact feature:** Currently, contacts can be collapsed to show just the name by clicking on a triangle in the contact bar.
+   This does not fit well into the CLI-focused app. We plan to introduce a command to allow for collapsing/expanding of the contact bar using the CLI.
+3. **Improve handling of large amounts of tabs:** Currently, if many modules or tutorials are added, the module/tutorial tabs may overflow and result
+   in only a portion of the tabs being visible. This problem could be made worse if the window is resized to be smaller. We plan on introducing
+   tabs that shrink when there is no more space, or a scroll bar for the tabs.
+4. **Allow for more flexible tag restrictions:** Currently, tags only allow for one word. This is not very flexible, as users may wish to tag with short phrases.
+   We plan to allow multiple words in a tag within a given limit.
+5. **Allow view command to search by module:** Currently, view command needs the full module-tutorial group as input. This limits
+   its usefulness as users may often want to see a module tab, but are unsure of the specific tutorials. We plan to expand the view command
+   to switch to a module tab using only the module as input.
+6. **Improve duplicate person error message:** Currently, if a duplicate person is added or edited in, the thrown error message simply mentions
+   that a person with the same name/telegram handle/email already exists. This is limited in usefulness as the user doesn't know which field(s) are the same.
+   We plan to make the message more specific in identifying which field(s) are duplicated.
 
 
 --------------------------------------------------------------------------------------------------------------------
