@@ -531,6 +531,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## **Appendix: Effort**
 
+### Difficulty Level
+
+* Upon AB3, we updated some fields of contacts and created several new functions. This is relatively 
+  challenging given the complexity of some specific functions created.
+* In addition, A new GUI is created. It was difficult given the difference between 
+  the new-added GUI and the original AB3 GUI.
+
 ### Challenges
 * Extending the GUI to support View Tabs mode where contacts can be viewed in a dual-tab view for modules and tutorials
   was challenging as we were new to JavaFX and had to spend much time acquiring a deeper understanding of JavaFX as well
