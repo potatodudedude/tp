@@ -531,6 +531,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## **Appendix: Effort**
 
+### Difficulty Level
+
+* Upon AB3, we updated some fields of contacts and created several new functions. This is relatively 
+* challenging given the complexity of some specific functions created.
+* In addition, A new GUI is created. It was difficult given the difference between 
+  the new-added GUI and the original AB3 GUI.
+
 ### Effort Required
 
 * One of the more time-consuming areas was in implementing the GUI and logic to include viewing contacts in a dual-tab view
