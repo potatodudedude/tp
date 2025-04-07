@@ -13,7 +13,7 @@ import seedu.address.model.person.Module;
 public class DeleteModCommand extends Command {
 
     /** Command word to trigger this command. */
-    public static final String COMMAND_WORD = "deleteMod";
+    public static final String COMMAND_WORD = "deletemod";
 
     /** Usage instructions for this command. */
     public static final String MESSAGE_USAGE = COMMAND_WORD
