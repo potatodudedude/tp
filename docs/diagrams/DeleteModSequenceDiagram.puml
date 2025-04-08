@@ -34,7 +34,7 @@ create DeleteModCommand
 DeleteModCommandParser -> DeleteModCommand
 activate DeleteModCommand
 
-DeleteModCommand --> DeleteModCommandParser :
+DeleteModCommand --> DeleteModCommandParser : d
 deactivate DeleteModCommand
 
 DeleteModCommandParser --> AddressBookParser : d
@@ -46,7 +46,7 @@ destroy DeleteModCommandParser
 AddressBookParser --> LogicManager : d
 deactivate AddressBookParser
 
-LogicManager -> DeleteModCommandand : execute(m)
+LogicManager -> DeleteModCommand : execute(m)
 activate DeleteModCommand
 
 DeleteModCommand -> Model : deleteMod(CS2103T)
@@ -59,7 +59,7 @@ create CommandResult
 DeleteModCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> DeleteModCommand
+CommandResult --> DeleteModCommand : r
 deactivate CommandResult
 
 DeleteModCommand --> LogicManager : r
