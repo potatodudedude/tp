@@ -187,7 +187,7 @@ that tutee will be automatically deleted.
 
 The behaviour of the deleteMod feature can be seen below.
 
-<puml src="diagrams/DeleteModSequenceDiagram.puml alt="DeleteMod Sequence Diagram" />
+<puml src="diagrams/DeleteModSequenceDiagram.puml" alt="DeleteMod Sequence Diagram" />
 
 ### Sort tutees feature
 
