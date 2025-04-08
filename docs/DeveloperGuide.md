@@ -185,7 +185,7 @@ The delete module feature allows the user to delete the specified module from ev
 module-tutorial list. In addition, if after the deletion, a tutee does not belong to any module-tutorial group,
 that tutee will be automatically deleted.
 
-The behaviour of the sort feature can be seen below.
+The behaviour of the deleteMod feature can be seen below.
 
 <puml src="diagrams/DeleteModSequenceDiagram.puml alt="DeleteMod Sequence Diagram" />
 
